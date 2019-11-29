@@ -30,7 +30,7 @@ const Index = (props) => {
 
     return (
 
-        <Layout>
+        <Layout noHeader='true'>
             <div>
                 <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>Choose  an  Uzoma</h1>
                 <img src={background} alt="background" width="100%" style={{maxHeight: '100vh'}} />

@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Header from '../components/header'
-
 import aboutStyles from '../styles/about.module.css'
 
 import Layout from '../components/layout'
@@ -10,8 +8,6 @@ const About = () => {
     return (
         <Layout>
             <div>
-                
-                <Header />
 
                 <section className={aboutStyles.aboutSection}>
                     <div className={aboutStyles.aboutText}>

@@ -3,7 +3,7 @@ import {Link} from 'gatsby'
 
 import headerStyles from '../styles/header.module.css'
 
-// import Navigation from '../navigation/navigation'
+import Navigation from './navigation'
 
 const Header = ({ isLightTheme }) => {
 	const headerThemeClass = isLightTheme ? 'light-theme' : 'dark-theme'
@@ -17,7 +17,7 @@ const Header = ({ isLightTheme }) => {
 			} className={headerThemeClass}>UO</h2>
 			</Link>
 
-			{/* <Navigation /> */}
+			<Navigation />
 		</div>
 	)
 }

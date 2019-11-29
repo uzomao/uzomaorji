@@ -1,5 +1,6 @@
 import React from 'react'
 import {Helmet} from 'react-helmet'
+import Header from './header'
 
 const Layout = (props) => {
     return(
@@ -13,6 +14,9 @@ const Layout = (props) => {
                 <meta name="author" content="Uzoma Orji" />
                 {/* <link rel="canonical" href="http://mysite.com/example" /> */}
             </Helmet>
+            { !props.noHeader &&
+                <Header />
+            }
             {props.children}
         </React.Fragment>
     )
