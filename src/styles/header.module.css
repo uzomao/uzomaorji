@@ -1,0 +1,21 @@
+.header-block {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2.5% 5%;
+}
+
+.header-block a {
+	margin: auto
+}
+
+#header {
+	font-family: 'Merriweather', Helvetica, serif;
+	text-decoration: underline;
+	margin-top: 0;
+	font-size: 30px;
+	color: #0c0c0c;
+}
+
+#header:hover {
+	cursor: pointer;
+}

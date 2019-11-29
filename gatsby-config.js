@@ -10,7 +10,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Oswald', 'Inconsolata']
+          families: ['Oswald', 'Inconsolata', 'Merriweather']
         }
       }
     }
