@@ -17,8 +17,11 @@
     width: 30%;
     height: 100%;
     font-family: 'Merriweather', 'Helvetica', serif;
-    animation: .2s menu-slidein;
-    
+    animation: menu-slidein .2s;
+}
+
+.menu-is-open {
+    animation: menu-slideout .2s;
 }
 
 .navigation-menu ul {
