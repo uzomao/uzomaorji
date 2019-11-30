@@ -8,7 +8,7 @@ const Layout = (props) => {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Uzoma Orji | Visual Artist & Creative Technologist</title>
-                <meta name="description" content="Website of visual artist and creative technologist Uzoma Orji" />
+                <meta name="description" content="Portfolio website of visual artist and creative technologist Uzoma Orji" />
                 <meta name="keywords" content="Uzoma, Orji, Uzoma Orji, Chidumaga, Visual Artist, 
                 Artist, Designer, Technologist, Creative, Nigeria, Africa" />
                 <meta name="author" content="Uzoma Orji" />

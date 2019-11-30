@@ -5,6 +5,11 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `Uzoma Orji | Visual Artist & Creative Technologist`,
+    siteUrl: `https://uzomaorji.com`,
+    description: `Portfolio website of visual artist and creative technologist Uzoma Orji`
+  },
   plugins: [
     {
       resolve: 'gatsby-plugin-web-font-loader',
