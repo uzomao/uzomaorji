@@ -1,0 +1,56 @@
+.projects, .terminal-project {
+	display: flex;
+	list-style: none;
+	flex-wrap: wrap;
+	width: 100vw;
+	margin-left: .5%;
+	padding: 0
+}
+
+.projects li, .project-link {
+	max-width: 39.5%;
+	margin: 5%;
+	margin-top: 0;
+	color: inherit;
+}
+
+.terminal-project {
+	justify-content: space-evenly;
+}
+
+.terminal-project li, .project-link{
+	max-width: 15%;
+}
+
+.project-link {
+	text-decoration: none;
+}
+
+.projects li article {
+	cursor: pointer;
+}
+
+.projects li article p {
+	font-size: 1.25rem;
+}
+
+.project-image{
+	max-width: 100%;
+	width: 100%;
+	border-radius: 10px;
+}
+
+@media screen and (max-device-width: 700px){
+	
+	.projects {
+		flex-direction: column;
+	}
+
+	.projects li {
+		max-width: 98.5%
+	}
+
+	.tech-projects .format-text, .projects li article p {
+		text-align: center;
+	}
+}

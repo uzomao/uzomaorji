@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 
 import Header from '../components/header'
 import TechProject from '../components/tech-project'
-// import Projects from '../projects/projects'
+import Projects from '../components/projects'
 
+import projectsStyles from '../styles/projects.module.css'
 import techStyles from '../styles/tech.module.css';
 
 export default class tech extends React.Component {
@@ -33,7 +34,7 @@ export default class tech extends React.Component {
 
 				<p className={techStyles.formatText}>a select few projects I've worked on recently:</p>
 
-				{/* <Projects className="projects" clickAction={this.toggleProject} imgHeight="350px" /> */}
+				<Projects className={projectsStyles.projects} clickAction={this.toggleProject} imgHeight="350px" />
 
 				{
 					this.state.toggleProject &&
