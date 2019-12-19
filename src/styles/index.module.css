@@ -10,11 +10,12 @@
     transform: translate(-50%);
     font-family: 'Oswald', Helvetica, sans-serif;
     text-transform: uppercase;
-    color:#222f3e;
-    font-size: 2.5rem;
-    text-shadow: 1.5px 1.5px #ee5253;
+    color:#ffcccc;
+    font-size: 3.5rem;
+    text-shadow: 1.5px 1.5px #ffb8b8;
     word-spacing: 10px;
-    animation: blinking 2s linear infinite;
+    animation: blinking 3s linear infinite;
+    z-index: 100;
 }
 
 area {

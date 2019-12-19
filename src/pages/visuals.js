@@ -6,9 +6,8 @@ import mirror2 from '../images/mirror2.png';
 import mirror3 from '../images/mirror3.png';
 import mirror4 from '../images/mirror4.png';
 
-import Header from '../header/header'
+import Header from '../components/header'
 
-import '../tech/tech.css'
 //using the same style format as the tech page. could have made
 //a component that both stages can borrow from but welppp
 

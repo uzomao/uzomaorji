@@ -4,8 +4,7 @@ import { navigate } from "gatsby"
 import '../styles/index.css'
 import indexStyles from '../styles/index.module.css'
 
-import uzomas from '../images/uzomas.png'
-import background from '../images/background.png'
+import uzomas from '../images/uzomaorji-banner.jpg'
 
 import Layout from '../components/layout'
 
@@ -33,15 +32,14 @@ const Index = (props) => {
         <Layout noHeader='true'>
             <div>
                 <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>Choose  an  Uzoma</h1>
-                <img src={background} alt="background" width="100%" style={{maxHeight: '100vh'}} />
                 <img src={uzomas} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map" />
 
                 <div id={indexStyles.choiceText}>
                 </div>
 
                 <map name="image-map">
-                    <area alt="the techie" onClick={() => navigateTo('/tech')} coords="130,94,157,94,164,120,183,153,192,190,191,229,191,245,201,277,191,281,191,305,196,325,197,372,211,404,194,410,155,286,165,389,136,406,124,404,145,373,133,321,127,288,109,279,110,217,107,160,122,102" shape="poly" />
-                    <area alt="the artist" onClick={() => navigateTo('/visuals')} coords="560,249,544,201,556,148,580,139,574,106,580,91,602,88,617,116,612,137,637,157,641,211,626,228,624,300,615,378,609,383,618,400,601,403,589,386,590,369,596,324,589,279,577,326,567,384,558,384,559,399,538,411,524,410,541,378,546,307" shape="poly" />
+                    <area alt="the techie" onClick={() => navigateTo('/tech')} coords="951,176,975,190,992,200,1010,231,1033,251,1053,278,1056,309,1022,319,1009,353,1015,434,1031,621,1026,644,1029,670,1002,673,994,627,983,584,964,469,958,522,958,552,962,611,957,619,963,644,936,656,909,656,926,601,916,524,911,496,911,412,906,395,918,365,918,321,891,326,868,320,874,284,892,249,906,225" shape="poly" />
+                    <area alt="the artist" onClick={() => navigateTo('/visuals')} coords="436,163,461,190,468,222,465,249,500,273,503,344,506,363,488,377,484,396,484,431,479,500,473,535,467,600,466,623,456,628,468,650,465,664,444,662,426,641,424,612,432,531,424,477,408,537,392,627,386,636,375,630,378,651,356,665,337,675,320,663,329,644,346,624,350,568,362,482,376,417,372,409,358,366,351,344,369,272,374,257,403,243,401,215,405,178" shape="poly" />
                 </map>
 
             </div>
