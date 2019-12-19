@@ -32,9 +32,9 @@ const Projects = (props) => {
         }
     `)
 
-    const listOfProjects = projects.allContentfulTech.nodes.map((project) =>
-        <li key={project.id}>
-            <article onClick={() => props.clickAction(project.id)}>
+    const listOfProjects = projects.allContentfulTech.nodes.map((project, index) =>
+        <li key={index}>
+            <article onClick={() => props.clickAction(index)}>
                 <Browser projectImage={project.image} projectAlt={project.description} 
                 height={props.imgHeight} />
                 {
