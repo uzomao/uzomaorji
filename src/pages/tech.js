@@ -30,7 +30,7 @@ export default class tech extends React.Component {
 		return (
 			<div className={techStyles.techProjects}>
 
-				<Header isLightTheme={this.context.isLightTheme} />
+				<Header />
 
 				<p className={techStyles.formatText}>a select few projects I've worked on recently:</p>
 

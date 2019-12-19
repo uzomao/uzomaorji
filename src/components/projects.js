@@ -5,32 +5,53 @@
  */
 
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import Browser from '../components/browser'
 
-export default class Projects extends React.Component {
+const Projects = (props) => {
 
-    render(){
-        const projects = this.context.projects.map((project) =>
-			<li key={project.id}>
-				<article onClick={() => this.props.clickAction(project.id)}>
-					<Browser projectImage={project.image} projectAlt={project.description} 
-					isLightTheme={this.context.isLightTheme} 
-                    height={this.props.imgHeight} />
-					{
-                        window.location.pathname === '/tech' ?
-                            <p>{project.description}</p>
-                        :
-                            <p>{project.terminalName}</p>
+    const projects = useStaticQuery(graphql`
+        query {
+            allContentfulTech {
+                nodes {
+                    title
+                    description
+                    url
+                    terminalName
+                    image {
+                        fixed {
+                            src
+                        }
                     }
-				</article>
-			</li>
-		);
+                    detailedDescription {
+                        detailedDescription
+                    }
+                }
+            }
+        }
+    `)
 
-        return(
-            <ul className={this.props.className}>
-                {projects}
-            </ul>
-        )
-    }
+    const listOfProjects = projects.allContentfulTech.nodes.map((project) =>
+        <li key={project.id}>
+            <article onClick={() => props.clickAction(project.id)}>
+                <Browser projectImage={project.image} projectAlt={project.description} 
+                height={props.imgHeight} />
+                {
+                    window.location.pathname === '/tech' ?
+                        <p>{project.description}</p>
+                    :
+                        <p>{project.terminalName}</p>
+                }
+            </article>
+        </li>
+    )
+
+    return (
+        <ul className={props.className}>
+            {listOfProjects}
+        </ul>
+    )
 }
+
+export default Projects
