@@ -1,0 +1,154 @@
+.tech-project {
+	position: absolute;
+	left: 20%;
+	z-index: 10;
+	float: right;
+	max-height: 100vh;
+	overflow: scroll;
+	padding-bottom: 5%;
+	border-left: 2px solid #fff;
+	animation: .5s slidein;
+}
+
+.tp-terminal article{
+	width: 40%;
+}
+
+.tp-terminal p {
+	width: 59%;
+	margin-left: 1%
+}
+
+.tp-terminal .terminal-info {
+	display: flex;
+}
+
+.tp-light-theme {
+	background: #f7f1e3;
+	color: inherit;
+}
+
+.tp-dark-theme {
+	background: #1e272e;
+	color: #fff;
+}
+
+.tech-project h1 {
+	font-family: "Merriweather", "Helvetica", serif;
+	text-align: center;
+}
+
+.tech-project h1 span {
+	font-family: "Helvetica";
+	font-size: 35px;
+	position: absolute;
+	left: 2.5%;
+	cursor: pointer;
+	color: #0c0c0c;
+}
+
+.tp-dark-theme h1 span {
+	color: #fff;
+}
+
+.tech-project .visit-button {
+	display: flex;
+	width: 50%;
+	margin: 0 25%;
+	justify-content: center;
+	align-items: center;
+}
+
+.tech-project .visit-button a button {
+    outline: none;
+    background: none;
+    padding: 10px;
+    border: 2px solid #0c0c0c;
+}
+
+.tech-project .visit-button a button:hover {
+	background: #0c0c0c;
+	color: #fff;
+	font-size: 24px;
+	border: 2px solid #fff;
+}
+
+.tp-dark-theme .visit-button a button{
+	border-color: #fff;
+	color: #fff;
+}
+
+.tp-dark-theme .visit-button a button:hover {
+	color: #0c0c0c;
+	background: #fff;
+	border-color: #0c0c0c;
+}
+
+.tech-project article {
+	max-width: 60%;
+	margin: 0 20% 5% 20%;
+}
+
+.tech-project p {
+	text-align: left;
+	margin: 5% 20%;
+	font-size: 21px;
+}
+
+.tech-project p a {
+	color: inherit;
+}
+
+.tech-project article img {
+	height: 350px;
+}
+
+@keyframes slidein {
+	from {
+		left: 100%
+	}
+
+	to {
+		left: 20%
+	}
+}
+@media screen and (max-device-width: 700px){
+	.tech-project {
+		left: 0;
+		max-height: unset;
+		padding-bottom: 15%;
+		border-bottom: 5px solid #000;
+	}
+
+	.tech-project p {
+		margin: 5%;
+		text-align: justify;
+	}
+
+	.tech-project article {
+		max-width: 100%;
+		margin: 5%;
+	}
+
+	.tech-project h1 {
+		text-align: right;
+		margin-right: 5%;
+		font-size: 26px;
+	}
+
+	.tech-project h1 span {
+		font-size: 32px;
+		left: 5%;
+	}
+
+	@keyframes slidein {
+
+		from {
+			left: 100%
+		}
+
+		to {
+			left: 0
+		}
+	}
+}
