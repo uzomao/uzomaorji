@@ -14,10 +14,9 @@
 .about-text p{
     text-align: left;
     margin: .5rem;
-    width: 50%;
+    width: 80%;
 }
 
 .about-section {
     display: flex;
-
 }

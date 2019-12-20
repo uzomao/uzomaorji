@@ -4,12 +4,19 @@ import aboutStyles from '../styles/about.module.css'
 
 import Layout from '../components/layout'
 
+import bio from '../images/bio.jpg'
+
 const About = () => {
     return (
         <Layout>
             <div>
 
                 <section className={aboutStyles.aboutSection}>
+
+                    <div className={aboutStyles.aboutImg}>
+                        <img src={bio} alt='Uzoma Orji - visual artist and creative technologist' />
+                    </div>
+
                     <div className={aboutStyles.aboutText}>
                         <p>
                             Uzoma Orji is a creative technologist and visual artist from Owerri, Nigeria.
@@ -22,6 +29,17 @@ const About = () => {
                             As an artist he observes and then creates representations of society and of history; visual metaphors that explain
                             his millenial Igbo Nigerian cultural context and the cultural environment he hopes to one day live in.
                         </p>
+
+                        <p>
+                            The essence of his practice is indeed identity, particularly as pertains to self, culture, and nationality. 
+                            His work uses his notions of his identity as a point of exit to interrogate who we are, 
+                            how we have come to be and who we aspire to become. 
+                        </p>
+
+                        <p>
+                            He lives and works in Abuja, Nigeria.
+                        </p>
+
                     </div>
                 </section>
 
