@@ -14,13 +14,13 @@ export default class tech extends React.Component {
 	};
 
 	state = {
-		toggleProject: false,
+		isProjectActive: false,
 		projectId: undefined
 	}
 
-	toggleProject = (projectId=undefined) => {
+	toggleProject = (projectId) => {
 		this.setState({
-			toggleProject: !this.state.toggleProject,
+			isProjectActive: !this.state.isProjectActive,
 			projectId: projectId
 		})
 	}
@@ -34,10 +34,10 @@ export default class tech extends React.Component {
 
 				<p className={techStyles.formatText}>a select few projects I've worked on recently:</p>
 
-				<Projects className={projectsStyles.projects} clickAction={this.toggleProject} imgHeight="350px" />
+				<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight="350px" />
 
 				{
-					this.state.toggleProject &&
+					this.state.isProjectActive &&
 						<TechProject 
 						projectId={this.state.projectId} 
 						toggleProject={this.toggleProject} />

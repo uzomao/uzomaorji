@@ -28,12 +28,17 @@ const TechProject = (props) => {
                 }
             }
         }
-    `)
+	`)
 
-	const [project, setProject] = useState({})
+	const [ project, setProject ] = useState({})
+	const [ imgSrc, setImgSrc ] = useState('')
 
 	useEffect(() => {
-		setProject(projects.allContentfulTech.nodes[props.projectId])
+
+		var currentProject = projects.allContentfulTech.nodes[props.projectId]
+		setProject(currentProject)
+		setImgSrc(currentProject.image[0].fixed.src)
+
 	}, [projects.allContentfulTech.nodes, props.projectId, project])
 
 	const techProjectClassName = props.isTerminal ? techProjectStyles.tpTerminal : techProjectStyles.techProject
@@ -43,14 +48,14 @@ const TechProject = (props) => {
 			<h1>
 				{
 					!props.isTerminal &&
-						<span onClick={() => {props.toggleProject()}}>X</span>
+						<span onClick={() => {props.toggleProject(undefined)}}>X</span>
 				}
 				{project.title}
 			</h1>
 
 			<div className={techProjectStyles.terminalInfo}>
 				<article>
-					<Browser projectImage={project.image} projectAlt={project.description} />
+					<Browser projectImage={imgSrc} projectAlt={project.description} />
 				</article>
 
 					<p dangerouslySetInnerHTML={{__html: project.text}}>
