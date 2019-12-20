@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import Header from '../components/header'
 import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
+import Layout from '../components/layout'
 
 import projectsStyles from '../styles/projects.module.css'
 import techStyles from '../styles/tech.module.css';
@@ -28,22 +29,23 @@ export default class tech extends React.Component {
 	render() {
 
 		return (
-			<div className={techStyles.techProjects}>
 
-				<Header />
+			<Layout>
+				<div className={techStyles.techProjects}>
 
-				<p className={techStyles.formatText}>a select few projects I've worked on recently:</p>
+					<p className={techStyles.formatText}>a select few projects I've worked on recently:</p>
 
-				<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight="350px" />
+					<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight="350px" />
 
-				{
-					this.state.isProjectActive &&
-						<TechProject 
-						projectId={this.state.projectId} 
-						toggleProject={this.toggleProject} />
-				}
+					{
+						this.state.isProjectActive &&
+							<TechProject 
+							projectId={this.state.projectId} 
+							toggleProject={this.toggleProject} />
+					}
 
-			</div>
+				</div>
+			</Layout>
 		);
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Header from '../components/header'
+import Layout from '../components/layout'
 
 import visualStyles from '../styles/visuals.module.css'
 
@@ -11,20 +11,21 @@ const Visuals = () => {
 
     return (
 
-        <div>
-            <Header />
+        <Layout>
+            <div>
 
-            <div className={visualStyles.slides}>
-                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRnHDJp7TQkqzW79p5d4g_sRAmoEOlkjk4ygyE5AveRc3N6qaqkmL95gCtR4vGQU2Nb9VhhNKKs0IFv/embed?start=false&loop=false&delayms=3000" 
-                frameborder="0" 
-                width="960" 
-                height="569" 
-                allowfullscreen="true" 
-                mozallowfullscreen="true" 
-                webkitallowfullscreen="true">
-                </iframe>
+                <div className={visualStyles.slides}>
+                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRnHDJp7TQkqzW79p5d4g_sRAmoEOlkjk4ygyE5AveRc3N6qaqkmL95gCtR4vGQU2Nb9VhhNKKs0IFv/embed?start=false&loop=false&delayms=3000" 
+                    frameBorder="0" 
+                    width="960" 
+                    height="569" 
+                    allowFullScreen={true} 
+                    mozallowfullscreen="true" 
+                    webkitallowfullscreen="true">
+                    </iframe>
+                </div>
             </div>
-        </div>
+        </Layout>
     )
 }
 
