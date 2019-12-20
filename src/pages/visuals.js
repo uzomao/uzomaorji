@@ -14,6 +14,10 @@ const Visuals = () => {
         <Layout>
             <div>
 
+                <p style={{textAlign: 'center', margin: '1em 0', fontSize: '19px'}}>
+                    This page is still a work in progress but for now you can see my visual portfolio in the slide below:
+                </p>
+
                 <div className={visualStyles.slides}>
                     <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRnHDJp7TQkqzW79p5d4g_sRAmoEOlkjk4ygyE5AveRc3N6qaqkmL95gCtR4vGQU2Nb9VhhNKKs0IFv/embed?start=false&loop=false&delayms=3000" 
                     frameBorder="0" 
