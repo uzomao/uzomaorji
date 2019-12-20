@@ -1,14 +1,15 @@
 import React from 'react'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 
 import browserStyles from '../styles/browser.module.css'
 
 const Browser = ( { projectImage, projectAlt, isLightTheme, height } ) => {
 
     const themeClass = isLightTheme ? browserStyles.lightTheme : browserStyles.darkTheme
+    console.log(projectImage)
 
     return (
-        <div className={`browser ${themeClass}`}>
+        <div className={`${browserStyles.browser} ${themeClass}`}>
             <div className={browserStyles.browserHeader}>
                 <ul className={browserStyles.ui}>
                     <li className={browserStyles.close}></li>

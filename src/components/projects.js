@@ -20,7 +20,7 @@ const Projects = (props) => {
                     url
                     terminalName
                     image {
-                        fixed {
+                        fluid {
                             src
                         }
                     }
@@ -36,8 +36,8 @@ const Projects = (props) => {
     const listOfProjects = projects.allContentfulTech.nodes.map((project, index) =>
         <li key={index}>
             <article onClick={() => props.toggleProject(index)}>
-                <Browser projectImage={project.image[0].fixed.src} projectAlt={project.description} 
-                height={props.imgHeight} />
+                <Browser projectImage={project.image[0].fluid.src} projectAlt={project.description} 
+                height={props.imgHeight} isLightTheme={true} />
                 {
                     window.location.pathname === '/tech' ?
                         <p>{project.description}</p>
