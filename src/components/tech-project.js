@@ -18,7 +18,7 @@ const TechProject = (props) => {
                     url
                     terminalName
                     image {
-                        fixed {
+                        fluid {
                             src
                         }
                     }
@@ -32,19 +32,24 @@ const TechProject = (props) => {
 
 	const [ project, setProject ] = useState({})
 	const [ imgSrc, setImgSrc ] = useState('')
+	const [ detailedDescription, setDetailedDescription] = useState('')
 
 	useEffect(() => {
 
 		var currentProject = projects.allContentfulTech.nodes[props.projectId]
 		setProject(currentProject)
-		setImgSrc(currentProject.image[0].fixed.src)
+		setImgSrc(currentProject.image[0].fluid.src)
+		setDetailedDescription(currentProject.detailedDescription.detailedDescription)
 
 	}, [projects.allContentfulTech.nodes, props.projectId, project])
 
-	const techProjectClassName = props.isTerminal ? techProjectStyles.tpTerminal : techProjectStyles.techProject
+	const techProjectClassName = props.isTerminal ? techProjectStyles.tpTerminal : techProjectStyles.techProject;
+
+	//should re-enable for theme selection feature in future
+	//const techProjectTheme = this.context.isLightTheme ? techProjectStyles.tp-light-theme : techProjectStyles.tp-dark-theme;
 	
 	return (
-		<div className={techProjectClassName} style={{top: window.pageYOffset}}>
+		<div className={`${techProjectClassName} ${techProjectStyles.tpLightTheme}`} style={{top: window.pageYOffset}}>
 			<h1>
 				{
 					!props.isTerminal &&
@@ -53,14 +58,14 @@ const TechProject = (props) => {
 				{project.title}
 			</h1>
 
-			<div className={techProjectStyles.terminalInfo}>
-				<article>
-					<Browser projectImage={imgSrc} projectAlt={project.description} />
-				</article>
+			{/* <div className={techProjectStyles.terminalInfo}> */}
+			<article>
+				<Browser projectImage={imgSrc} projectAlt={project.description} isLightTheme={true} height="400px" />
+			</article>
 
-					<p dangerouslySetInnerHTML={{__html: project.text}}>
-					</p>
-			</div>
+			<p dangerouslySetInnerHTML={{__html: detailedDescription}}>
+			</p>
+			{/* </div> */}
 
 			<div className={techProjectStyles.visitButton}>
 				<a href={project.url} target='_blank' rel='noopener noreferrer'>
