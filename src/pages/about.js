@@ -40,7 +40,7 @@ const About = () => {
                         </a>
                     </p>
                     <p>
-                        <a href="http://instagram.com/uzzzoma" target="_blank" rel="noopener noreferrer">
+                        <a href="http://instagram.com/uzomaorji_" target="_blank" rel="noopener noreferrer">
                             @uzomaorji_
                         </a>
                     </p>
