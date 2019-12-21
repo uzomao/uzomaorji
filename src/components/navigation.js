@@ -44,7 +44,7 @@ export default class Navigation extends React.Component {
                                 </Link>
                             </li>
                             {
-                                window.location.pathname === '/visuals' ?
+                                typeof window !== undefined && window.location.pathname === '/visuals' ?
                                     <li>
                                         <Link to='/tech'>
                                             Tech

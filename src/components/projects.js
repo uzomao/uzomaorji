@@ -39,7 +39,7 @@ const Projects = (props) => {
                 <Browser projectImage={project.image[0].fluid.src} projectAlt={project.description} 
                 height={props.imgHeight} isLightTheme={true} />
                 {
-                    window.location.pathname === '/tech' ?
+                    typeof window !== undefined && window.location.pathname === '/tech' ?
                         <p>{project.description}</p>
                     :
                         <p>{project.terminalName}</p>
