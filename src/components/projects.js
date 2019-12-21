@@ -32,7 +32,7 @@ const Projects = (props) => {
         }
     `)
 
-    const locationPathname = typeof window !== undefined ? window.location.pathname : ''
+    const locationPathname = typeof window !== `undefined` ? window.location.pathname : ''
 
     const listOfProjects = projects.allContentfulTech.nodes.map((project, index) =>
         <li key={index}>

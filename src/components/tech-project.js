@@ -48,7 +48,7 @@ const TechProject = (props) => {
 	//should re-enable for theme selection feature in future
 	//const techProjectTheme = this.context.isLightTheme ? techProjectStyles.tp-light-theme : techProjectStyles.tp-dark-theme;
 
-	let windowYOffset = typeof window !== undefined ? window.pageYOffset : 0
+	let windowYOffset = typeof window !== `undefined` ? window.pageYOffset : 0
 	
 	return (
 		<div className={`${techProjectClassName} ${techProjectStyles.tpLightTheme}`} style={{top: windowYOffset}}>
