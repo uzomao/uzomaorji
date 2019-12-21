@@ -21,6 +21,8 @@ export default class Navigation extends React.Component {
 
         const iconStyles = {width: '40px', height: '40px'}
 
+        const locationPathname = typeof window !== undefined ? window.location.pathname : ''
+
         return (
             <React.Fragment>
                 {!this.state.isOpen ? 
@@ -44,7 +46,7 @@ export default class Navigation extends React.Component {
                                 </Link>
                             </li>
                             {
-                                typeof window !== undefined && window.location.pathname === '/visuals' ?
+                                locationPathname === '/visuals' ?
                                     <li>
                                         <Link to='/tech'>
                                             Tech

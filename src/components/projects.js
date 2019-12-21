@@ -32,6 +32,7 @@ const Projects = (props) => {
         }
     `)
 
+    const locationPathname = typeof window !== undefined ? window.location.pathname : ''
 
     const listOfProjects = projects.allContentfulTech.nodes.map((project, index) =>
         <li key={index}>
@@ -39,7 +40,7 @@ const Projects = (props) => {
                 <Browser projectImage={project.image[0].fluid.src} projectAlt={project.description} 
                 height={props.imgHeight} isLightTheme={true} />
                 {
-                    typeof window !== undefined && window.location.pathname === '/tech' ?
+                    locationPathname === '/tech' ?
                         <p>{project.description}</p>
                     :
                         <p>{project.terminalName}</p>
