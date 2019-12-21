@@ -25,7 +25,8 @@ const Visuals = () => {
                     height="569" 
                     allowFullScreen={true} 
                     mozallowfullscreen="true" 
-                    webkitallowfullscreen="true">
+                    webkitallowfullscreen="true"
+                    title="slides">
                     </iframe>
                 </div>
             </div>

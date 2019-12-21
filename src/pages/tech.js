@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Header from '../components/header'
 import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
 import Layout from '../components/layout'
