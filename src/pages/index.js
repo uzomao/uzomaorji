@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { navigate } from "gatsby"
 
 import '../styles/index.css'
@@ -28,13 +28,39 @@ const Index = (props) => {
 		}, 2500);
     }
 
+    const mobileWidth = 900;
+    
+
+    const chooseText = 'Choose an Uzoma'
+    const rotateText = 'Please Rotate Me'
+
+    useEffect(() => {
+
+        const header = document.getElementById(indexStyles.uzomasHeader)
+
+        if(typeof window !== `undefined`){
+            if(window.innerWidth < mobileWidth && (window.innerHeight > window.innerWidth)){
+                header.innerHTML = rotateText;
+            }
+
+            window.addEventListener("orientationchange", function(){
+                //if screen is in landscape
+                if(window.orientation === 90){
+                    header.innerHTML = chooseText;
+                } else {
+                    header.innerHTML = rotateText;
+                }
+            })
+        }
+    })
+
     return (
 
         <Layout noHeader='true'>
             <div>
-                <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>Choose  an  Uzoma</h1>
+                <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>{ chooseText }</h1>
 
-                { typeof window !== `undefined` && window.innerWidth > 900 ? 
+                { typeof window !== `undefined` && window.innerWidth > mobileWidth ? 
                     <img src={background} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map" />
                     :
                     <img src={mobileBackground} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map-mobile" />
