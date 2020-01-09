@@ -40,7 +40,7 @@ const Projects = (props) => {
                 <Browser projectImage={project.image[0].fluid.src} projectAlt={project.description} 
                 height={props.imgHeight} isLightTheme={true} />
                 {
-                    locationPathname === '/tech' ?
+                    locationPathname.includes('/tech') ?
                         <p>{project.description}</p>
                     :
                         <p>{project.terminalName}</p>
