@@ -4,7 +4,8 @@ import { navigate } from "gatsby"
 import '../styles/index.css'
 import indexStyles from '../styles/index.module.css'
 
-import uzomas from '../images/uzomaorji-banner.jpg'
+import background from '../images/uzomaorji-banner.jpg'
+import mobileBackground from '../images/mobile-banner.jpg'
 
 import Layout from '../components/layout'
 
@@ -32,7 +33,12 @@ const Index = (props) => {
         <Layout noHeader='true'>
             <div>
                 <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>Choose  an  Uzoma</h1>
-                <img src={uzomas} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map" />
+
+                { typeof window !== `undefined` && window.innerWidth > 900 ? 
+                    <img src={background} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map" />
+                    :
+                    <img src={mobileBackground} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map-mobile" />
+                }
 
                 <div id={indexStyles.choiceText}>
                 </div>
@@ -42,7 +48,13 @@ const Index = (props) => {
                     <area alt="the artist" onClick={() => navigateTo('/visuals')} coords="436,163,461,190,468,222,465,249,500,273,503,344,506,363,488,377,484,396,484,431,479,500,473,535,467,600,466,623,456,628,468,650,465,664,444,662,426,641,424,612,432,531,424,477,408,537,392,627,386,636,375,630,378,651,356,665,337,675,320,663,329,644,346,624,350,568,362,482,376,417,372,409,358,366,351,344,369,272,374,257,403,243,401,215,405,178" shape="poly" />
                 </map>
 
+                <map name="image-map-mobile">
+                    <area alt="the techie" onClick={() => navigateTo('/tech')} coords="464,85,479,95,489,102,505,123,520,149,498,154,497,206,506,301,499,308,504,324,490,328,484,302,480,269,473,230,467,268,471,300,471,311,455,322,446,320,452,299,446,259,444,192,451,156,429,157,424,147,435,118,448,102,459,97" shape="poly" />
+                    <area alt="the artist" onClick={() => navigateTo('/visuals')} coords="211,84,229,106,227,122,243,136,248,174,238,191,230,300,230,321,218,327,207,309,213,257,209,230,199,268,192,307,186,308,187,318,165,329,156,329,172,310,174,261,186,201,174,170,181,125,200,116,197,92,204,86" shape="poly" />
+                </map>
+
             </div>
+
         </Layout>
     )
 

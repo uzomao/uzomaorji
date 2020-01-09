@@ -72,3 +72,13 @@ area {
         opacity: 0
     }
 }
+
+@media screen and (max-device-width: 700px){
+    .uzomas-header {
+        font-size: 2.5rem;
+    }
+
+    .choice-text h1 {
+        font-size: 1rem;
+    }
+}
