@@ -73,3 +73,32 @@
         left: 100%
     }
 }
+
+.navigation-menu-desktop {
+    display: flex;
+}
+
+.navigation-menu-desktop ul li {
+    display: inline;
+    margin: 0 7.5px;
+}
+
+.navigation-menu-desktop ul li a {
+    text-decoration: none;
+    color: inherit;
+    text-transform: uppercase;
+    font-size: 19.5px;
+    word-spacing: -5px;
+}
+
+.navigation-menu-desktop ul li a:hover {
+    text-decoration: underline;
+}
+
+.communication-links {
+    margin-left: .5em;
+}
+
+.communication-links li a:hover {
+    text-decoration: underline;
+}

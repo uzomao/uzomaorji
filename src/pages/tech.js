@@ -32,7 +32,7 @@ export default class tech extends React.Component {
 			<Layout>
 				<div className={techStyles.techProjects}>
 
-					<p className={techStyles.formatText}>a select few projects I've worked on recently:</p>
+					<p className={techStyles.formatText}>Tech Portfolio</p>
 
 					<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight="350px" />
 
