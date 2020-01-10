@@ -102,3 +102,9 @@
 .communication-links li a:hover {
     text-decoration: underline;
 }
+
+@media screen and (max-device-width: 700px){
+    .navigation-menu {
+        width: 45%;
+    }
+}
