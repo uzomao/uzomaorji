@@ -1,12 +1,43 @@
 .terminal {
     font-family: 'Courier';
+
+    height: 100vh;
+    background: #fff;
+    padding: 15px;
+
+}
+
+.terminal p {
+    font-size: 18px;
+}
+
+.terminal ul li {
+    font-size: 13px;
+    margin: 2px 0;
+}
+
+.terminal input {
+    margin: 1em 0;
+    border: none;
+    width: 100%;
+    font-size: 15.5px;
+}
+
+.terminal code {
+    background: #0c0c0c;
+    color: pink;
+    padding: 2px;   
 }
 
 #all-projects, #single-project {
     display: none
 }
 
-.terminal-project {
+#single-project {
+    background: #fff;
+}
+
+.all-terminal-projects {
 	display: flex;
 	list-style: none;
 	flex-wrap: wrap;
@@ -15,10 +46,10 @@
 	padding: 0
 }
 
-.terminal-project {
+.all-terminal-projects {
 	justify-content: space-evenly;
 }
 
-.terminal-project li {
+.all-terminal-projects li {
 	max-width: 15%;
 }

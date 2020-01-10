@@ -10,17 +10,25 @@
 	animation: slidein .5s;
 }
 
-.tp-terminal article{
+.tp-terminal { 
+	background: #fff;
+	height: 500px;
+}
+
+.tp-terminal .terminal-info{
+	width: 100%;
+	
+}
+
+.tp-terminal .terminal-info article {
 	width: 40%;
+	float: left;
 }
 
-.tp-terminal p {
+.tp-terminal .terminal-info p {
 	width: 59%;
-	margin-left: 1%
-}
-
-.tp-terminal .terminal-info {
-	display: flex;
+	margin-left: 1%;
+	float: right;
 }
 
 .tp-light-theme {

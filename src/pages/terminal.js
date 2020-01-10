@@ -1,9 +1,12 @@
 import React from 'react'
+import { navigate } from 'gatsby'
 
 import terminalStyles from '../styles/terminal.module.css'
 
 import Projects from '../components/projects'
 import TechProject from '../components/tech-project'
+
+//import Layout from '../components/layout'
 
 export default class Terminal extends React.Component {
 
@@ -24,6 +27,7 @@ export default class Terminal extends React.Component {
 
     componentWillMount(){
         window.addEventListener('keypress', this.onKeyPress)
+        document.body.style.background = '#fff'
     }
 
     componentDidMount(){
@@ -33,6 +37,7 @@ export default class Terminal extends React.Component {
 
     componentWillUnmount(){
         window.removeEventListener('keypress', this.onKeyPress)
+        document.body.style.background = '#f7f1e3'
     }
 
     onKeyPress = (e) => {
@@ -72,6 +77,7 @@ export default class Terminal extends React.Component {
 
             //get the input value excluding 'cd '
             let projectName = inputValue.substring(3)
+
             if(Object.keys(this.state.projectIds).includes(projectName)){
                 this.setState({
                     projectId: this.state.projectIds[projectName]
@@ -79,6 +85,13 @@ export default class Terminal extends React.Component {
             }
 
             this._appendDiv(terminalStyles.singleProject, newDiv)
+        } else if(inputValue.includes('help')){
+
+            //get the list of commands (commandList) and append to the new div
+            var clone = document.getElementsByTagName('ul')[0].cloneNode(true)
+            newDiv.appendChild(clone)
+        } else if(inputValue.includes('exit')){
+            navigate('/tech')
         }
 
         newDiv.appendChild(inputElement)
@@ -96,24 +109,24 @@ export default class Terminal extends React.Component {
     render(){
 
         const commandList = <ul>
-            <li>Type <code>ls projects</code> to view all projects</li>
-            <li>Type <code>cd project_name</code> to learn more about a project e.g <code>cd games</code></li>
-            <li>Type <code>exit</code> to exit the terminal</li>
-            <li>Type <code>help</code> to bring up this list of commands again</li>
-            <li>Press <code>Enter</code> or <code>Return</code> after typing each command</li>
+            <li>> type <code>ls projects</code> to view all projects</li>
+            <li>> type <code>cd project_name</code> to learn more about a project e.g <code>cd games</code></li>
+            <li>> type <code>exit</code> to exit the terminal</li>
+            <li>> type <code>help</code> to bring up this list of commands again</li>
+            <li>> press <code>Enter</code> or <code>Return</code> after typing each command</li>
         </ul>
 
         return (
 
             <div className={terminalStyles.terminal} id={terminalStyles.terminal}>
 
-                <p>Welcome to Uzoma's terminal</p>
-                <p>These are the commands you can use:</p>
+                <p>***** uzoma's terminal *****</p>
+                <p>these are the commands you can use:</p>
 
                 {commandList}
 
                 <div id={terminalStyles.allProjects}>
-                    <Projects className={terminalStyles.terminalProject} imgHeight="150px" />
+                    <Projects className={terminalStyles.allTerminalProjects} imgHeight="150px" />
                 </div>
 
                 <div id={terminalStyles.singleProject}>

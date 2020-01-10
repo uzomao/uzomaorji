@@ -51,7 +51,7 @@ const TechProject = (props) => {
 	let windowYOffset = typeof window !== `undefined` ? window.pageYOffset : 0
 	
 	return (
-		<div className={`${techProjectClassName} ${techProjectStyles.tpLightTheme}`} style={{top: windowYOffset}}>
+		<div className={`${techProjectClassName}`} style={{top: windowYOffset}}>
 			<h1>
 				{
 					!props.isTerminal &&
@@ -60,14 +60,14 @@ const TechProject = (props) => {
 				{project.title}
 			</h1>
 
-			{/* <div className={techProjectStyles.terminalInfo}> */}
-			<article>
-				<Browser projectImage={imgSrc} projectAlt={project.description} isLightTheme={true} height="400px" />
-			</article>
+			<div className={techProjectStyles.terminalInfo}>
+				<article>
+					<Browser projectImage={imgSrc} projectAlt={project.description} isLightTheme={true} height="400px" />
+				</article>
 
-			<p dangerouslySetInnerHTML={{__html: detailedDescription}}>
-			</p>
-			{/* </div> */}
+				<p dangerouslySetInnerHTML={{__html: detailedDescription}}>
+				</p>
+			</div>
 
 			<div className={techProjectStyles.visitButton}>
 				<a href={project.url} target='_blank' rel='noopener noreferrer'>
