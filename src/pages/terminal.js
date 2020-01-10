@@ -24,7 +24,9 @@ export default class Terminal extends React.Component {
     }
 
     componentWillMount(){
-        window.addEventListener('keypress', this.onKeyPress)
+        if(typeof window !== `undefined`){
+            window.addEventListener('keypress', this.onKeyPress)
+        }
         document.body.style.background = '#fff'
     }
 
@@ -34,7 +36,9 @@ export default class Terminal extends React.Component {
     }
 
     componentWillUnmount(){
-        window.removeEventListener('keypress', this.onKeyPress)
+        if(typeof window !== `undefined`){
+            window.removeEventListener('keypress', this.onKeyPress)
+        }
         document.body.style.background = '#f7f1e3'
     }
 
