@@ -6,7 +6,6 @@ import browserStyles from '../styles/browser.module.css'
 const Browser = ( { projectImage, projectAlt, isLightTheme, height } ) => {
 
     const themeClass = isLightTheme ? browserStyles.lightTheme : browserStyles.darkTheme
-    console.log(projectImage)
 
     return (
         <div className={`${browserStyles.browser} ${themeClass}`}>
