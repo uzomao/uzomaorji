@@ -12,7 +12,6 @@
 
 .tp-terminal { 
 	background: #fff;
-	height: 500px;
 }
 
 .tp-terminal .terminal-info{
@@ -26,9 +25,20 @@
 }
 
 .tp-terminal .terminal-info p {
-	width: 59%;
+	width: 50%;
 	margin-left: 1%;
+	margin-bottom: 2.5%;
 	float: right;
+}
+
+.tp-terminal .visit-button {
+	text-align: center;
+}
+
+.tp-terminal h1 {
+	font-size: 22.5px;
+	font-weight: normal;
+	padding: 1em 0;
 }
 
 .tp-light-theme {
@@ -68,14 +78,14 @@
 	align-items: center;
 }
 
-.tech-project .visit-button a button {
+.tech-project .visit-button a button, .tp-terminal .visit-button a button {
     outline: none;
     background: none;
     padding: 10px;
     border: 2px solid #0c0c0c;
 }
 
-.tech-project .visit-button a button:hover {
+.tech-project .visit-button a button:hover, .tp-terminal .visit-button a button:hover {
 	background: #0c0c0c;
 	color: #fff;
 	font-size: 24px;

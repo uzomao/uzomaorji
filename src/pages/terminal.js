@@ -6,8 +6,6 @@ import terminalStyles from '../styles/terminal.module.css'
 import Projects from '../components/projects'
 import TechProject from '../components/tech-project'
 
-//import Layout from '../components/layout'
-
 export default class Terminal extends React.Component {
 
     state = {
@@ -113,11 +111,12 @@ export default class Terminal extends React.Component {
             <li>> type <code>cd project_name</code> to learn more about a project e.g <code>cd games</code></li>
             <li>> type <code>exit</code> to exit the terminal (goes to non-interactive tech portfolio)</li>
             <li>> type <code>help</code> to bring up this list of commands again</li>
+            <br></br>
             <li>> press <code>Enter</code> or <code>Return</code> after typing each command</li>
         </ul>
 
         return (
-
+            
             <div className={terminalStyles.terminal} id={terminalStyles.terminal}>
 
                 <p>***** uzoma's terminal *****</p>
