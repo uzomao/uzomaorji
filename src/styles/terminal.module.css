@@ -1,0 +1,24 @@
+.terminal {
+    font-family: 'Courier';
+}
+
+#all-projects, #single-project {
+    display: none
+}
+
+.terminal-project {
+	display: flex;
+	list-style: none;
+	flex-wrap: wrap;
+	width: 100vw;
+	margin-left: .5%;
+	padding: 0
+}
+
+.terminal-project {
+	justify-content: space-evenly;
+}
+
+.terminal-project li {
+	max-width: 15%;
+}
