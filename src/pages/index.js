@@ -56,7 +56,7 @@ const Index = (props) => {
 
     return (
 
-        <Layout noHeader='true'>
+        <Layout noHeader='true' noFooter='true'>
             <div>
                 <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>{ chooseText }</h1>
 
