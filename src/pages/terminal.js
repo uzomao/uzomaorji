@@ -26,20 +26,22 @@ export default class Terminal extends React.Component {
     componentWillMount(){
         if(typeof window !== `undefined`){
             window.addEventListener('keypress', this.onKeyPress)
+            document.body.style.background = '#fff'
         }
-        document.body.style.background = '#fff'
     }
 
     componentDidMount(){
         this._createAndInsertDiv()
-        document.getElementById(`terminal-input-${this.state.promptIndex}`).focus()
+        if(typeof window !== `undefined`){
+            document.getElementById(`terminal-input-${this.state.promptIndex}`).focus()
+        }
     }
 
     componentWillUnmount(){
         if(typeof window !== `undefined`){
             window.removeEventListener('keypress', this.onKeyPress)
+            document.body.style.background = '#f7f1e3'
         }
-        document.body.style.background = '#f7f1e3'
     }
 
     onKeyPress = (e) => {
