@@ -111,7 +111,7 @@ export default class Terminal extends React.Component {
         const commandList = <ul>
             <li>> type <code>ls projects</code> to view all projects</li>
             <li>> type <code>cd project_name</code> to learn more about a project e.g <code>cd games</code></li>
-            <li>> type <code>exit</code> to exit the terminal</li>
+            <li>> type <code>exit</code> to exit the terminal (goes to non-interactive tech portfolio)</li>
             <li>> type <code>help</code> to bring up this list of commands again</li>
             <li>> press <code>Enter</code> or <code>Return</code> after typing each command</li>
         </ul>
