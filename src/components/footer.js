@@ -7,14 +7,16 @@ const Footer = () => {
     return (
         <main className={footerStyles.footer}>
             <section>
-                <p>Uzoma Orji (c) 2019</p>
-            </section>
-
-            <section>
                 <p>
-                    Join my mailing list:
-                    <input type="email" className={footerStyles.mailingList} placeholder="fineboys@andgirls.com" />
-                    <button className={footerStyles.mailMe}>Join</button>
+                    <span>
+                        Uzoma Orji (c) 2019
+                    </span>
+                    
+                    <span>
+                        Join my mailing list:
+                        <input type="email" className={footerStyles.mailingList} placeholder="fineboys@andgirls.com" />
+                        <button className={footerStyles.mailMe}>Join</button>
+                    </span>
                 </p>
             </section>
         </main>

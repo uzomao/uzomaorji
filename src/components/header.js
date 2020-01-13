@@ -13,8 +13,8 @@ const Header = ({ isLightTheme }) => {
 			<Link to='/'><h2 id={headerStyles.header} onMouseOver={() => 
 				{document.getElementById(headerStyles.header).innerHTML = 'creative technologist/visual artist'}
 			} onMouseOut={() => 
-				{document.getElementById(headerStyles.header).innerHTML = 'UO'}
-			} className={headerThemeClass}>UO</h2>
+				{document.getElementById(headerStyles.header).innerHTML = 'Uzoma Orji'}
+			} className={headerThemeClass}>Uzoma Orji</h2>
 			</Link>
 
 			<Navigation />

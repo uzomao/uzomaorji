@@ -21,22 +21,16 @@ export default class Navigation extends React.Component {
 
         const iconStyles = {width: '40px', height: '40px'}
 
-        const locationPathname = typeof window !== `undefined` ? window.location.pathname : ''
-
         const navigationMenu = <ul>
-            <Link to='/about'><li>About</li></Link>
-            {
-                locationPathname === '/visuals' ?
-                    <Link to='/tech'>
-                        <li>Tech</li>
-                    </Link>
-                    :
-                    <Link to='/visuals'>
-                        <li>Visuals</li>
-                    </Link>
-            }
-            <Link to="/blog"><li>Blog</li></Link>
-            <Link to="/mailing"><li>Join Mailing List</li></Link>
+            <Link to='/about' activeClassName={navigationStyles.active}><li>About</li></Link>
+
+            <Link to='/visuals' activeClassName={navigationStyles.active}><li>Visuals</li></Link>
+            
+            <Link to='/tech' activeClassName={navigationStyles.active}><li>Tech</li></Link>
+
+            <Link to="/blog" activeClassName={navigationStyles.active}><li>Blog</li></Link>
+
+            <Link to="/mailing" activeClassName={navigationStyles.active}><li>Join mailing list</li></Link>
             
             <span className={navigationStyles.communicationLinks}>
                 <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">

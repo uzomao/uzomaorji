@@ -73,7 +73,7 @@ export default class Terminal extends React.Component {
                     allProjectsAppended: true
                 })
             } else {
-                var clone = document.getElementById(terminalStyles.allProjects).cloneNode(true)
+                let clone = document.getElementById(terminalStyles.allProjects).cloneNode(true)
                 newDiv.appendChild(clone)
             }
 
@@ -92,7 +92,7 @@ export default class Terminal extends React.Component {
         } else if(inputValue.includes('help')){
 
             //get the list of commands (commandList) and append to the new div
-            var clone = document.getElementsByTagName('ul')[0].cloneNode(true)
+            let clone = document.getElementsByTagName('ul')[0].cloneNode(true)
             newDiv.appendChild(clone)
         } else if(inputValue.includes('exit')){
             navigate('/tech')

@@ -60,7 +60,7 @@ const Index = (props) => {
             <div>
                 <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>{ chooseText }</h1>
 
-                { typeof window !== `undefined` && window.innerWidth < mobileWidth ? 
+                { typeof window !== `undefined` && window.innerWidth > mobileWidth ? 
                     <img src={background} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map" />
                     :
                     <img src={mobileBackground} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map-mobile" />

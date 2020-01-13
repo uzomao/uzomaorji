@@ -1,4 +1,38 @@
-.slides {
+.backdrop {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+}
+
+.backdrop-text {
     display: flex;
     justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+}
+
+/* .filter:hover {
+    background: #86c1e9;
+    color: #ffcccc;
+    padding: 2.5px;
+} */
+
+.filter:hover, .active {
+    text-decoration: underline;
+}
+
+.work-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 250px;
+    align-items: center;
+}
+.work-list li {
+    font-size: 22.5px;
+    margin: 0 7.5px;
+    text-transform: capitalize;
 }

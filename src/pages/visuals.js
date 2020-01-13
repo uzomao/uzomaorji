@@ -1,37 +1,100 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/layout'
 
-import visualStyles from '../styles/visuals.module.css'
+import background from '../images/visuals-bg.jpg'
 
-//using the same style format as the tech page. could have made
-//a component that both stages can borrow from but welppp
+import visualStyles from '../styles/visuals.module.css'
 
 const Visuals = () => {
 
+    const filterByYear = 'year'
+    const filterByTheme = 'theme'
+    const [ filterBy, setFilterBy] = useState(filterByYear)
+
+    const data = useStaticQuery(graphql`
+        query {
+            allContentfulVisual {
+                nodes {
+                    year
+                    category
+                }
+            }
+        }
+    `)
+
+    const years = []
+    const themes = []
+
+    data.allContentfulVisual.nodes.forEach(node => {
+        if(!years.includes(node.year)){
+            years.push(node.year)
+        }
+        if(!themes.includes(node.category)){
+            themes.push(node.category)
+        }
+    })
+
+    const yearsList = years.sort().map((year, index) => 
+        <li key={index}>
+            {year}
+        </li>
+    )
+
+    const themesList = themes.sort().map((theme, index) => 
+        <li key={index}>
+            {theme}
+        </li>
+    )
+
+    const getActiveClass = (filterCriteria) => {
+        return filterBy === filterCriteria ? visualStyles.active : '' 
+    }
+
     return (
 
-        <Layout>
+        <Layout noFooter="true">
             <div>
 
-                <p style={{textAlign: 'center', margin: '1em 0', fontSize: '19px'}}>
-                    This page is still a work in progress but for now you can see my visual portfolio in the slide below:
+                <p className={visualStyles.backdropText}>
+                    Filter By: 
+                    <span onClick={() => setFilterBy(filterByYear)} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
+                    |
+                    <span onClick={() => setFilterBy(filterByTheme)} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
                 </p>
 
-                <div className={visualStyles.slides}>
-                    <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRnHDJp7TQkqzW79p5d4g_sRAmoEOlkjk4ygyE5AveRc3N6qaqkmL95gCtR4vGQU2Nb9VhhNKKs0IFv/embed?start=false&loop=false&delayms=3000" 
-                    frameBorder="0" 
-                    width="960" 
-                    height="569" 
-                    allowFullScreen={true} 
-                    mozallowfullscreen="true" 
-                    webkitallowfullscreen="true"
-                    title="slides">
-                    </iframe>
-                </div>
+                <img src={background} className={visualStyles.backdrop} alt="Gallery backdrop" />
+
+                <ul className={visualStyles.workList}>
+                    {
+                        filterBy === filterByYear ?
+                            yearsList
+                        :
+                            <React.Fragment>
+                                <p style={{marginBottom: '.5em'}}>Reflections on:</p>
+                                {themesList}
+                            </React.Fragment>
+                    }
+                </ul>
+
             </div>
         </Layout>
     )
 }
 
 export default Visuals
+
+/**
+ * query {
+  allContentfulVisual (filter:{
+    year :{
+      eq : "2019"
+    } 
+  }){
+    nodes {
+      title
+    }
+  }
+}
+ */
