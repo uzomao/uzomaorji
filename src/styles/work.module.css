@@ -1,0 +1,8 @@
+.works {
+    display: flex;
+    justify-content: center;
+}
+
+.works li {
+    display: inline;
+}

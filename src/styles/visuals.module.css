@@ -35,4 +35,11 @@
     font-size: 22.5px;
     margin: 0 7.5px;
     text-transform: capitalize;
+    cursor: pointer;
+}
+
+.back-to-gallery-menu {
+    text-align: center;
+    margin: 10px 0;
+    cursor: pointer;
 }

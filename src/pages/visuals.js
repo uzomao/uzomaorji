@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/layout'
+import Works from '../components/works'
 
 import background from '../images/visuals-bg.jpg'
 
@@ -11,7 +12,10 @@ const Visuals = () => {
 
     const filterByYear = 'year'
     const filterByTheme = 'theme'
+
     const [ filterBy, setFilterBy] = useState(filterByYear)
+    const [isOptionClicked, setOptionClicked] = useState(false)
+    const [filterValue, setFilterValue] = useState('')
 
     const data = useStaticQuery(graphql`
         query {
@@ -19,6 +23,15 @@ const Visuals = () => {
                 nodes {
                     year
                     category
+                    title
+                    text {
+                        text
+                    }
+                    images {
+                        fluid {
+                            src
+                        }
+                    }
                 }
             }
         }
@@ -37,13 +50,19 @@ const Visuals = () => {
     })
 
     const yearsList = years.sort().map((year, index) => 
-        <li key={index}>
+        <li key={index} onClick={() => {
+            setOptionClicked(true)
+            setFilterValue(year)
+        }}>
             {year}
         </li>
     )
 
     const themesList = themes.sort().map((theme, index) => 
-        <li key={index}>
+        <li key={index} onClick={() => {
+            setOptionClicked(true)
+            setFilterValue(theme)
+        }}>
             {theme}
         </li>
     )
@@ -52,31 +71,50 @@ const Visuals = () => {
         return filterBy === filterCriteria ? visualStyles.active : '' 
     }
 
+    const works = filterBy === filterByYear ? 
+        data.allContentfulVisual.nodes.filter(node => node.year === filterValue) 
+        : 
+        data.allContentfulVisual.nodes.filter(node => node.category === filterValue)
+
+    console.log(works)
+
     return (
 
         <Layout noFooter="true">
             <div>
 
-                <p className={visualStyles.backdropText}>
-                    Filter By: 
-                    <span onClick={() => setFilterBy(filterByYear)} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
-                    |
-                    <span onClick={() => setFilterBy(filterByTheme)} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
-                </p>
-
                 <img src={background} className={visualStyles.backdrop} alt="Gallery backdrop" />
 
-                <ul className={visualStyles.workList}>
-                    {
-                        filterBy === filterByYear ?
-                            yearsList
+                {
+                    !isOptionClicked ? 
+                        <div>
+                            <p className={visualStyles.backdropText}>
+                                Filter By: 
+                                <span onClick={() => setFilterBy(filterByYear)} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
+                                |
+                                <span onClick={() => setFilterBy(filterByTheme)} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
+                            </p>
+
+                            <ul className={visualStyles.workList}>
+                                {
+                                    filterBy === filterByYear ?
+                                        yearsList
+                                    :
+                                        <React.Fragment>
+                                            <p style={{marginBottom: '.5em'}}>Reflections on:</p>
+                                            {themesList}
+                                        </React.Fragment>
+                                }
+                            </ul>
+                        </div>
                         :
-                            <React.Fragment>
-                                <p style={{marginBottom: '.5em'}}>Reflections on:</p>
-                                {themesList}
-                            </React.Fragment>
-                    }
-                </ul>
+                        <div>
+                            <p 
+                            className={visualStyles.backToGalleryMenu} 
+                            onClick={() => setOptionClicked(false)}>Back to Gallery Menu</p>
+                            <Works works={works} />
+                        </div>
+                }
 
             </div>
         </Layout>
@@ -84,17 +122,3 @@ const Visuals = () => {
 }
 
 export default Visuals
-
-/**
- * query {
-  allContentfulVisual (filter:{
-    year :{
-      eq : "2019"
-    } 
-  }){
-    nodes {
-      title
-    }
-  }
-}
- */
