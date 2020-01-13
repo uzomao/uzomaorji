@@ -76,8 +76,6 @@ const Visuals = () => {
         : 
         data.allContentfulVisual.nodes.filter(node => node.category === filterValue)
 
-    console.log(works)
-
     return (
 
         <Layout noFooter="true">
@@ -109,9 +107,18 @@ const Visuals = () => {
                         </div>
                         :
                         <div>
-                            <p 
-                            className={visualStyles.backToGalleryMenu} 
-                            onClick={() => setOptionClicked(false)}>Back to Gallery Menu</p>
+                            <div className={visualStyles.worksHeader}>
+                                <p 
+                                className={visualStyles.backToGalleryMenu} 
+                                onClick={() => setOptionClicked(false)}>
+                                    Back to Gallery Menu
+                                </p>
+
+                                <p>
+                                    {filterBy}: {filterValue}
+                                </p>
+                            </div>
+
                             <Works works={works} />
                         </div>
                 }

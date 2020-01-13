@@ -38,8 +38,22 @@
     cursor: pointer;
 }
 
-.back-to-gallery-menu {
-    text-align: center;
+.works-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.works-header p {
     margin: 10px 0;
+    text-transform: capitalize;
+}
+
+.back-to-gallery-menu {
     cursor: pointer;
+    background: #1e272e;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 5px;
+    margin-bottom: 0;
+    font-size: 18px;
 }
