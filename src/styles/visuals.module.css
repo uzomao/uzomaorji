@@ -42,6 +42,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: -2em;
 }
 .works-header p {
     margin: 10px 0;

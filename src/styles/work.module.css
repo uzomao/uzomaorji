@@ -4,5 +4,17 @@
 }
 
 .works li {
-    display: inline;
+    width: 350px;
+    height: 190px;
+    overflow: hidden;
+    margin: 0 5%;
+}
+
+.works li img {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.works li p {
+    position: absolute;
 }
