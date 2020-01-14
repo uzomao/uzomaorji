@@ -48,6 +48,10 @@
     margin: 10px 0;
 }
 
+.works-header-filter {
+    text-transform: capitalize;
+}
+
 .back-to-gallery-menu {
     cursor: pointer;
     background: #1e272e;

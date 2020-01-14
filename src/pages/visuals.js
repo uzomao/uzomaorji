@@ -114,11 +114,11 @@ const Visuals = () => {
                                     onClick={() => setOptionClicked(false)}>
                                         Back to Gallery Menu
                                     </span>
-                                    {filterBy}: {filterValue}
+                                    <span style={{textTransform: 'capitalize'}}>{`${filterBy}: ${filterValue}`}</span>
                                 </p>
 
                                 <p>
-                                    
+
                                 </p>
                             </div>
 
