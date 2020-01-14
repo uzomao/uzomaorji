@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 
 import Img from 'gatsby-image'
 
@@ -10,10 +11,12 @@ const Works = ( { works } ) => {
         <ul className={workStyles.works}>
             {
                 works.map((work, index) => 
-                    <li key={index}>
-                        <Img fluid={work.images[0].fluid} alt='Uzoma Orji visual' />
-                        <p>{work.title}</p>
-                    </li>
+                    <Link key={index} to={`/visuals/${work.slug}`}>
+                        <li>
+                            <Img fluid={work.images[0].fluid} alt='Uzoma Orji visual' />
+                            <p>{work.title}</p>
+                        </li>
+                    </Link>
                 )
             }
         </ul>

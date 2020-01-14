@@ -3,14 +3,18 @@
     justify-content: center;
 }
 
-.works li {
+.works a {
+    color: inherit;
+    margin: 0 1.5%;
+}
+
+.works a li {
     width: 400px;
     height: 250px;
     overflow: scroll;
-    margin: 0 2.5%;
 }
 
-.works li img {
+.works a li img {
     min-width: 100%;
     min-height: 100%;
 }

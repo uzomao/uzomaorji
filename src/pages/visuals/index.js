@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import Layout from '../components/layout'
-import Works from '../components/works'
+import Layout from '../../components/layout'
+import Works from '../../components/works'
 
-import background from '../images/visuals-bg.jpg'
+import background from '../../images/visuals-bg.jpg'
 
-import visualStyles from '../styles/visuals.module.css'
+import visualStyles from '../../styles/visuals.module.css'
 
-const Visuals = () => {
+const Visuals = (props) => {
+
+    console.log(props)
 
     const filterByYear = 'year'
     const filterByTheme = 'theme'
@@ -24,6 +26,7 @@ const Visuals = () => {
                     year
                     category
                     title
+                    slug
                     text {
                         text
                     }
