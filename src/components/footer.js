@@ -9,7 +9,7 @@ const Footer = () => {
             <section>
                 <p>
                     <span>
-                        Uzoma Orji (c) 2019
+                        &copy; Uzoma Orji {new Date().getFullYear()}
                     </span>
                     
                     <span>
