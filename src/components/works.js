@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Img from 'gatsby-image'
+
 import workStyles from '../styles/work.module.css'
 
 const Works = ( { works } ) => {
@@ -9,7 +11,7 @@ const Works = ( { works } ) => {
             {
                 works.map((work, index) => 
                     <li key={index}>
-                        <img src={work.images[0].fluid.src} alt='Uzoma Orji visual' />
+                        <Img fluid={work.images[0].fluid} alt='Uzoma Orji visual' />
                         <p>{work.title}</p>
                     </li>
                 )

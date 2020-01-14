@@ -4,9 +4,9 @@
 }
 
 .works li {
-    width: 350px;
-    height: 190px;
-    overflow: hidden;
+    width: 400px;
+    height: 250px;
+    overflow: scroll;
     margin: 0 5%;
 }
 

@@ -28,8 +28,8 @@ const Visuals = () => {
                         text
                     }
                     images {
-                        fluid {
-                            src
+                        fluid (maxWidth: 500, maxHeight: 350, resizingBehavior: FILL) {
+                            ...GatsbyContentfulFluid
                         }
                     }
                 }
@@ -108,14 +108,17 @@ const Visuals = () => {
                         :
                         <div>
                             <div className={visualStyles.worksHeader}>
-                                <p 
-                                className={visualStyles.backToGalleryMenu} 
-                                onClick={() => setOptionClicked(false)}>
-                                    Back to Gallery Menu
+                                <p>
+                                    <span
+                                    className={visualStyles.backToGalleryMenu} 
+                                    onClick={() => setOptionClicked(false)}>
+                                        Back to Gallery Menu
+                                    </span>
+                                    {filterBy}: {filterValue}
                                 </p>
 
                                 <p>
-                                    {filterBy}: {filterValue}
+                                    
                                 </p>
                             </div>
 

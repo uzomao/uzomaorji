@@ -46,7 +46,6 @@
 }
 .works-header p {
     margin: 10px 0;
-    text-transform: capitalize;
 }
 
 .back-to-gallery-menu {
@@ -56,5 +55,6 @@
     border: 2px solid #fff;
     padding: 5px;
     margin-bottom: 0;
-    font-size: 18px;
+    margin-right: 1em;
+    font-size: 14px;
 }
