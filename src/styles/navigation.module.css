@@ -33,7 +33,7 @@
     height: 100%;
 }
 
-.navigation-menu a {
+.navigation-menu a, .mailing-list {
     text-align: center;
     padding: 1.5rem 0;
     font-size: 24px;
@@ -46,6 +46,37 @@
     text-decoration: none;
 }
 
+.navigation-menu-desktop {
+    display: flex;
+}
+
+.navigation-menu-desktop ul li {
+    display: inline;
+    margin: 0 7.5px;
+}
+
+.navigation-menu-desktop ul a, .mailing-list {
+    text-decoration: none;
+    color: inherit;
+    font-size: 21px;
+    word-spacing: -5px;
+}
+
+.navigation-menu-desktop ul a:hover, .mailing-list:hover {
+    text-decoration: underline;
+}
+
+.active {
+    text-decoration: underline !important;
+}
+
+.communication-links {
+    margin-left: .5em;
+}
+
+.communication-links li a:hover {
+    text-decoration: underline;
+}
 
 @keyframes menu-slidein {
 
@@ -67,38 +98,6 @@
     to {
         left: 100%
     }
-}
-
-.navigation-menu-desktop {
-    display: flex;
-}
-
-.navigation-menu-desktop ul li {
-    display: inline;
-    margin: 0 7.5px;
-}
-
-.navigation-menu-desktop ul a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 21px;
-    word-spacing: -5px;
-}
-
-.navigation-menu-desktop ul a:hover {
-    text-decoration: underline;
-}
-
-.active {
-    text-decoration: underline !important;
-}
-
-.communication-links {
-    margin-left: .5em;
-}
-
-.communication-links li a:hover {
-    text-decoration: underline;
 }
 
 @media screen and (max-device-width: 700px){

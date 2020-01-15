@@ -1,0 +1,74 @@
+.form-div {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    border: 6px solid #1e272e;
+    background: #f7f1e3;
+    z-index: 100;
+    width: 45%; height: 65%;
+    padding: 20px;
+}
+
+.form-div h2 {
+    font-family: 'Merriweather', 'Helvetica', serif;
+    font-size: 32px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 65%; /* use a proper value */
+    margin-top: 1em;
+}
+
+.form-circles {
+    display: flex;
+    justify-content: center;
+    margin: .25em 0;
+}
+.form-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin: 0 .5em;
+}
+
+.form-group {
+    margin: 1em 0;
+}
+
+.form-group input {
+    width: 100%;
+    height: 2em;
+    font-size: 18px;
+    padding: 5px;
+    border: 2px solid #1e272e;
+}
+
+.form-group input:active {
+    border: 2px solid red;
+}
+
+p.caveat {
+    font-size: 16px;
+    font-style: oblique;
+}
+
+.form-submit {
+    cursor: pointer;
+    background: #1e272e;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 5px;
+    margin-bottom: 1em;
+    font-size: 24px;
+    font-family: 'Merriweather', 'Helvetica', serif;
+    text-align: center;
+}
