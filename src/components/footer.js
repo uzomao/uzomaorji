@@ -9,14 +9,17 @@ const Footer = () => {
             <section>
                 <p>
                     <span>
-                        &copy; Uzoma Orji {new Date().getFullYear()}
+                        &copy; Uzoma Orji {new Date().getFullYear()} 
+                        <span role="img" aria-label="uzoma artist emoji">👨🏾‍🎨</span>
+                        <span role="img" aria-label="uzoma artist emoji">👨🏾‍💻</span>
                     </span>
                     
+                    {/* TODO ONE DAY MAYBE:
                     <span>
                         Join my mailing list:
                         <input type="email" className={footerStyles.mailingList} placeholder="fineboys@andgirls.com" />
                         <button className={footerStyles.mailMe}>Join</button>
-                    </span>
+                    </span> */}
                 </p>
             </section>
         </main>
