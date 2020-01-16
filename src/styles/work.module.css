@@ -1,16 +1,21 @@
 .works {
     display: flex;
-    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 95%;
+    margin: 0 2.5%;
+    margin-top: .75%;
 }
 
 .works a {
     margin: 0 1.5%;
+    text-decoration: none;;
 }
 
 .works a li {
-    width: 400px;
     height: 250px;
     overflow: scroll;
+    flex: 0 0 auto;
 }
 
 .works a li img {
@@ -18,6 +23,7 @@
     min-height: 100%;
 }
 
-.works li p {
-    position: absolute;
+.work-title {
+    margin-top: .5em;
+    width: 350px;
 }
