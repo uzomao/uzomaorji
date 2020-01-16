@@ -42,7 +42,6 @@
 }
 
 .navigation-menu a {
-    color: inherit;
     text-decoration: none;
 }
 
@@ -57,7 +56,6 @@
 
 .navigation-menu-desktop ul a, .mailing-list {
     text-decoration: none;
-    color: inherit;
     font-size: 21px;
     word-spacing: -5px;
 }
