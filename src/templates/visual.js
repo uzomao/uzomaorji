@@ -16,7 +16,7 @@ export const data = graphql`
                 text
             }
             images {
-                fluid (maxWidth: 500, maxHeight: 350, resizingBehavior: FILL) {
+                fluid {
                     ...GatsbyContentfulFluid
                 }
             }
