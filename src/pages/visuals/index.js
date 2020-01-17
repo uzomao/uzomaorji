@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../../components/layout'
 import Works from '../../components/works'
 
-import background from '../../images/visuals-bg.jpg'
+import background from '../../images/visuals-bg-3.jpg'
 
 import visualStyles from '../../styles/visuals.module.css'
 
