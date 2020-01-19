@@ -36,8 +36,6 @@ export default class tech extends React.Component {
 
 	render() {
 
-		console.log(this.state)
-
 		return (
 
 			<Layout>

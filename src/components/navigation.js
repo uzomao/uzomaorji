@@ -42,7 +42,7 @@ export default class Navigation extends React.Component {
             <li onClick={() => {this.setState({ isMailingList: true})}}
             className={navigationStyles.mailingList}
             >
-                Join mailing list
+                Join Mailing List
             </li>
             
             <span className={navigationStyles.communicationLinks}>
