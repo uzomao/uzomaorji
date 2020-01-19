@@ -11,7 +11,11 @@ const Works = ( { works } ) => {
     const maxWorkLength = 3
 
     useEffect (() => {
-        works.length > maxWorkLength ? setWidth('350px') : setWidth('400px')
+        if(typeof window !== `undefined` && window.innerWidth < 900) {
+            works.length > maxWorkLength ? setWidth('175px') : setWidth('200px')
+        } else {
+            works.length > maxWorkLength ? setWidth('350px') : setWidth('400px')
+        }
     }, [works.length])
 
     return (

@@ -9,6 +9,7 @@
 
 .terminal p {
     font-size: 18px;
+    margin-bottom: 2em;
 }
 
 .terminal ul li {
@@ -41,7 +42,6 @@
 	display: flex;
 	list-style: none;
 	flex-wrap: wrap;
-	width: 100vw;
 	margin-left: .5%;
 	padding: 0
 }
@@ -52,4 +52,14 @@
 
 .all-terminal-projects li {
 	max-width: 15%;
+}
+
+@media screen and (max-device-width: 700px){
+    .terminal {
+        padding: 2.5px;
+    }
+
+    .terminal p, button, a {
+        font-size: 15px;
+    }
 }

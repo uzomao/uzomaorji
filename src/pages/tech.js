@@ -15,7 +15,8 @@ export default class tech extends React.Component {
 
 	state = {
 		isProjectActive: false,
-		projectId: undefined
+		projectId: undefined,
+		imgHeight: '350px'
 	}
 
 	toggleProject = (projectId) => {
@@ -25,7 +26,17 @@ export default class tech extends React.Component {
 		})
 	}
 
+	componentDidMount(){
+		if(typeof window !== `undefined` && window.innerWidth < 900){
+			this.setState({
+				imgHeight: '250px'
+			})
+		}
+	}
+
 	render() {
+
+		console.log(this.state)
 
 		return (
 
@@ -34,7 +45,7 @@ export default class tech extends React.Component {
 
 					<p className={techStyles.formatText}>Tech Portfolio</p>
 
-					<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight="350px" />
+					<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight={this.state.imgHeight} />
 
 					{
 						this.state.isProjectActive &&

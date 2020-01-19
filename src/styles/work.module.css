@@ -27,3 +27,18 @@
     margin-top: .5em;
     width: 350px;
 }
+
+@media screen and (max-device-width: 700px) {
+
+    .works a li {
+        height: unset;
+    }
+
+    .work-title {
+        width: 175px;
+    }
+
+    .work-list {
+        height: 175px;
+    }
+}

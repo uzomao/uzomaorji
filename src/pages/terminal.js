@@ -20,20 +20,22 @@ export default class Terminal extends React.Component {
         //TODO: figure out a more programmatic way of assigning project ids to terminal names
         projectId: 1,
         allProjectsAppended: false,
-        singleProjectAppended: false
-    }
-
-    componentWillMount(){
-        if(typeof window !== `undefined`){
-            window.addEventListener('keypress', this.onKeyPress)
-            document.body.style.background = '#fff'
-        }
+        singleProjectAppended: false,
+        projImgHeight: '150px'
     }
 
     componentDidMount(){
         this._createAndInsertDiv()
         if(typeof window !== `undefined`){
+            window.addEventListener('keypress', this.onKeyPress)
+            document.body.style.background = '#fff'
             document.getElementById(`terminal-input-${this.state.promptIndex}`).focus()
+
+            if(window.innerWidth < 900){
+                this.setState({
+                    projImgHeight: '75px'
+                })
+            }
         }
     }
 
@@ -131,7 +133,7 @@ export default class Terminal extends React.Component {
                 {commandList}
 
                 <div id={terminalStyles.allProjects}>
-                    <Projects className={terminalStyles.allTerminalProjects} imgHeight="150px" />
+                    <Projects className={terminalStyles.allTerminalProjects} imgHeight={this.state.projImgHeight} />
                 </div>
 
                 <div id={terminalStyles.singleProject}>

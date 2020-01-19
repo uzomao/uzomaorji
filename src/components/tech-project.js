@@ -1,3 +1,9 @@
+/**
+ * 
+ * This component is for individual tech projects
+ */
+
+
 import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -33,6 +39,7 @@ const TechProject = (props) => {
 	const [ project, setProject ] = useState({})
 	const [ imgSrc, setImgSrc ] = useState('')
 	const [ detailedDescription, setDetailedDescription] = useState('')
+	const [ imgHeight, setImgHeight ] = useState('400px')
 
 	useEffect(() => {
 
@@ -40,6 +47,10 @@ const TechProject = (props) => {
 		setProject(currentProject)
 		setImgSrc(currentProject.image[0].fluid.src)
 		setDetailedDescription(currentProject.detailedDescription.detailedDescription)
+
+		if(typeof window !== `undefined` && window.innerWidth < 900) {
+			setImgHeight('200px')
+		}
 
 	}, [projects.allContentfulTech.nodes, props.projectId, project])
 
@@ -62,19 +73,20 @@ const TechProject = (props) => {
 
 			<div className={techProjectStyles.terminalInfo}>
 				<article>
-					<Browser projectImage={imgSrc} projectAlt={project.description} isLightTheme={true} height="400px" />
+					<Browser projectImage={imgSrc} projectAlt={project.description} isLightTheme={true} height={imgHeight} />
 				</article>
 
-				<p dangerouslySetInnerHTML={{__html: detailedDescription}}>
-				</p>
-			</div>
 
-			<div className={techProjectStyles.visitButton}>
-				<a href={project.url} target='_blank' rel='noopener noreferrer'>
-					<button>
-						Visit this website
-					</button>
-				</a>
+				<div className={techProjectStyles.projectInfoRight} style={{height: imgHeight}}>
+					<p dangerouslySetInnerHTML={{__html: detailedDescription}}>
+					</p>
+
+					<a href={project.url} target='_blank' rel='noopener noreferrer'>
+						<button>
+							Visit this website
+						</button>
+					</a>
+				</div>
 			</div>
 		</div>
 	);
