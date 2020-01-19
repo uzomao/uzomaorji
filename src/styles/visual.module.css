@@ -39,3 +39,9 @@
 .visual .images li img {
     max-width: 100%;
 }
+
+@media screen and (max-device-width: 700px) {
+    .visual .text {
+        position: initial;
+    }
+}
