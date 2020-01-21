@@ -5,6 +5,7 @@ import aboutStyles from '../styles/about.module.css'
 import Layout from '../components/layout'
 
 const About = () => {
+
     return (
         <Layout>
             <main>

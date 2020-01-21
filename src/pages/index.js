@@ -9,7 +9,7 @@ import mobileBackground from '../images/mobile-banner.jpg'
 
 import Layout from '../components/layout'
 
-const Index = () => {
+const Index = (props) => {
 
     const navigateTo = (route) => {
 
@@ -59,7 +59,8 @@ const Index = () => {
 
     return (
 
-        <Layout noHeader='true' noFooter='true'>
+        <Layout noHeader={true} noFooter={true}>
+
             <div>
                 <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>{ chooseText }</h1>
 

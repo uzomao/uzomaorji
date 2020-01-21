@@ -1,25 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../../components/layout'
 import Works from '../../components/works'
 
+import Context from '../../../context'
+
 import background from '../../images/visuals-bg-3.jpg'
 
 import visualStyles from '../../styles/visuals.module.css'
 
-const Visuals = (props) => {
-
-    console.log(props)
+const Visuals = () => {
 
     const filterByYear = 'year'
     const filterByTheme = 'theme'
 
-    const [ filterBy, setFilterBy] = useState(filterByYear)
-    const [isOptionClicked, setOptionClicked] = useState(false)
-    const [filterValue, setFilterValue] = useState('')
-
-    const data = useStaticQuery(graphql`
+    const { data, set } = useContext(Context)
+    const { filterBy, isOptionClicked, filterValue } = data
+    
+    const query = useStaticQuery(graphql`
         query {
             allContentfulVisual {
                 nodes {
@@ -43,7 +42,7 @@ const Visuals = (props) => {
     const years = []
     const themes = []
 
-    data.allContentfulVisual.nodes.forEach(node => {
+    query.allContentfulVisual.nodes.forEach(node => {
         if(!years.includes(node.year)){
             years.push(node.year)
         }
@@ -53,19 +52,13 @@ const Visuals = (props) => {
     })
 
     const yearsList = years.sort().map((year, index) => 
-        <li key={index} onClick={() => {
-            setOptionClicked(true)
-            setFilterValue(year)
-        }}>
+        <li key={index} onClick={() => set({ isOptionClicked: true, filterValue: year})}>
             {year}
         </li>
     )
 
     const themesList = themes.sort().map((theme, index) => 
-        <li key={index} onClick={() => {
-            setOptionClicked(true)
-            setFilterValue(theme)
-        }}>
+        <li key={index} onClick={() => set({ isOptionClicked: true, filterValue: theme})}>
             {theme}
         </li>
     )
@@ -75,25 +68,22 @@ const Visuals = (props) => {
     }
 
     const works = filterBy === filterByYear ? 
-        data.allContentfulVisual.nodes.filter(node => node.year === filterValue) 
+        query.allContentfulVisual.nodes.filter(node => node.year === filterValue) 
         : 
-        data.allContentfulVisual.nodes.filter(node => node.category === filterValue)
-
+        query.allContentfulVisual.nodes.filter(node => node.category === filterValue)
+    
     return (
-
         <Layout noFooter="true">
             <div>
-
                 <img src={background} className={visualStyles.backdrop} alt="Gallery backdrop" />
-
                 {
                     !isOptionClicked ? 
                         <div>
                             <p className={visualStyles.backdropText}>
                                 Filter By: 
-                                <span onClick={() => setFilterBy(filterByYear)} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
+                                <span onClick={() => { console.log(set); set({filterBy: filterByYear})}} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
                                 |
-                                <span onClick={() => setFilterBy(filterByTheme)} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
+                                <span onClick={() => set({filterBy: filterByTheme})} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
                             </p>
 
                             <ul className={visualStyles.workList}>
@@ -113,11 +103,12 @@ const Visuals = (props) => {
                             <div className={visualStyles.worksHeader}>
                                 <p>
                                     <span
-                                    className={visualStyles.backToGalleryMenu} 
-                                    onClick={() => setOptionClicked(false)}>
-                                        Back to Gallery Menu
+                                    className={visualStyles.backToGalleryMenu}
+                                    onClick={() => set({isOptionClicked: false})}
+                                    >
+                                        Back
                                     </span>
-                                    <span style={{textTransform: 'capitalize'}}>{`${filterBy}: ${filterValue}`}</span>
+                                    <span>{`${filterBy}: ${filterValue}`}</span>
                                 </p>
 
                                 <p>
@@ -128,7 +119,6 @@ const Visuals = (props) => {
                             <Works works={works} />
                         </div>
                 }
-
             </div>
         </Layout>
     )
