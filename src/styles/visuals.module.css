@@ -38,6 +38,11 @@
     cursor: pointer;
 }
 
+.work-list li:hover {
+    font-weight: bolder;
+    color: #86c1e9
+}
+
 .works-header {
     display: flex;
     align-items: center;

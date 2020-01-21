@@ -4,7 +4,8 @@ const defaultContextValue = {
   data: {
     filterBy: 'year',
     isOptionClicked: false,
-    filterValue: ''
+    filterValue: '',
+    projectTerminalNames: [],
   },
   set: () => {},
 }

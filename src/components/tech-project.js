@@ -7,8 +7,6 @@
 import React, { useState, useEffect } from 'react';
 import { useStaticQuery, graphql } from 'gatsby'
 
-// import PropTypes from 'prop-types';
-
 import techProjectStyles from '../styles/tech-project.module.css';
 
 import Browser from './browser'
@@ -17,7 +15,10 @@ const TechProject = (props) => {
 
 	const projects = useStaticQuery(graphql`
         query {
-            allContentfulTech {
+            allContentfulTech (sort: {
+                fields: dateCompleted
+                order:DESC
+            }){
                 nodes {
                     title
                     description

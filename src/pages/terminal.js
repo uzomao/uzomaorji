@@ -11,18 +11,18 @@ export default class Terminal extends React.Component {
 
     state = {
         promptIndex: 0,
-        projectIds: {
-            'moneybrain': 0,
-            'find your next read': 1,
-            'games': 2,
-            'ubuuru': 3, 
-            'intimate show': 4, 
-        },
-        //TODO: figure out a more programmatic way of assigning project ids to terminal names
         projectId: 1,
         allProjectsAppended: false,
         singleProjectAppended: false,
-        projImgHeight: '150px'
+        projImgHeight: '150px',
+        projectIds: {
+            'moneybrain': 0,
+            'ubuuru': 1,
+            'concert': 2,
+            'games': 3,
+            'books': 4
+        }
+        //TODO: ASSIGN THIS PROGRAMMATICALLY
     }
 
     componentDidMount(){

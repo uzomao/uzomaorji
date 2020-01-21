@@ -13,7 +13,10 @@ const Projects = (props) => {
 
     const projects = useStaticQuery(graphql`
         query {
-            allContentfulTech {
+            allContentfulTech (sort: {
+                fields: dateCompleted
+                order:DESC
+              }){
                 nodes {
                     title
                     description

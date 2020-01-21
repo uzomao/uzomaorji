@@ -43,7 +43,7 @@ export default class tech extends React.Component {
 			<Layout>
 				<div className={techStyles.techProjects}>
 
-					<p className={techStyles.formatText}>Tech Portfolio <Link to='/terminal'><span class='button'>switch to interactive console</span></Link></p>
+					<p className={techStyles.formatText}>Tech Portfolio <Link to='/terminal'><span className='button'>switch to interactive console</span></Link></p>
 
 					<Projects className={projectsStyles.projects} 
 					toggleProject={this.toggleProject} 
