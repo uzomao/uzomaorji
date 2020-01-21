@@ -40,6 +40,7 @@ const TechProject = (props) => {
 	const [ imgSrc, setImgSrc ] = useState('')
 	const [ detailedDescription, setDetailedDescription] = useState('')
 	const [ imgHeight, setImgHeight ] = useState('400px')
+	const [ isLightTheme, setIsLightTheme ] = useState(true)
 
 	useEffect(() => {
 
@@ -52,9 +53,15 @@ const TechProject = (props) => {
 			setImgHeight('200px')
 		}
 
-	}, [projects.allContentfulTech.nodes, props.projectId, project])
+		if(props.isTerminal){
+			setIsLightTheme(false)
+		}
 
-	const techProjectClassName = props.isTerminal ? techProjectStyles.tpTerminal : techProjectStyles.techProject;
+	}, [projects.allContentfulTech.nodes, props.projectId, project, props.isTerminal])
+
+	const techProjectClassName = props.isTerminal ? 
+		`${techProjectStyles.tpTerminal} ${techProjectStyles.tpDarkTheme}` 
+		: techProjectStyles.techProject;
 
 	//should re-enable for theme selection feature in future
 	//const techProjectTheme = this.context.isLightTheme ? techProjectStyles.tp-light-theme : techProjectStyles.tp-dark-theme;
@@ -62,7 +69,7 @@ const TechProject = (props) => {
 	let windowYOffset = typeof window !== `undefined` ? window.pageYOffset : 0
 	
 	return (
-		<div className={`${techProjectClassName}`} style={{top: windowYOffset}}>
+		<div className={techProjectClassName} style={{top: windowYOffset}}>
 			<h1>
 				{
 					!props.isTerminal &&
@@ -73,7 +80,7 @@ const TechProject = (props) => {
 
 			<div className={techProjectStyles.terminalInfo}>
 				<article>
-					<Browser projectImage={imgSrc} projectAlt={project.description} isLightTheme={true} height={imgHeight} />
+					<Browser projectImage={imgSrc} projectAlt={project.description} isLightTheme={isLightTheme} height={imgHeight} />
 				</article>
 
 

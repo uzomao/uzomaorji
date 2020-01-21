@@ -28,7 +28,7 @@ export default class Terminal extends React.Component {
         this._createAndInsertDiv()
         if(typeof window !== `undefined`){
             window.addEventListener('keypress', this.onKeyPress)
-            document.body.style.background = '#fff'
+            document.body.style.background = '#1e272e'
             document.getElementById(`terminal-input-${this.state.promptIndex}`).focus()
 
             if(window.innerWidth < 900){
@@ -133,7 +133,7 @@ export default class Terminal extends React.Component {
                 {commandList}
 
                 <div id={terminalStyles.allProjects}>
-                    <Projects className={terminalStyles.allTerminalProjects} imgHeight={this.state.projImgHeight} />
+                    <Projects className={terminalStyles.allTerminalProjects} isLightTheme={false} imgHeight={this.state.projImgHeight} isTerminal={true} />
                 </div>
 
                 <div id={terminalStyles.singleProject}>

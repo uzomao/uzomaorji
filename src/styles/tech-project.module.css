@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'PerfectDOS';
+    src: url('../fonts/perfect_dos.ttf');
+}
+
 .tech-project {
 	position: absolute;
 	left: 20%;
@@ -38,10 +43,23 @@
 	width: 50%;
 	margin-bottom: 2.5%;
 	float: right;
+	font-family: 'Inconsolata';
+	font-size: 18px;
 }
 
 .tp-terminal .project-info-right a {
 	text-align: unset;
+}
+
+.tp-terminal .project-info-right a button {
+	border: 2px solid #fff;
+	font-family: 'PerfectDOS', 'Courier', sans-serif;
+	color: #fff;
+}
+
+.tp-terminal .project-info-right a button:hover {
+	color: #1e272e;
+	background: #fff;
 }
 
 .tp-terminal h1 {

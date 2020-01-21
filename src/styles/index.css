@@ -69,9 +69,8 @@ button, .button {
 }
 
 button:hover, .button:hover {
-    background: #0c0c0c;
+    background: #1e272e;
     color: #fff;
-    font-size: 24px;
     border: 2px solid #fff;
 }
 

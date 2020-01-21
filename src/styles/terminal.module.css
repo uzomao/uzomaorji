@@ -1,19 +1,24 @@
+@font-face {
+    font-family: 'PerfectDOS';
+    src: url('../fonts/perfect_dos.ttf');
+}
+
 .terminal {
-    font-family: 'Courier';
+    font-family: 'PerfectDOS', 'Courier', sans-serif;
 
     height: 100vh;
-    background: #fff;
+    color: #fff;
     padding: 15px;
 
 }
 
 .terminal p {
-    font-size: 18px;
-    margin-bottom: 2em;
+    font-size: 21px;
+    margin-bottom: 1em;
 }
 
 .terminal ul li {
-    font-size: 13px;
+    font-size: 21px;
     margin: 2.5px 0;
 }
 
@@ -22,12 +27,16 @@
     border: none;
     width: 100%;
     font-size: 15.5px;
+    background: #1e272e;
+    color: #fff;
+    font-family: 'PerfectDOS', 'Courier', sans-serif;
 }
 
 .terminal code {
     background: #0c0c0c;
     color: pink;
-    padding: 2px;   
+    padding: 2px;
+    font-family: 'PerfectDOS', 'Courier', sans-serif;
 }
 
 #all-projects, #single-project {
@@ -35,7 +44,7 @@
 }
 
 #single-project {
-    background: #fff;
+    background: #1e272e;
 }
 
 .all-terminal-projects {

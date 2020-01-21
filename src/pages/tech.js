@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Link } from 'gatsby'
+
 import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
 import Layout from '../components/layout'
@@ -41,9 +43,11 @@ export default class tech extends React.Component {
 			<Layout>
 				<div className={techStyles.techProjects}>
 
-					<p className={techStyles.formatText}>Tech Portfolio</p>
+					<p className={techStyles.formatText}>Tech Portfolio <Link to='/terminal'><span class='button'>switch to interactive console</span></Link></p>
 
-					<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight={this.state.imgHeight} />
+					<Projects className={projectsStyles.projects} 
+					toggleProject={this.toggleProject} 
+					imgHeight={this.state.imgHeight} isLightTheme={true} isTerminal={false}/>
 
 					{
 						this.state.isProjectActive &&
