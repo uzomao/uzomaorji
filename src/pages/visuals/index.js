@@ -102,13 +102,14 @@ const Visuals = () => {
                         <div>
                             <div className={visualStyles.worksHeader}>
                                 <p>
-                                    <span
-                                    className={visualStyles.backToGalleryMenu}
+                                    <button
                                     onClick={() => set({isOptionClicked: false})}
                                     >
+                                        <span role="img" aria-label="go back emoji">👈🏾</span>
+                                        {` `}
                                         Back
-                                    </span>
-                                    <span>{`${filterBy}: ${filterValue}`}</span>
+                                    </button>
+                                    <span>{`${filterBy.charAt(0).toUpperCase() + filterBy.slice(1)}: ${filterValue}`}</span>
                                 </p>
 
                                 <p>

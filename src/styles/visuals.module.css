@@ -52,13 +52,12 @@
     text-transform: capitalize;
 }
 
-.back-to-gallery-menu {
-    cursor: pointer;
-    background: #1e272e;
-    color: #fff;
-    border: 2px solid #fff;
+.works-header button {
     padding: 5px;
-    margin-bottom: 0;
     margin-right: 1em;
-    font-size: 14px;
+    font-size: 16px;
+}
+
+.works-header p span {
+    text-transform: capitalize;
 }

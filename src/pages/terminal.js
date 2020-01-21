@@ -5,6 +5,7 @@ import terminalStyles from '../styles/terminal.module.css'
 
 import Projects from '../components/projects'
 import TechProject from '../components/tech-project'
+import SEO from '../components/seo'
 
 export default class Terminal extends React.Component {
 
@@ -125,7 +126,9 @@ export default class Terminal extends React.Component {
 
         return (
             
+            
             <div className={terminalStyles.terminal} id={terminalStyles.terminal}>
+                <SEO />
 
                 <p>***** uzoma's terminal *****</p>
                 <p>these are the commands you can use:</p>

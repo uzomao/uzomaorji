@@ -2,7 +2,13 @@
 	margin: 0 0 5% 5%;
 }
 
+@font-face {
+    font-family: 'PerfectDOS';
+    src: url('../fonts/perfect_dos.ttf');
+}
+
 .format-text a  {
 	text-decoration: none;
 	font-size: 18px;
+	font-family: 'PerfectDOS', 'Courier', 'Inconsolata', sans-serif;
 }
