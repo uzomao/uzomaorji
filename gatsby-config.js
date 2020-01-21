@@ -43,6 +43,17 @@ module.exports = {
       options: {
         endpoint: process.env.MAILCHIMP_ENDPOINT
       }
+    },
+    {
+      resolve: 'gatsby-plugin-fathom',
+      options: {
+        // Unique site id
+        siteId: 'MTWLAMNY',
+        // Domain whitelist
+        whitelistHostnames: [
+          'uzomaorji.com'
+        ]
+      }
     }
   ]
 }
