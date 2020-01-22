@@ -39,11 +39,7 @@ export default class Terminal extends React.Component {
                     isDesktop: false
                 })
 
-                window.addEventListener('orientationchange', function(){
-                    if(window.orientation === 0){
-                        navigate('/tech')
-                    }
-                })
+                window.addEventListener('orientationchange', this.navigateToTech)
             }
         }
     }
@@ -51,9 +47,15 @@ export default class Terminal extends React.Component {
     componentWillUnmount(){
         if(typeof window !== `undefined`){
             window.removeEventListener('keypress', this.onKeyPress)
-            // window.removeEventListener('orientationchange')
+            window.removeEventListener('orientationchange', this.navigateToTech)
 
             document.body.style.background = '#f7f1e3'
+        }
+    }
+
+    navigateToTech = () => {
+        if(window.orientation === 0){
+            navigate('/tech')
         }
     }
 

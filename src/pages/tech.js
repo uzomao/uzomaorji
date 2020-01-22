@@ -29,6 +29,12 @@ export default class tech extends React.Component {
 		})
 	}
 
+	navigateToTerminal = () => {
+		if(window.orientation === 90){
+			navigate('/terminal')
+		}
+	}
+
 	componentDidMount(){
 		if(typeof window !== `undefined` && window.innerWidth < 900){
 			this.setState({
@@ -36,11 +42,13 @@ export default class tech extends React.Component {
 				isDesktop: false
 			})
 
-			window.addEventListener('orientationchange', function(){
-				if(window.orientation === 90){
-					navigate('/terminal')
-				}
-			})
+			window.addEventListener('orientationchange', this.navigateToTerminal)
+		}
+	}
+
+	componentWillUnmount(){
+		if(typeof window !== `undefined`){
+			window.removeEventListener('orientationchange', this.navigateToTerminal)
 		}
 	}
 
