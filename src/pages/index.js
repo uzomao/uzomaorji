@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { navigate } from "gatsby"
 
 import '../styles/index.css'
@@ -37,13 +37,19 @@ const Index = (props) => {
     const techRoute = '/terminal'
     const visualRoute = '/visuals'
 
+    const [ isDesktop, setIsDesktop ] = useState(true)
+
     useEffect(() => {
 
         const header = document.getElementById(indexStyles.uzomasHeader)
 
         if(typeof window !== `undefined`){
-            if(window.innerWidth < mobileWidth && (window.innerHeight > window.innerWidth)){
-                header.innerHTML = rotateText;
+            if(window.innerWidth < mobileWidth){
+                setIsDesktop(false)
+
+                if(window.innerHeight > window.innerWidth){
+                    header.innerHTML = rotateText;
+                }
             }
 
             window.addEventListener("orientationchange", function(){
@@ -55,7 +61,7 @@ const Index = (props) => {
                 }
             })
         }
-    })
+    }, [])
 
     return (
 
@@ -64,10 +70,10 @@ const Index = (props) => {
             <div>
                 <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>{ chooseText }</h1>
 
-                { typeof window !== `undefined` && window.innerWidth > mobileWidth ? 
-                    <img src={background} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map" />
+                { isDesktop ? 
+                    <img src={background} className={indexStyles.uzomas} alt="website background" useMap="#image-map" />
                     :
-                    <img src={mobileBackground} className={indexStyles.uzomas} alt="pictures of uzoma" useMap="#image-map-mobile" />
+                    <img src={mobileBackground} className={indexStyles.uzomas} alt="website background" useMap="#image-map-mobile" />
                 }
 
                 <div id={indexStyles.choiceText}>
