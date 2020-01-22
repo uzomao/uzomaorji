@@ -66,3 +66,10 @@
 .works-header p span {
     text-transform: capitalize;
 }
+
+@media screen and (max-device-width: 700px) {
+
+    .work-list {
+        height: 175px;
+    }
+}

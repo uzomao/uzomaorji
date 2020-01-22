@@ -68,7 +68,7 @@
         padding: 2.5px;
     }
 
-    .terminal p, button, a {
-        font-size: 15px;
+    .terminal p, button, a, .terminal ul li, .terminal input {
+        font-size: 16.5px;
     }
 }

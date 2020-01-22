@@ -35,10 +35,11 @@
     }
 
     .work-title {
-        width: 175px;
+        width: 100%;
     }
 
-    .work-list {
+    .works {
         height: 175px;
+        margin-top: -2.5%;
     }
 }

@@ -27,6 +27,11 @@
     margin: 1% 0;
 }
 
+.visual .text button {
+    width: 100%;
+    margin: 1em 0;
+}
+
 .visual .images {
     list-style: none;
     width: 65%;
