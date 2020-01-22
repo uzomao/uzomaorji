@@ -21,8 +21,9 @@ export default class Terminal extends React.Component {
             'concert': 2,
             'games': 3,
             'books': 4
-        }
+        },
         //TODO: ASSIGN THIS PROGRAMMATICALLY
+        isDesktop: true
     }
 
     componentDidMount(){
@@ -34,7 +35,14 @@ export default class Terminal extends React.Component {
 
             if(window.innerWidth < 900){
                 this.setState({
-                    projImgHeight: '75px'
+                    projImgHeight: '75px',
+                    isDesktop: false
+                })
+
+                window.addEventListener('orientationchange', function(){
+                    if(window.orientation === 0){
+                        navigate('/tech')
+                    }
                 })
             }
         }
@@ -43,6 +51,8 @@ export default class Terminal extends React.Component {
     componentWillUnmount(){
         if(typeof window !== `undefined`){
             window.removeEventListener('keypress', this.onKeyPress)
+            // window.removeEventListener('orientationchange')
+
             document.body.style.background = '#f7f1e3'
         }
     }
@@ -118,7 +128,12 @@ export default class Terminal extends React.Component {
         const commandList = <ul>
             <li>> type <code>ls projects</code> to view all projects</li>
             <li>> type <code>cd project_name</code> to learn more about a project e.g <code>cd games</code></li>
-            <li>> type <code>exit</code> to exit the terminal (goes to non-interactive tech portfolio)</li>
+            {
+                this.state.isDesktop ? 
+                    <li>> type <code>exit</code> to exit the terminal (goes to non-interactive tech portfolio)</li>
+                    :
+                    <li>> rotate screen to exit the terminal (goes to non-interactive tech portfolio)</li>
+            }
             <li>> type <code>help</code> to bring up this list of commands again</li>
             <br></br>
             <li>> press <code>Enter</code> or <code>Return</code> after typing each command</li>

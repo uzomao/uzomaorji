@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
@@ -18,7 +18,8 @@ export default class tech extends React.Component {
 	state = {
 		isProjectActive: false,
 		projectId: undefined,
-		imgHeight: '350px'
+		imgHeight: '350px',
+		isDesktop: true
 	}
 
 	toggleProject = (projectId) => {
@@ -31,19 +32,35 @@ export default class tech extends React.Component {
 	componentDidMount(){
 		if(typeof window !== `undefined` && window.innerWidth < 900){
 			this.setState({
-				imgHeight: '250px'
+				imgHeight: '250px',
+				isDesktop: false
+			})
+
+			window.addEventListener('orientationchange', function(){
+				if(window.orientation === 90){
+					navigate('/terminal')
+				}
 			})
 		}
 	}
 
 	render() {
 
+		const enableInteractiveMode = this.state.isDesktop ? 
+			<Link to='/terminal'><span className='button'>switch to interactive console</span></Link>
+			:
+			<span><br></br>{`<rotate for interactive console>`}</span>
+
 		return (
 
 			<Layout>
 				<div className={techStyles.techProjects}>
 
-					<p className={techStyles.formatText}>Tech Portfolio <Link to='/terminal'><span className='button'>switch to interactive console</span></Link></p>
+					<p className={techStyles.formatText}>
+						Tech Portfolio 
+						{` `}
+						{enableInteractiveMode}
+					</p>
 
 					<Projects className={projectsStyles.projects} 
 					toggleProject={this.toggleProject} 

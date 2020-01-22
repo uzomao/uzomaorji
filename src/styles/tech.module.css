@@ -12,3 +12,9 @@
 	font-size: 18px;
 	font-family: 'PerfectDOS', 'Courier', 'Inconsolata', sans-serif;
 }
+
+@media screen and (max-device-width: 700px){
+	.format-text a span {
+		font-size: 14px;
+	}
+}
