@@ -7,6 +7,8 @@ import navigationStyles from '../styles/navigation.module.css'
 
 import JoinMailingList from './join-mailing-list'
 
+import Context from '../../context'
+
 export default class Navigation extends React.Component {
 
     state = {
@@ -26,7 +28,11 @@ export default class Navigation extends React.Component {
         })
     }
 
+    static contextType = Context
+
     render(){
+
+        const { isDesktop, isPortrait } = this.context
 
         const iconStyles = {width: '40px', height: '40px'}
 
@@ -35,7 +41,12 @@ export default class Navigation extends React.Component {
 
             <Link to='/visuals' activeClassName={navigationStyles.active}><li>Visuals</li></Link>
             
-            <Link to='/tech' activeClassName={navigationStyles.active}><li>Tech</li></Link>
+            {
+                !isDesktop && !isPortrait ?
+                    <Link to='/terminal' activeClassName={navigationStyles.active}><li>Terminal</li></Link>
+                    :
+                    <Link to='/tech' activeClassName={navigationStyles.active}><li>Tech</li></Link>
+            }
 
             {/* <Link to="/blog" activeClassName={navigationStyles.active}><li>Blog</li></Link> */}
 

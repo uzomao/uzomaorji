@@ -13,6 +13,25 @@
 	font-family: 'PerfectDOS', 'Courier', 'Inconsolata', sans-serif;
 }
 
+.rotate-notice {
+	display: none;
+}
+
+.rotate-notice-active {
+	display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: auto;
+    background: #1e272e;
+    color: #fff;
+	align-items: center;
+	justify-content: center;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+}
+
 @media screen and (max-device-width: 700px){
 	.format-text a span {
 		font-size: 14px;

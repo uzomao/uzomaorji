@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Link, navigate } from 'gatsby'
+import { Link, navigate, navigateTo } from 'gatsby'
 
 import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
@@ -29,7 +29,7 @@ export default class tech extends React.Component {
 		})
 	}
 
-	navigateToTerminal = () => {
+	landscapeNavigateToTerminal = () => {
 		if(window.orientation === 90){
 			navigate('/terminal')
 		}
@@ -42,13 +42,17 @@ export default class tech extends React.Component {
 				isDesktop: false
 			})
 
-			window.addEventListener('orientationchange', this.navigateToTerminal)
+			if(window.innerWidth > window.innerHeight){
+				navigate('/terminal')
+			}
+
+			window.addEventListener('orientationchange', this.landscapeNavigateToTerminal)
 		}
 	}
 
 	componentWillUnmount(){
 		if(typeof window !== `undefined`){
-			window.removeEventListener('orientationchange', this.navigateToTerminal)
+			window.removeEventListener('orientationchange', this.landscapeNavigateToTerminal)
 		}
 	}
 
@@ -80,6 +84,14 @@ export default class tech extends React.Component {
 							projectId={this.state.projectId} 
 							toggleProject={this.toggleProject} />
 					}
+
+					<div id={techStyles.rotateNotice} className={techStyles.rotateNotice}>
+						<h2>
+							Rotate your screen
+							{` `}
+							<span role='img' aria-label='rotate-screen'>🔄</span>
+						</h2>
+					</div>
 
 				</div>
 			</Layout>

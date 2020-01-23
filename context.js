@@ -7,6 +7,8 @@ const defaultContextValue = {
     filterValue: '',
     projectTerminalNames: [],
   },
+  isDesktop: true,
+  isPortrait: true,
   set: () => {},
 }
 
@@ -20,6 +22,20 @@ class ContextProvider extends React.Component {
     this.state = {
       ...defaultContextValue,
       set: this.setData,
+    }
+  }
+
+  componentDidMount(){
+    if(typeof window !== `undefined` && window.innerWidth < 900){
+      this.setState({
+        isDesktop: false
+      })
+
+      if(window.innerWidth > window.innerHeight){
+        this.setState({
+          isPortrait: false
+        })
+      }
     }
   }
 
