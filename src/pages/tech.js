@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Link, navigate, navigateTo } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
