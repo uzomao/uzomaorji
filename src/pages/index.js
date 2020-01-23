@@ -32,7 +32,7 @@ const Index = (props) => {
     
 
     const chooseText = 'Choose an Uzoma'
-    const rotateText = 'Please Rotate Me'
+    const rotateText = 'Please Rotate Us'
 
     const techRoute = '/terminal'
     const visualRoute = '/visuals'
