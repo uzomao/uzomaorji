@@ -10,13 +10,14 @@ module.exports = {
     titleTemplate: "%s | Visual Artist & Creative Technologist",
     siteUrl: `https://uzomaorji.com`,
     description: `Portfolio website of visual artist and creative technologist Uzoma Orji`,
+    image: './static/seo.jpg'
   },
   plugins: [
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Oswald', 'Inconsolata', 'Merriweather', 'VT323']
+          families: ['Oswald', 'Inconsolata', 'Merriweather']
         }
       }
     },
