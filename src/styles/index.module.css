@@ -33,9 +33,9 @@ area {
 #choice-text h1 {
     font-family: 'Oswald', Helvetica, sans-serif;
     text-transform: uppercase;
-    color:#222f3e;
+    color:#1e272e;
     font-size: 2rem;
-    text-shadow: 1.5px 1.5px #ee5253;
+    text-shadow: 1.5px 1.5px #f7f1e3;
     word-spacing: 10px;
 }
 

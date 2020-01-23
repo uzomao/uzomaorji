@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Link, navigate } from 'gatsby'
+
 import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
 import Layout from '../components/layout'
@@ -15,7 +17,9 @@ export default class tech extends React.Component {
 
 	state = {
 		isProjectActive: false,
-		projectId: undefined
+		projectId: undefined,
+		imgHeight: '350px',
+		isDesktop: true
 	}
 
 	toggleProject = (projectId) => {
@@ -25,16 +29,50 @@ export default class tech extends React.Component {
 		})
 	}
 
+	navigateToTerminal = () => {
+		if(window.orientation === 90){
+			navigate('/terminal')
+		}
+	}
+
+	componentDidMount(){
+		if(typeof window !== `undefined` && window.innerWidth < 900){
+			this.setState({
+				imgHeight: '250px',
+				isDesktop: false
+			})
+
+			window.addEventListener('orientationchange', this.navigateToTerminal)
+		}
+	}
+
+	componentWillUnmount(){
+		if(typeof window !== `undefined`){
+			window.removeEventListener('orientationchange', this.navigateToTerminal)
+		}
+	}
+
 	render() {
+
+		const enableInteractiveMode = this.state.isDesktop ? 
+			<Link to='/terminal'><span className='button'>switch to interactive console</span></Link>
+			:
+			<span><br></br>{`<rotate for interactive console>`}</span>
 
 		return (
 
 			<Layout>
 				<div className={techStyles.techProjects}>
 
-					<p className={techStyles.formatText}>Tech Portfolio</p>
+					<p className={techStyles.formatText}>
+						Tech Portfolio 
+						{` `}
+						{enableInteractiveMode}
+					</p>
 
-					<Projects className={projectsStyles.projects} toggleProject={this.toggleProject} imgHeight="350px" />
+					<Projects className={projectsStyles.projects} 
+					toggleProject={this.toggleProject} 
+					imgHeight={this.state.imgHeight} isLightTheme={true} isTerminal={false}/>
 
 					{
 						this.state.isProjectActive &&

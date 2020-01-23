@@ -5,42 +5,57 @@ import terminalStyles from '../styles/terminal.module.css'
 
 import Projects from '../components/projects'
 import TechProject from '../components/tech-project'
+import SEO from '../components/seo'
 
 export default class Terminal extends React.Component {
 
     state = {
         promptIndex: 0,
-        projectIds: {
-            'moneybrain': 0,
-            'find your next read': 1,
-            'games': 2,
-            'ubuuru': 3, 
-            'intimate show': 4, 
-        },
-        //TODO: figure out a more programmatic way of assigning project ids to terminal names
         projectId: 1,
         allProjectsAppended: false,
-        singleProjectAppended: false
-    }
-
-    componentWillMount(){
-        if(typeof window !== `undefined`){
-            window.addEventListener('keypress', this.onKeyPress)
-            document.body.style.background = '#fff'
-        }
+        singleProjectAppended: false,
+        projImgHeight: '150px',
+        projectIds: {
+            'moneybrain': 0,
+            'ubuuru': 1,
+            'concert': 2,
+            'games': 3,
+            'books': 4
+        },
+        //TODO: ASSIGN THIS PROGRAMMATICALLY
+        isDesktop: true
     }
 
     componentDidMount(){
         this._createAndInsertDiv()
         if(typeof window !== `undefined`){
+            window.addEventListener('keypress', this.onKeyPress)
+            document.body.style.background = '#1e272e'
             document.getElementById(`terminal-input-${this.state.promptIndex}`).focus()
+
+            if(window.innerWidth < 900){
+                this.setState({
+                    projImgHeight: '75px',
+                    isDesktop: false
+                })
+
+                window.addEventListener('orientationchange', this.navigateToTech)
+            }
         }
     }
 
     componentWillUnmount(){
         if(typeof window !== `undefined`){
             window.removeEventListener('keypress', this.onKeyPress)
+            window.removeEventListener('orientationchange', this.navigateToTech)
+
             document.body.style.background = '#f7f1e3'
+        }
+    }
+
+    navigateToTech = () => {
+        if(window.orientation === 0){
+            navigate('/tech')
         }
     }
 
@@ -73,7 +88,7 @@ export default class Terminal extends React.Component {
                     allProjectsAppended: true
                 })
             } else {
-                var clone = document.getElementById(terminalStyles.allProjects).cloneNode(true)
+                let clone = document.getElementById(terminalStyles.allProjects).cloneNode(true)
                 newDiv.appendChild(clone)
             }
 
@@ -92,7 +107,7 @@ export default class Terminal extends React.Component {
         } else if(inputValue.includes('help')){
 
             //get the list of commands (commandList) and append to the new div
-            var clone = document.getElementsByTagName('ul')[0].cloneNode(true)
+            let clone = document.getElementsByTagName('ul')[0].cloneNode(true)
             newDiv.appendChild(clone)
         } else if(inputValue.includes('exit')){
             navigate('/tech')
@@ -115,7 +130,12 @@ export default class Terminal extends React.Component {
         const commandList = <ul>
             <li>> type <code>ls projects</code> to view all projects</li>
             <li>> type <code>cd project_name</code> to learn more about a project e.g <code>cd games</code></li>
-            <li>> type <code>exit</code> to exit the terminal (goes to non-interactive tech portfolio)</li>
+            {
+                this.state.isDesktop ? 
+                    <li>> type <code>exit</code> to exit the terminal (goes to non-interactive tech portfolio)</li>
+                    :
+                    <li>> rotate screen to exit the terminal (goes to non-interactive tech portfolio)</li>
+            }
             <li>> type <code>help</code> to bring up this list of commands again</li>
             <br></br>
             <li>> press <code>Enter</code> or <code>Return</code> after typing each command</li>
@@ -123,7 +143,9 @@ export default class Terminal extends React.Component {
 
         return (
             
+            
             <div className={terminalStyles.terminal} id={terminalStyles.terminal}>
+                <SEO />
 
                 <p>***** uzoma's terminal *****</p>
                 <p>these are the commands you can use:</p>
@@ -131,7 +153,7 @@ export default class Terminal extends React.Component {
                 {commandList}
 
                 <div id={terminalStyles.allProjects}>
-                    <Projects className={terminalStyles.allTerminalProjects} imgHeight="150px" />
+                    <Projects className={terminalStyles.allTerminalProjects} isLightTheme={false} imgHeight={this.state.projImgHeight} isTerminal={true} />
                 </div>
 
                 <div id={terminalStyles.singleProject}>

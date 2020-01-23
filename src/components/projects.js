@@ -13,7 +13,10 @@ const Projects = (props) => {
 
     const projects = useStaticQuery(graphql`
         query {
-            allContentfulTech {
+            allContentfulTech (sort: {
+                fields: dateCompleted
+                order:DESC
+              }){
                 nodes {
                     title
                     description
@@ -38,7 +41,7 @@ const Projects = (props) => {
         <li key={index}>
             <article onClick={() => props.toggleProject(index)}>
                 <Browser projectImage={project.image[0].fluid.src} projectAlt={project.description} 
-                height={props.imgHeight} isLightTheme={true} />
+                height={props.imgHeight} isLightTheme={props.isLightTheme} isTerminal={props.isTerminal} />
                 {
                     locationPathname.includes('/tech') ?
                         <p>{project.description}</p>

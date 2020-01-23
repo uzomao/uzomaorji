@@ -4,20 +4,21 @@ import aboutStyles from '../styles/about.module.css'
 
 import Layout from '../components/layout'
 
-import bio from '../images/bio.jpg'
-
 const About = () => {
+
     return (
         <Layout>
-            <div>
+            <main>
 
                 <section className={aboutStyles.aboutSection}>
 
-                    <div className={aboutStyles.aboutImg}>
-                        <img src={bio} alt='Uzoma Orji - visual artist and creative technologist' />
-                    </div>
-
                     <div className={aboutStyles.aboutText}>
+
+                        <div className={aboutStyles.formCircles}>
+                            <div className={aboutStyles.formCircle} style={{background: '#87c1e9'}}></div>
+                            <div className={aboutStyles.formCircle} style={{background: '#ffcccc'}}></div>
+                        </div>
+
                         <p>
                             Uzoma Orji is a creative technologist and visual artist from Owerri, Nigeria.
                         </p>
@@ -46,24 +47,57 @@ const About = () => {
                 <section className={aboutStyles.aboutText}>
                     <h2>Exhibitions</h2>
 
-                    <p>2018 - CSM Open Dialogue: Artists + Designers of Afro-Carribean Descent</p>
-                    <p>2019 - Lagos Photo Festival</p>
-                    <p>2019 - Abuja Art Week</p>
+                    {/* automate the following: */}
+                    <p>
+                        2018
+                        <span> - </span>
+                        <a href='https://opendialogueexhibition.com/Uzoma-Orji' 
+                        target='_blank'
+                        rel='noopener noreferrer' >
+                            CSM Open Dialogue: Artists + Designers of Afro-Carribean Descent
+                        </a>
+                        <br>
+                        </br>
+                        <span className={aboutStyles.exhibitionDescription}>YOU ARE THE SOUL OF A NATION</span>
+                    </p>
+                    <p>
+                        2019
+                        <span> - </span>
+                        <a href='https://www.lagosphotofestival.com/exhibit/the-baptism-of-an-igbo-man' 
+                        target='_blank'
+                        rel='noopener noreferrer'>
+                            Lagos Photo Festival
+                        </a>
+                        <br>
+                        </br>
+                        <span className={aboutStyles.exhibitionDescription}>The Baptism of an Igbo Man</span>
+                    </p>
+                    <p>
+                        2019
+                        <span> - </span>
+                        <a href='https://www.instagram.com/p/B44y4E_FFxx/' 
+                        target='_blank'
+                        rel='noopener noreferrer'>
+                            Naija Tech Creatives/Abuja Art Week
+                        </a>
+                        <br>
+                        </br>
+                        <span className={aboutStyles.exhibitionDescription}>The Baptism of an Igbo Man Immersive VR Experience</span>
+                    </p>
                 </section>
 
-                <section className={aboutStyles.aboutText}>
-                    <p>
-                        <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
-                            chidumaga@gmail.com
-                        </a>
-                    </p>
+                <section className={aboutStyles.aboutText} style={{marginBottom: '3em'}}>
                     <p>
                         <a href="http://instagram.com/uzomaorji_" target="_blank" rel="noopener noreferrer">
-                            @uzomaorji_
+                            Instagram
+                        </a>
+                        <span>, </span>
+                        <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
+                            Email
                         </a>
                     </p>
                 </section>
-            </div>
+            </main>
         </Layout>
     )
 }

@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'PerfectDOS';
+    src: url('../fonts/perfect_dos.ttf');
+}
+
 .tech-project {
 	position: absolute;
 	left: 20%;
@@ -5,9 +10,9 @@
 	float: right;
 	max-height: 100vh;
 	overflow: scroll;
-	padding-bottom: 5%;
 	border-left: 2px solid #fff;
 	animation: slidein .5s;
+	background: #f7f1e3;
 }
 
 .tp-terminal { 
@@ -24,15 +29,37 @@
 	float: left;
 }
 
-.tp-terminal .terminal-info p {
-	width: 50%;
-	margin-left: 1%;
-	margin-bottom: 2.5%;
-	float: right;
+.project-info-right {
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.tp-terminal .visit-button {
+.project-info-right a {
 	text-align: center;
+}
+
+.tp-terminal .project-info-right {
+	width: 50%;
+	margin-bottom: 2.5%;
+	float: right;
+	font-family: 'Inconsolata';
+	font-size: 18px;
+}
+
+.tp-terminal .project-info-right a {
+	text-align: unset;
+}
+
+.tp-terminal .project-info-right a button {
+	border: 2px solid #fff;
+	font-family: 'PerfectDOS', 'Courier', sans-serif;
+	color: #fff;
+}
+
+.tp-terminal .project-info-right a button:hover {
+	color: #1e272e;
+	background: #fff;
 }
 
 .tp-terminal h1 {
@@ -52,44 +79,21 @@
 }
 
 .tech-project h1 {
-	font-family: "Merriweather", "Helvetica", serif;
 	text-align: center;
 	margin: 20px 0;
 }
 
 .tech-project h1 span {
-	font-family: "Helvetica";
 	font-size: 35px;
 	position: absolute;
 	left: 2.5%;
 	cursor: pointer;
 	color: #0c0c0c;
+	font-family: 'Helvetica', sans-serif
 }
 
 .tp-dark-theme h1 span {
 	color: #fff;
-}
-
-.tech-project .visit-button {
-	display: flex;
-	width: 50%;
-	margin: 0 25%;
-	justify-content: center;
-	align-items: center;
-}
-
-.tech-project .visit-button a button, .tp-terminal .visit-button a button {
-    outline: none;
-    background: none;
-    padding: 10px;
-    border: 2px solid #0c0c0c;
-}
-
-.tech-project .visit-button a button:hover, .tp-terminal .visit-button a button:hover {
-	background: #0c0c0c;
-	color: #fff;
-	font-size: 24px;
-	border: 2px solid #fff;
 }
 
 .tp-dark-theme .visit-button a button{
@@ -105,17 +109,13 @@
 
 .tech-project article {
 	max-width: 60%;
-	margin: 0 20% 5% 20%;
+	margin: 0 20%;
 }
 
 .tech-project p {
 	text-align: left;
-	margin: 5% 20%;
+	margin: 0 20% 5% 20%;
 	font-size: 21px;
-}
-
-.tech-project p a {
-	color: inherit;
 }
 
 .tech-project article img {
@@ -135,8 +135,9 @@
 	.tech-project {
 		left: 0;
 		max-height: unset;
-		padding-bottom: 15%;
+		overflow: visible;
 		border-bottom: 5px solid #000;
+		height: 100%;
 	}
 
 	.tech-project p {

@@ -1,22 +1,57 @@
 .about-text {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 5%;
+    margin-bottom: 2.5%;
+    width: 100%;
+}
+
+/* .about-section > div:first-child {
+    height: 80vh;
+} */
+
+.about-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-img img {
+    max-width: 50%;
 }
 
 .about-text h2 {
-    font-family: 'Merriweather', serif;
     text-decoration: underline;
 }
 
 .about-text p{
-    text-align: left;
-    margin: .5rem;
-    width: 80%;
+    text-align: justify;
+    margin: .55rem;
+    width: 60%;
+    font-size: 20px;
+}
+
+.about-text p a {
+    font-size: 20px;
+}
+
+.about-text span.exhibition-description {
+    font-size: 18px;
 }
 
 .about-section {
     display: flex;
+}
+
+.form-circles {
+    display: flex;
+    justify-content: center;
+    margin: .25em 0;
+}
+.form-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    margin: 0 .5em;
 }

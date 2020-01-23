@@ -1,4 +1,75 @@
-.slides {
+.backdrop {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+}
+
+.backdrop-text {
     display: flex;
     justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+}
+
+/* .filter:hover {
+    background: #86c1e9;
+    color: #ffcccc;
+    padding: 2.5px;
+} */
+
+.filter:hover, .active {
+    text-decoration: underline;
+}
+
+.work-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 250px;
+    align-items: center;
+}
+.work-list li {
+    font-size: 22.5px;
+    margin: 0 7.5px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.work-list li:hover {
+    font-weight: bolder;
+    color: #86c1e9
+}
+
+.works-header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: -2em;
+}
+.works-header p {
+    margin: 10px 0;
+}
+
+.works-header-filter {
+    text-transform: capitalize;
+}
+
+.works-header button {
+    padding: 5px;
+    margin-right: 1em;
+    font-size: 16px;
+}
+
+.works-header p span {
+    text-transform: capitalize;
+}
+
+@media screen and (max-device-width: 700px) {
+
+    .work-list {
+        height: 175px;
+    }
 }

@@ -33,7 +33,7 @@
     height: 100%;
 }
 
-.navigation-menu a {
+.navigation-menu a, .mailing-list {
     text-align: center;
     padding: 1.5rem 0;
     font-size: 24px;
@@ -42,10 +42,39 @@
 }
 
 .navigation-menu a {
-    color: inherit;
     text-decoration: none;
 }
 
+.navigation-menu-desktop {
+    display: flex;
+}
+
+.navigation-menu-desktop ul li {
+    display: inline;
+    margin: 0 7.5px;
+}
+
+.navigation-menu-desktop ul a, .mailing-list {
+    text-decoration: none;
+    font-size: 21px;
+    word-spacing: -5px;
+}
+
+.navigation-menu-desktop ul a:hover, .mailing-list:hover {
+    text-decoration: underline;
+}
+
+.active {
+    text-decoration: underline !important;
+}
+
+.communication-links {
+    margin-left: .5em;
+}
+
+.communication-links li a:hover {
+    text-decoration: underline;
+}
 
 @keyframes menu-slidein {
 
@@ -69,36 +98,53 @@
     }
 }
 
-.navigation-menu-desktop {
-    display: flex;
-}
-
-.navigation-menu-desktop ul li {
-    display: inline;
-    margin: 0 7.5px;
-}
-
-.navigation-menu-desktop ul a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 21px;
-    word-spacing: -5px;
-}
-
-.navigation-menu-desktop ul a:hover {
-    text-decoration: underline;
-}
-
-.communication-links {
-    margin-left: .5em;
-}
-
-.communication-links li a:hover {
-    text-decoration: underline;
-}
-
 @media screen and (max-device-width: 700px){
     .navigation-menu {
-        width: 45%;
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .navigation-menu ul {
+        height: unset;
+    }
+
+    .active {
+        background: #1e272e;
+        color: #fff;
+    }
+
+    .navigation-menu a {
+        font-size: 18px;
+        padding: .75rem;
+    }
+
+    .navigation-menu li {
+        font-size: 18px;
+    }
+
+    .active {
+        text-decoration: none !important;
+    }
+
+    .communication-links {
+        display: inherit;
+        margin: auto;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .communication-links li {
+        margin-left: .5em;
+        font-size: 32px;
+    }
+
+    .navigation-close-btn {
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
     }
 }

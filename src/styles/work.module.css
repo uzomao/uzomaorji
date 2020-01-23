@@ -1,0 +1,45 @@
+.works {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 95%;
+    margin: 0 2.5%;
+    margin-top: .75%;
+}
+
+.works a {
+    margin: 0 1.5%;
+    text-decoration: none;;
+}
+
+.works a li {
+    height: 250px;
+    overflow: scroll;
+    flex: 0 0 auto;
+}
+
+.works a li img {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.work-title {
+    margin-top: .5em;
+    width: 350px;
+}
+
+@media screen and (max-device-width: 700px) {
+
+    .works a li {
+        height: unset;
+    }
+
+    .work-title {
+        width: 100%;
+    }
+
+    .works {
+        height: 175px;
+        margin-top: -2.5%;
+    }
+}
