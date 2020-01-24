@@ -55,3 +55,9 @@
     border-radius: 100%;
     margin: 0 .5em;
 }
+
+@media screen and (max-device-width: 500px){
+    .about-text p {
+        width: 85%
+    }
+}
