@@ -49,3 +49,13 @@
 	color: #fff;
 	border: 2px solid #fff;
 }
+
+@media screen and (max-device-width: 700px){
+	.footer p {
+        font-size: 18px;
+    }
+    
+    .footer {
+        margin: .5% 0;
+    }
+}
