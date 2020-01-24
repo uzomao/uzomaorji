@@ -36,9 +36,17 @@ class ContextProvider extends React.Component {
           isPortrait: false
         })
       }
+
+      window.addEventListener('orientationchange', this.toggleIsPortrait)
     }
   }
 
+  toggleIsPortrait = () =>{
+    this.setState({
+      isPortrait: !this.state.isPortrait
+    })
+  }
+  
   setData(newData) {
     this.setState(state => ({
       data: {

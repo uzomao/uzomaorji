@@ -10,6 +10,8 @@ import Layout from '../components/layout'
 import projectsStyles from '../styles/projects.module.css'
 import techStyles from '../styles/tech.module.css';
 
+import Context from '../../context'
+
 export default class tech extends React.Component {
 	static propTypes = {
 		name: PropTypes.string,
@@ -35,13 +37,15 @@ export default class tech extends React.Component {
 		}
 	}
 
+	static contextType = Context
+
 	componentDidMount(){
 		if(typeof window !== `undefined` && window.innerWidth < 900){
 			this.setState({
 				imgHeight: '250px',
 				isDesktop: false
 			})
-			
+
 			window.addEventListener('orientationchange', this.landscapeNavigateToTerminal)
 		}
 	}
@@ -75,19 +79,11 @@ export default class tech extends React.Component {
 					imgHeight={this.state.imgHeight} isLightTheme={true} isTerminal={false}/>
 
 					{
-						this.state.isProjectActive &&
+						this.state.isProjectActive && this.state.isDesktop &&
 							<TechProject 
 							projectId={this.state.projectId} 
 							toggleProject={this.toggleProject} />
 					}
-
-					<div id={techStyles.rotateNotice} className={techStyles.rotateNotice}>
-						<h2>
-							Rotate your screen
-							{` `}
-							<span role='img' aria-label='rotate-screen'>🔄</span>
-						</h2>
-					</div>
 
 				</div>
 			</Layout>
