@@ -80,6 +80,8 @@ export default class Terminal extends React.Component {
         inputElement.className = terminalStyles.terminalInput
         inputElement.id = `terminal-input-${this.state.promptIndex}`
 
+        inputValue = inputValue.toLowerCase()
+
         if(inputValue.includes('ls projects')){
 
             if(!this.state.allProjectsAppended){
