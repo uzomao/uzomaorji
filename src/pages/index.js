@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { navigate } from "gatsby"
 
 import '../styles/index.css'
@@ -8,6 +8,8 @@ import background from '../images/uzomaorji-banner.jpg'
 import mobileBackground from '../images/mobile-banner.jpg'
 
 import Layout from '../components/layout'
+
+import Context from '../../context'
 
 const Index = (props) => {
 
@@ -28,47 +30,25 @@ const Index = (props) => {
 		}, 2500);
     }
 
-    const mobileWidth = 900;
-    
-
-    const chooseText = 'Choose an Uzoma'
-    const rotateText = 'Please Rotate Us'
-
     const techRoute = '/terminal'
     const visualRoute = '/visuals'
 
-    const [ isDesktop, setIsDesktop ] = useState(true)
+    const { isDesktop, isPortrait } = useContext(Context)
+
+    const [ textPrompt, setTextPrompt ] = useState('Please Rotate Us')
 
     useEffect(() => {
 
-        const header = document.getElementById(indexStyles.uzomasHeader)
+         isPortrait ? setTextPrompt('Please Rotate Us') : setTextPrompt('Choose an Uzoma')
 
-        if(typeof window !== `undefined`){
-            if(window.innerWidth < mobileWidth){
-                setIsDesktop(false)
-
-                if(window.innerHeight > window.innerWidth){
-                    header.innerHTML = rotateText;
-                }
-            }
-
-            window.addEventListener("orientationchange", function(){
-                //if screen is in landscape
-                if(window.orientation === 90){
-                    header.innerHTML = chooseText;
-                } else {
-                    header.innerHTML = rotateText;
-                }
-            })
-        }
-    }, [])
+    }, [isPortrait])
 
     return (
 
         <Layout noHeader={true} noFooter={true}>
 
             <div>
-                <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>{ chooseText }</h1>
+                <h1 className={indexStyles.uzomasHeader} id={indexStyles.uzomasHeader}>{ textPrompt }</h1>
 
                 { isDesktop ? 
                     <img src={background} className={indexStyles.uzomas} alt="website background" useMap="#image-map" />

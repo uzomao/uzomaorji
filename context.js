@@ -42,8 +42,14 @@ class ContextProvider extends React.Component {
   }
 
   toggleIsPortrait = () =>{
+    const portraitOrientationValues = {
+      '0': true,
+      '180': true,
+      '90': false,
+      '-90': false
+    }
     this.setState({
-      isPortrait: !this.state.isPortrait
+      isPortrait: portraitOrientationValues[String(window.orientation)]
     })
   }
   
