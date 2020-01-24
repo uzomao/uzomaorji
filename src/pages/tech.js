@@ -41,11 +41,7 @@ export default class tech extends React.Component {
 				imgHeight: '250px',
 				isDesktop: false
 			})
-
-			if(window.innerWidth > window.innerHeight){
-				navigate('/terminal')
-			}
-
+			
 			window.addEventListener('orientationchange', this.landscapeNavigateToTerminal)
 		}
 	}
