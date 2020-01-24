@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../../components/layout'
 import Works from '../../components/works'
+import RotateNotice from '../../components/rotate-notice'
 
 import Context from '../../../context'
 
@@ -15,7 +16,7 @@ const Visuals = () => {
     const filterByYear = 'year'
     const filterByTheme = 'theme'
 
-    const { data, set } = useContext(Context)
+    const { data, set, isDesktop, isPortrait } = useContext(Context)
     const { filterBy, isOptionClicked, filterValue } = data
     
     const query = useStaticQuery(graphql`
@@ -75,13 +76,17 @@ const Visuals = () => {
     return (
         <Layout noFooter="true">
             <div>
+                {
+                    !isDesktop && isPortrait && 
+                        <RotateNotice />
+                }
                 <img src={background} className={visualStyles.backdrop} alt="Gallery backdrop" />
                 {
                     !isOptionClicked ? 
                         <div>
                             <p className={visualStyles.backdropText}>
                                 Filter By: 
-                                <span onClick={() => { console.log(set); set({filterBy: filterByYear})}} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
+                                <span onClick={() => { set({filterBy: filterByYear})}} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
                                 |
                                 <span onClick={() => set({filterBy: filterByTheme})} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
                             </p>

@@ -85,14 +85,6 @@ export default class tech extends React.Component {
 							toggleProject={this.toggleProject} />
 					}
 
-					<div id={techStyles.rotateNotice} className={techStyles.rotateNotice}>
-						<h2>
-							Rotate your screen
-							{` `}
-							<span role='img' aria-label='rotate-screen'>🔄</span>
-						</h2>
-					</div>
-
 				</div>
 			</Layout>
 		);
