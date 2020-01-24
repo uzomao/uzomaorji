@@ -2,7 +2,6 @@
 	display: flex;
 	list-style: none;
 	flex-wrap: wrap;
-	width: 100vw;
 	margin-left: .5%;
 	padding: 0
 }
