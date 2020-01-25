@@ -21,7 +21,7 @@ export default class tech extends React.Component {
 		isProjectActive: false,
 		projectId: undefined,
 		imgHeight: '350px',
-		isDesktop: true
+		isDesktop: this.context.isDesktop
 	}
 
 	toggleProject = (projectId) => {
@@ -31,28 +31,20 @@ export default class tech extends React.Component {
 		})
 	}
 
-	landscapeNavigateToTerminal = () => {
-		if(window.orientation === 90){
-			navigate('/terminal')
-		}
-	}
-
 	static contextType = Context
 
 	componentDidMount(){
-		if(typeof window !== `undefined` && window.innerWidth < 900){
+		if(!this.context.isDesktop){
 			this.setState({
 				imgHeight: '250px',
 				isDesktop: false
 			})
-
-			window.addEventListener('orientationchange', this.landscapeNavigateToTerminal)
 		}
 	}
 
-	componentWillUnmount(){
-		if(typeof window !== `undefined`){
-			window.removeEventListener('orientationchange', this.landscapeNavigateToTerminal)
+	componentDidUpdate(){
+		if(!this.context.isPortrait){
+			navigate('/terminal')
 		}
 	}
 
