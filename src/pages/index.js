@@ -39,9 +39,9 @@ const Index = (props) => {
 
     useEffect(() => {
 
-         isPortrait ? setTextPrompt('Please Rotate Us') : setTextPrompt('Choose an Uzoma')
+        !isDesktop && isPortrait ? setTextPrompt('Please Rotate Us') : setTextPrompt('Choose an Uzoma')
 
-    }, [isPortrait])
+    }, [isDesktop, isPortrait])
 
     return (
 
