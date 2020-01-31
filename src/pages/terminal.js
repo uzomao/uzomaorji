@@ -7,6 +7,8 @@ import Projects from '../components/projects'
 import TechProject from '../components/tech-project'
 import SEO from '../components/seo'
 
+import Context from '../../context'
+
 export default class Terminal extends React.Component {
 
     state = {
@@ -38,16 +40,21 @@ export default class Terminal extends React.Component {
                     projImgHeight: '75px',
                     isDesktop: false
                 })
-
-                window.addEventListener('orientationchange', this.navigateToTech)
             }
         }
+    }
+
+    static contextType = Context
+
+    componentDidUpdate(){
+        if(this.context.isPortrait){
+			navigate('/tech')
+		}
     }
 
     componentWillUnmount(){
         if(typeof window !== `undefined`){
             window.removeEventListener('keypress', this.onKeyPress)
-            window.removeEventListener('orientationchange', this.navigateToTech)
 
             document.body.style.background = '#f7f1e3'
         }
