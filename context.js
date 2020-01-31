@@ -10,7 +10,6 @@ const defaultContextValue = {
   isDesktop: true,
   isPortrait: true,
   set: () => {},
-  isMounted: false
 }
 
 const Context = React.createContext(defaultContextValue)
@@ -40,10 +39,6 @@ class ContextProvider extends React.Component {
 
       window.addEventListener('orientationchange', this.toggleIsPortrait)
     }
-
-    this.setState({
-      isMounted: true
-    })
   }
 
   toggleIsPortrait = () =>{
