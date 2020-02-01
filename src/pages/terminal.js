@@ -47,7 +47,7 @@ export default class Terminal extends React.Component {
     static contextType = Context
 
     componentDidUpdate(){
-        if(this.context.isPortrait){
+        if(!this.context.isDesktop && this.context.isPortrait){
 			navigate('/tech')
 		}
     }
@@ -156,7 +156,7 @@ export default class Terminal extends React.Component {
             <div className={terminalStyles.terminal} id={terminalStyles.terminal}>
                 <SEO />
 
-                <p>***** uzoma's terminal *****</p>
+                <p>***** uzoma's terminal - become a hacker for a day *****</p>
                 <p>these are the commands you can use:</p>
 
                 {commandList}

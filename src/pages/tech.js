@@ -1,5 +1,4 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useEffect, useContext } from 'react'
 
 import { Link, navigate } from 'gatsby'
 
@@ -12,73 +11,54 @@ import techStyles from '../styles/tech.module.css';
 
 import Context from '../../context'
 
-export default class tech extends React.Component {
-	static propTypes = {
-		name: PropTypes.string,
-	};
+const Tech = () => {
 
-	state = {
-		isProjectActive: false,
-		projectId: undefined,
-		imgHeight: '350px',
-		isDesktop: this.context.isDesktop
+	const [ isProjectActive, setIsProjectActive ] = useState(false)
+	const [ projectId, setProjectId ] = useState(undefined)
+	const [ imgHeight, setImgHeight ] = useState('350px')
+
+	const toggleProject = (projectId) => {
+		setIsProjectActive(!isProjectActive)
+		setProjectId(projectId)
 	}
 
-	toggleProject = (projectId) => {
-		this.setState({
-			isProjectActive: !this.state.isProjectActive,
-			projectId: projectId
-		})
-	}
+	const { isDesktop, isPortrait } = useContext(Context)
 
-	static contextType = Context
+	useEffect(() => {
+		!isDesktop && setImgHeight('250px')
 
-	componentDidMount(){
-		if(!this.context.isDesktop){
-			this.setState({
-				imgHeight: '250px',
-				isDesktop: false
-			})
-		}
-	}
+		!isPortrait && navigate('/terminal')
+	}, [isDesktop, isPortrait])
 
-	componentDidUpdate(){
-		if(!this.context.isPortrait){
-			navigate('/terminal')
-		}
-	}
-
-	render() {
-
-		const enableInteractiveMode = this.state.isDesktop ? 
+	const enableInteractiveMode = isDesktop ? 
 			<Link to='/terminal'><span className='button'>switch to interactive console</span></Link>
 			:
 			<span><br></br>{`<rotate for interactive console>`}</span>
 
-		return (
+	return (
+		<Layout>
+			<div className={techStyles.techProjects}>
 
-			<Layout>
-				<div className={techStyles.techProjects}>
+				<p className={techStyles.formatText}>
+					Tech Portfolio 
+					{` `}
+					{enableInteractiveMode}
+				</p>
 
-					<p className={techStyles.formatText}>
-						Tech Portfolio 
-						{` `}
-						{enableInteractiveMode}
-					</p>
+				<Projects className={projectsStyles.projects} 
+				toggleProject={toggleProject} 
+				imgHeight={imgHeight} isLightTheme={true} isTerminal={false}/>
 
-					<Projects className={projectsStyles.projects} 
-					toggleProject={this.toggleProject} 
-					imgHeight={this.state.imgHeight} isLightTheme={true} isTerminal={false}/>
+				{
+					isProjectActive && isDesktop &&
+						<TechProject 
+						projectId={projectId} 
+						toggleProject={toggleProject} />
+				}
 
-					{
-						this.state.isProjectActive && this.state.isDesktop &&
-							<TechProject 
-							projectId={this.state.projectId} 
-							toggleProject={this.toggleProject} />
-					}
-
-				</div>
-			</Layout>
-		);
-	}
+			</div>
+		</Layout>
+	)
 }
+
+export default Tech
