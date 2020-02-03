@@ -105,6 +105,7 @@
         flex-direction: column;
         justify-content: center;
         z-index: 1;
+        position: fixed;
     }
 
     .navigation-menu ul {
@@ -153,5 +154,6 @@
 @media screen and (max-device-width: 400px){
     .navigation-menu {
         width: 55%;
+        position: fixed;
     }
 }

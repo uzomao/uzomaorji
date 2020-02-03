@@ -7,7 +7,7 @@ const RotateNotice = () => {
     return (
         <div id={rotateNoticeStyles.rotateNotice} className={rotateNoticeStyles.rotateNotice}>
             <h2>
-                Rotate your screen
+                Please rotate your screen
                 {` `}
                 <span role='img' aria-label='rotate-screen'>🔄</span>
             </h2>
