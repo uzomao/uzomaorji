@@ -35,7 +35,7 @@ const Index = (props) => {
 
     const { isDesktop, isPortrait } = useContext(Context)
 
-    const [ textPrompt, setTextPrompt ] = useState('Please Rotate Us')
+    const [ textPrompt, setTextPrompt ] = useState('')
 
     useEffect(() => {
 

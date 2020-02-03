@@ -33,7 +33,7 @@ const VisualTemplate = (props) => {
             <div className={visualStyles.visual}>
                 <h1>{title}</h1>
 
-                <section className={visualStyles.text}>
+                <section className={visualStyles.text} id={visualStyles.text}>
                     <p dangerouslySetInnerHTML={{__html: text.text}}>
                     </p>
                     <button onClick={ () => navigate('/visuals') }>Back</button>
