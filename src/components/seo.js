@@ -43,6 +43,8 @@ const SEO = ({ title, description, image, pathname, article }) => (
                 <meta name="twitter:description" content={seo.description} />
                 )}
                 {seo.image && <meta name="twitter:image" content={seo.image} />}
+                <meta name="google-site-verification" content="zKlztEqiOxILJivb3lQKV44MRHP-ugSc4br8GpZ78L0" />
+                <meta name="keywords" content="uzoma orji, uzoma, artist, technologist, portfolio, work, tech, art, exhibition"
             </Helmet>
             </>
         )
