@@ -10,12 +10,17 @@ const Header = ({ isLightTheme }) => {
 
 	return (
 		<div className={headerStyles.headerBlock}>
-			<Link to='/'><h2 id={headerStyles.header} onMouseOver={() => 
-				{document.getElementById(headerStyles.header).innerHTML = 'creative technologist/visual artist'}
-			} onMouseOut={() => 
-				{document.getElementById(headerStyles.header).innerHTML = 'Uzoma Orji'}
-			} className={headerThemeClass}>Uzoma Orji</h2>
-			</Link>
+			<h2>
+				<Link to='/'
+					id={headerStyles.header}
+					onMouseOver={() => {document.getElementById(headerStyles.header).innerHTML = 'creative technologist/visual artist'}}
+					onFocus={ () => void 0 }
+					onMouseOut={() => {document.getElementById(headerStyles.header).innerHTML = 'Uzoma Orji'}}
+					onBlur={ () => void 0 } 
+					className={headerThemeClass}>
+						Uzoma Orji
+				</Link>
+			</h2>
 
 			<Navigation />
 		</div>

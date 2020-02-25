@@ -41,17 +41,17 @@ const JoinMailingList = ( { closeModal }) => {
                 
                         <form onSubmit={(e) => _handleSubmit(e)}>
                             <div className={mailingListStyles.formGroup}>
-                                <label>
+                                <label htmlFor={mailingListNameID}>
                                     <h3>Your first name</h3>
+                                    <input type="text" name="name" id={mailingListNameID} />
                                 </label>
-                                <input type="text" name="name" id={mailingListNameID} />
                             </div>
 
                             <div className={mailingListStyles.formGroup}>
-                                <label>
+                                <label htmlFor={mailingListEmailID}>
                                     <h3>Your email address**</h3>
+                                    <input type="text" name="email" id={mailingListEmailID} required={true} />
                                 </label>
-                                <input type="text" name="email" id={mailingListEmailID} required={true} />
                             </div>
 
                             <p className={mailingListStyles.caveat}>*if you would like to engage, like, on a deeper level</p>

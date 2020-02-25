@@ -26,6 +26,17 @@
     transition: .5s ease;
 }
 
+@keyframes appear {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
+
+#text-title {
+    display: none;
+    animation: appear 2s;
+    text-align: left;
+}
+
 .visual .text p {
     font-size: 20px;
     margin: 5% 0;

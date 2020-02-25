@@ -28,7 +28,7 @@ const About = () => {
                         </p>
                         <p>
                             As an artist he observes and then creates representations of society and of history; visual metaphors that explain
-                            his millenial Igbo Nigerian cultural context and the cultural environment he hopes to one day live in.
+                            his millennial Igbo Nigerian cultural context and the cultural environment he hopes to one day live in.
                         </p>
 
                         <p>
