@@ -86,6 +86,18 @@ const About = () => {
                     </p>
                 </section>
 
+                <section className={aboutStyles.aboutText}>
+                    <h2>Press</h2>
+
+                    <p>
+                        A'naala Blog
+                        <span> - </span>
+                        <a href="https://www.anaalablog.com/home/uzoma-orji-swimming-in-the-divide-pt-1">
+                            Uzoma Orji: Swimming in the Divide (pt. 1)
+                        </a>
+                    </p>
+                </section>
+
                 <section className={aboutStyles.aboutText} style={{marginBottom: '3em'}}>
                     <p>
                         <a href="http://instagram.com/uzomaorji_" target="_blank" rel="noopener noreferrer">
@@ -97,6 +109,7 @@ const About = () => {
                         </a>
                     </p>
                 </section>
+
             </main>
         </Layout>
     )
