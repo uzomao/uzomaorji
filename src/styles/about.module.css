@@ -21,10 +21,6 @@
     max-width: 50%;
 }
 
-.about-text h2 {
-    text-decoration: underline;
-}
-
 .about-text p{
     text-align: justify;
     margin: .55rem;
