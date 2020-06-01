@@ -62,16 +62,19 @@ p, button, a{
 
 button, .button {
     outline: none;
-    background: none;
+    background: #1e272e;
+    color: #fff;
     padding: 10px;
-    border: 2px solid #0c0c0c;
+    border: 2px solid #fff;
     cursor: pointer;
+    box-shadow: 4px 4px #ffcccc;
 }
 
 button:hover, .button:hover {
-    background: #1e272e;
+    background: #203748;
     color: #fff;
     border: 2px solid #fff;
+    box-shadow: 8px 8px #ffcccc;
 }
 
 a {
