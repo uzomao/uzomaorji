@@ -1,10 +1,8 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useState } from 'react'
 import { graphql, navigate } from 'gatsby'
 import Layout from '../components/layout'
 
 import visualStyles from '../styles/visual.module.css'
-
-import Context from '../../context'
 
 import Img from 'gatsby-image'
 
@@ -30,60 +28,52 @@ const VisualTemplate = (props) => {
 
     const {title, text, images} = props.data.contentfulVisual
 
-    const { isDesktop } = useContext(Context)
+    const image = 'image'
+    const description = 'description'
 
-    let counter = 0;
+    const [ showImageOrDescription, setshowImageOrDescription ] = useState(image)
+    const [ index, setIndex ] = useState(0)
 
-    const onImageScroll = () => {
-        let textSection = document.getElementById(visualStyles.text)
-        let textTitle = document.getElementById(visualStyles.textTitle)
+    const imageCount = images.length
 
-        if(window.pageYOffset < 150){
-            textSection.style.top = '30%'
-            textTitle.style.display = 'none'
-            counter = 0
-        } else if(counter === 0){
-            textSection.style.top = 0
-            textTitle.style.display = 'block'
-            counter += 1
-        }
+    const getActiveClass = (criteria) => {
+        return showImageOrDescription === criteria ? visualStyles.active : '' 
     }
 
-    useEffect(() => {
-        if(isDesktop){
-            document.body.onscroll = onImageScroll
-        }
-    }, [isDesktop])
-
-    useEffect(() => {
-        return () => {
-          document.body.onscroll = null
-        };
-      }, []);
-
     return (
-        <Layout noFooter="true">
+        <Layout noFooter={true} noHeader={true}>
             <div className={visualStyles.visual}>
-                <h1>{title}</h1>
+                <h2>{title}</h2>
+                <p className="filter-button-container">
+                    <button className={`filter-button ${getActiveClass(image)}`} onClick={() => setshowImageOrDescription(image)}>Images</button> 
+                    | 
+                    <button className={`filter-button ${getActiveClass(description)}`}  onClick={() => setshowImageOrDescription(description)}>Description</button>
+                </p>
 
-                <section className={visualStyles.text} id={visualStyles.text}>
-                    <h1 id={visualStyles.textTitle}>{title}</h1>
-                    <p dangerouslySetInnerHTML={{__html: text.text}}>
-                    </p>
-                    <button onClick={ () => navigate('/visuals') }>Back</button>
-                </section>
-
-                <section className={visualStyles.images}>
-                    <ul>
-                    {
-                        images.map((image, index) =>
-                            <li key={index}>
-                                <Img fluid={image.fluid} alt={title} />
-                            </li> 
-                        )
-                    }
-                    </ul>
-                </section>
+                {
+                    showImageOrDescription === image ?
+                        <section className={visualStyles.images}>
+                            <Img fluid={images[index].fluid} alt={title} />
+                            <div className="filter-button-container">
+                                { index > 0 && <button className="filter-button" onClick={() => setIndex(index-1)}>Prev</button> }
+                                <div>
+                                    <div className={visualStyles.outerCircle}>
+                                        <div className={visualStyles.innerCircle}
+                                        style={{
+                                            width: `${(index+1)/imageCount*100}%`,
+                                            height: `${(index+1)/imageCount*100}%`
+                                        }}></div>
+                                    </div>                             
+                                </div>
+                                { index < imageCount - 1 && <button className="filter-button" onClick={() => setIndex(index+1)}>Next</button> }
+                            </div>
+                        </section>
+                        :
+                        <section className={visualStyles.text} id={visualStyles.text}>
+                            <p dangerouslySetInnerHTML={{__html: text.text}}></p>
+                        </section>
+                }
+                
             </div>
         </Layout>
     )

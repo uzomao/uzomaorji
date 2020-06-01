@@ -1,8 +1,7 @@
-.visual h1 {
-    font-family: 'Merriweather', Helvetica, serif;
+.visual h2 {
     text-align: center;
     text-transform: capitalize;
-    margin: 5% 0 2.5% 0;
+    margin: 1em;
 }
 
 .back {
@@ -26,17 +25,6 @@
     transition: .5s ease;
 }
 
-@keyframes appear {
-    from {opacity: 0}
-    to {opacity: 1}
-  }
-
-#text-title {
-    display: none;
-    animation: appear 2s;
-    text-align: left;
-}
-
 .visual .text p {
     font-size: 20px;
     margin: 5% 0;
@@ -48,9 +36,8 @@
 }
 
 .visual .images {
-    list-style: none;
-    width: 65%;
-    float: right;
+    width: 50%;
+    margin: auto
 }
 
 .visual .images li {
@@ -58,6 +45,24 @@
 }
 .visual .images li img {
     max-width: 100%;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.outer-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid #1e272e;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} .inner-circle {
+    background: #1e272e;
+    border-radius: 100%;
 }
 
 @media screen and (max-device-width: 700px) {
