@@ -1,7 +1,16 @@
+.visual header {
+    display: flex;
+    align-items: center;
+}
+
+.visual header a {
+    position: absolute;
+    left: 5em;
+}
+
 .visual h2 {
-    text-align: center;
     text-transform: capitalize;
-    margin: 1em;
+    margin: 1em auto;
 }
 
 .back {
@@ -15,19 +24,22 @@
 }
 
 .visual .text {
-    width: 32.5%;
-    padding-left: 20px;
-    float: left;
-    position: fixed;
-    top: 30%; /* arbitrary figure, proceed with caution */
-    bottom: 0;
-    overflow-y: auto;
-    transition: .5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin: 0 15%;
+    text-align: justify;
+}
+
+.visual .text a {
+    margin-top: 5em;
 }
 
 .visual .text p {
     font-size: 20px;
-    margin: 5% 0;
+    margin: 1em;
 }
 
 .visual .text button {
@@ -63,6 +75,20 @@
 } .inner-circle {
     background: #1e272e;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} .inner-circle a {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 15px 12px; /* did some trial and error here */
+    animation: appear 1.5s;
+}
+
+@keyframes appear {
+    from { opacity: 0; }
+    to {opacity: 1; }
 }
 
 @media screen and (max-device-width: 700px) {

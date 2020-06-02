@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { graphql, navigate } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 
 import visualStyles from '../styles/visual.module.css'
@@ -40,10 +40,15 @@ const VisualTemplate = (props) => {
         return showImageOrDescription === criteria ? visualStyles.active : '' 
     }
 
+    const innerCircleDimensions = `${(index+1)/imageCount*100}%`
+
     return (
         <Layout noFooter={true} noHeader={true}>
             <div className={visualStyles.visual}>
-                <h2>{title}</h2>
+                <header>
+                    <Link to='/visuals'>Exit</Link>
+                    <h2>{title}</h2>
+                </header>
                 <p className="filter-button-container">
                     <button className={`filter-button ${getActiveClass(image)}`} onClick={() => setshowImageOrDescription(image)}>Images</button> 
                     | 
@@ -56,21 +61,26 @@ const VisualTemplate = (props) => {
                             <Img fluid={images[index].fluid} alt={title} />
                             <div className="filter-button-container">
                                 { index > 0 && <button className="filter-button" onClick={() => setIndex(index-1)}>Prev</button> }
-                                <div>
-                                    <div className={visualStyles.outerCircle}>
-                                        <div className={visualStyles.innerCircle}
+                                <span>
+                                    <span className={visualStyles.outerCircle}>
+                                        <span className={visualStyles.innerCircle}
                                         style={{
-                                            width: `${(index+1)/imageCount*100}%`,
-                                            height: `${(index+1)/imageCount*100}%`
-                                        }}></div>
-                                    </div>                             
-                                </div>
+                                            width: innerCircleDimensions,
+                                            height: innerCircleDimensions
+                                        }}>
+                                            {
+                                                innerCircleDimensions === '100%' && <Link to='/visuals'>Back</Link>
+                                            }
+                                        </span>
+                                    </span>                             
+                                </span>
                                 { index < imageCount - 1 && <button className="filter-button" onClick={() => setIndex(index+1)}>Next</button> }
                             </div>
                         </section>
                         :
                         <section className={visualStyles.text} id={visualStyles.text}>
                             <p dangerouslySetInnerHTML={{__html: text.text}}></p>
+                            <Link to='/visuals'>Exit</Link>
                         </section>
                 }
                 
