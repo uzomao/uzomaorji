@@ -111,8 +111,11 @@
 	}
 
 	.project-left {
-		margin-right: 0;
+		margin: 1%;
 	}
+
+	/* A hacky way to ensure a margin above and below the image on mobile */
+	.project-left p { margin-bottom: 5%;} .project-navigation { margin-top: 2.5%}
 
 	.project-navigation svg {
 		font-size: 42px;

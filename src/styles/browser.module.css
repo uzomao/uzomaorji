@@ -89,4 +89,8 @@
 	.browser-window {
 		height: 250px;
 	}
+
+	.ui {
+		text-align: left !important;
+	}
 }

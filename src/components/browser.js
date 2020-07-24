@@ -1,9 +1,11 @@
 import React from 'react'
 import Img from 'gatsby-image'
 
+import { Link } from 'gatsby'
+
 import browserStyles from '../styles/browser.module.css'
 
-const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, isTerminal } ) => {
+const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, projectSlug, isTerminal } ) => {
 
     const themeClass = isLightTheme ? browserStyles.lightTheme : browserStyles.darkTheme
     const headerWidth = isTerminal ? {width: '100%'} : {width: '40%'}
@@ -21,9 +23,11 @@ const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, isTe
                 <Img fluid={projectImage} alt={projectAlt} className={browserStyles.projectImage}/>
                 {
                     includeOverlay &&
-                        <div className={browserStyles.overlay}>
-                            <p className={browserStyles.overlayText}>SEE PROJECT</p>
-                        </div>
+                        <Link to={`/tech/${projectSlug}`}>
+                            <div className={browserStyles.overlay}>
+                                <p className={browserStyles.overlayText}>SEE PROJECT</p>
+                            </div>
+                        </Link>
                     }
             </div>
         </div>

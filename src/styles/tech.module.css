@@ -15,7 +15,12 @@
 	font-family: 'PerfectDOS', 'Courier', 'Inconsolata', sans-serif;
 }
 
-@media screen and (max-device-width: 700px){
+@media screen and (max-device-width: 768px){
+
+	.tech-projects .format-text {
+		padding-bottom: 5%
+	}
+	
 	.format-text a span {
 		font-size: 14px;
 	}

@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Browser from '../components/browser'
 
@@ -37,6 +37,7 @@ const Projects = (props) => {
                     dateCompleted(formatString: "MMMM YYYY")
                     projectType
                     tags
+                    slug
                 }
             }
         }
@@ -59,6 +60,7 @@ const Projects = (props) => {
                     isLightTheme={props.isLightTheme}
                     isTerminal={props.isTerminal}
                     includeOverlay={true}
+                    projectSlug={currentProject.slug}
                 />
             </div>
             <div className={projectsStyles.projectRight}>
@@ -97,7 +99,9 @@ const Projects = (props) => {
                 </div>
 
                 <div className>
-                    <button className='button' style={{width: '100%'}}>See Project</button>
+                    <Link to={`/tech/${currentProject.slug}`}>
+                        <button className='button' style={{width: '100%'}}>See Project</button>
+                    </Link>
                 </div>
             </div>
         </div>
