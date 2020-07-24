@@ -15,7 +15,6 @@ const Tech = () => {
 
 	const [ isProjectActive, setIsProjectActive ] = useState(false)
 	const [ projectId, setProjectId ] = useState(undefined)
-	const [ imgHeight, setImgHeight ] = useState('350px')
 
 	const toggleProject = (projectId) => {
 		setIsProjectActive(!isProjectActive)
@@ -25,8 +24,6 @@ const Tech = () => {
 	const { isDesktop, isPortrait } = useContext(Context)
 
 	useEffect(() => {
-		!isDesktop && setImgHeight('250px')
-
 		!isPortrait && navigate('/terminal')
 	}, [isDesktop, isPortrait])
 
@@ -47,7 +44,7 @@ const Tech = () => {
 
 				<Projects className={projectsStyles.projects} 
 				toggleProject={toggleProject} 
-				imgHeight={imgHeight} isLightTheme={true} isTerminal={false}/>
+				isLightTheme={true} isTerminal={false}/>
 
 				{
 					isProjectActive && isDesktop &&

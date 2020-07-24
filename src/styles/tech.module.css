@@ -1,5 +1,7 @@
 .tech-projects .format-text {
-	margin: 0 0 5% 5%;
+	margin: 0 5% 2.5%;
+	padding-bottom: 2.5%;
+	border-bottom: 1.5px solid #474747;
 }
 
 @font-face {

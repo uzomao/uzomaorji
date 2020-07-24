@@ -1,9 +1,9 @@
 import React from 'react'
-// import Img from 'gatsby-image'
+import Img from 'gatsby-image'
 
 import browserStyles from '../styles/browser.module.css'
 
-const Browser = ( { projectImage, projectAlt, isLightTheme, height, isTerminal } ) => {
+const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, isTerminal } ) => {
 
     const themeClass = isLightTheme ? browserStyles.lightTheme : browserStyles.darkTheme
     const headerWidth = isTerminal ? {width: '100%'} : {width: '40%'}
@@ -17,8 +17,14 @@ const Browser = ( { projectImage, projectAlt, isLightTheme, height, isTerminal }
                     <li className={browserStyles.max}></li>
                 </ul>
             </div>
-            <div className={browserStyles.browserWindow} style={{height: height}}>
-                <img src={projectImage} alt={projectAlt} className={browserStyles.projectImage} style={{height: height}} />
+            <div className={browserStyles.browserWindow}>
+                <Img fluid={projectImage} alt={projectAlt} className={browserStyles.projectImage}/>
+                {
+                    includeOverlay &&
+                        <div className={browserStyles.overlay}>
+                            <p className={browserStyles.overlayText}>SEE PROJECT</p>
+                        </div>
+                    }
             </div>
         </div>
     )
