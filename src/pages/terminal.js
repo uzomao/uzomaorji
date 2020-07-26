@@ -162,7 +162,7 @@ export default class Terminal extends React.Component {
                 {commandList}
 
                 <div id={terminalStyles.allProjects}>
-                    <Projects className={terminalStyles.allTerminalProjects} isLightTheme={false} imgHeight={this.state.projImgHeight} isTerminal={true} />
+                    <Projects className={terminalStyles.allTerminalProjects} isLightTheme={false} imgHeight={this.state.projImgHeight} isTerminal={true} currentProjectIndex={0} />
                 </div>
 
                 <div id={terminalStyles.singleProject}>

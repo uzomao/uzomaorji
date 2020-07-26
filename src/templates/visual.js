@@ -48,7 +48,9 @@ const VisualTemplate = (props) => {
         <Layout noFooter={true} noHeader={true}>
             <div className={visualStyles.visual}>
                 <header>
-                    <Link to='/visuals'>Exit</Link>
+                    <Link to='/visuals'>
+                        <button className="button">Back to projects</button>
+                    </Link>
                     <h2>{title}</h2>
                 </header>
                 <p className="filter-button-container">
