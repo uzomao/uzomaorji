@@ -49,15 +49,15 @@ const TechTemplate = (props) => {
 
     const innerCircleDimensions = `${(index+1)/imageCount*100}%`
 
+    const backBtn = <Link to='/tech' state={{currentProjectIndex: props.location.state.currentProjectIndex}}>
+                        <button className="button">Back to projects</button>
+                    </Link>
+
     return (
         <Layout noHeader={true} noFooter={true}>
             <div className={`${visualStyles.visual} ${visualStyles.visualTech}`}>
                 <header>
-                    <Link to='/tech'>
-                        <button className="button">
-                            Back to projects
-                        </button>
-                    </Link>
+                    {backBtn}
                     <h2 style={{fontSize: '1.75rem'}}>{title}</h2>
                 </header>
 

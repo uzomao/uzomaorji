@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 
 import browserStyles from '../styles/browser.module.css'
 
-const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, projectSlug, isTerminal } ) => {
+const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, projectSlug, currentProjectIndex, isTerminal } ) => {
 
     const themeClass = isLightTheme ? browserStyles.lightTheme : browserStyles.darkTheme
     const headerWidth = isTerminal ? {width: '100%'} : {width: '40%'}
@@ -23,7 +23,7 @@ const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, proj
                 <Img fluid={projectImage} alt={projectAlt} className={browserStyles.projectImage}/>
                 {
                     includeOverlay &&
-                        <Link to={`/tech/${projectSlug}`}>
+                        <Link to={`/tech/${projectSlug}`} state={{currentProjectIndex: currentProjectIndex}}>
                             <div className={browserStyles.overlay}>
                                 <p className={browserStyles.overlayText}>SEE PROJECT</p>
                             </div>

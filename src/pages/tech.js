@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 
 import { Link, navigate } from 'gatsby'
 
-import TechProject from '../components/tech-project'
 import Projects from '../components/projects'
 import Layout from '../components/layout'
 
@@ -11,15 +10,7 @@ import techStyles from '../styles/tech.module.css';
 
 import Context from '../../context'
 
-const Tech = () => {
-
-	const [ isProjectActive, setIsProjectActive ] = useState(false)
-	const [ projectId, setProjectId ] = useState(undefined)
-
-	const toggleProject = (projectId) => {
-		setIsProjectActive(!isProjectActive)
-		setProjectId(projectId)
-	}
+const Tech = (props) => {
 
 	const { isDesktop, isPortrait } = useContext(Context)
 
@@ -37,21 +28,17 @@ const Tech = () => {
 			<div className={techStyles.techProjects}>
 
 				<p className={techStyles.formatText}>
-					Tech Portfolio 
+					Here's a selection of tech things I've made
 					{` `}
 					{enableInteractiveMode}
 				</p>
 
 				<Projects className={projectsStyles.projects} 
-				toggleProject={toggleProject} 
-				isLightTheme={true} isTerminal={false}/>
-
-				{
-					isProjectActive && isDesktop &&
-						<TechProject 
-						projectId={projectId} 
-						toggleProject={toggleProject} />
-				}
+					isLightTheme={true} 
+					isTerminal={false}
+					currentProjectIndex={ 
+						props.location.state.currentProjectIndex ? props.location.state.currentProjectIndex : 0 }
+				/>
 
 			</div>
 		</Layout>

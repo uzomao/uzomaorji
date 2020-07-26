@@ -43,7 +43,7 @@ const Projects = (props) => {
         }
     `)
 
-    const [ currentProjectIndex, setCurrentProjectIndex ] = useState(0)
+    const [ currentProjectIndex, setCurrentProjectIndex ] = useState(props.currentProjectIndex)
     const currentProjectCount = currentProjectIndex + 1
     const totalProjectCount = projects.allContentfulTech.nodes.length
     const currentProject = projects.allContentfulTech.nodes[currentProjectIndex]
@@ -61,6 +61,7 @@ const Projects = (props) => {
                     isTerminal={props.isTerminal}
                     includeOverlay={true}
                     projectSlug={currentProject.slug}
+                    currentProjectIndex={currentProjectIndex}
                 />
             </div>
             <div className={projectsStyles.projectRight}>
@@ -99,7 +100,9 @@ const Projects = (props) => {
                 </div>
 
                 <div className>
-                    <Link to={`/tech/${currentProject.slug}`}>
+                    <Link to={`/tech/${currentProject.slug}`} state={{
+                        currentProjectIndex: currentProjectIndex
+                    }}>
                         <button className='button' style={{width: '100%'}}>See Project</button>
                     </Link>
                 </div>
