@@ -49,7 +49,10 @@ const TechTemplate = (props) => {
 
     const innerCircleDimensions = `${(index+1)/imageCount*100}%`
 
-    const backBtn = <Link to='/tech' state={{currentProjectIndex: props.location.state.currentProjectIndex}}>
+    const backBtn = <Link to='/tech' state={{
+                            currentProjectIndex: props.location.state ? 
+                                props.location.state.currentProjectIndex : 0
+                        }}>
                         <button className="button">Back to projects</button>
                     </Link>
 
