@@ -2,13 +2,71 @@
 	display: flex;
 	list-style: none;
 	flex-wrap: wrap;
-	margin-left: .5%;
-	padding: 0
+	padding: 0;
+	margin: 5%;
+	margin-top: 2.5%;
+}
+
+/* PROJECT DISPLAY ON TECH PAGE */
+
+.project-left {
+	width: 65%;
+	margin-right: 5%;
+}
+
+.project-left p {
+	color: #292929;
+}
+
+.project-left > * {
+	margin: 1.5% 0;
+}
+
+.project-left > div {
+	width: 80%
+}
+
+.project-title {
+	font-size: 1.75rem;
+}
+
+.project-description {
+	font-size: 21px;
+}
+
+.project-right {
+	width: 30%;
+	text-align: right;
+}
+
+.project-right {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.project-right > * {
+	margin: 1.5% 0;
+}
+
+.project-right p {
+	text-transform: uppercase;
+	font-size: 20px;
+	color: #292929;
+}
+
+.project-navigation svg {
+	font-size: 36px;
+	cursor: pointer;
+} .project-navigation svg:first-child { margin-right: 1%}
+
+.project-navigation svg:hover {
+	color: pink
 }
 
 .projects li, .project-link {
-	max-width: 39.5%;
-	margin: 5%;
+	max-width: 45%;
+	margin: 1.5% 2.5%;
 	margin-top: 0;
 }
 
@@ -33,14 +91,34 @@
 	margin: 1em 0;
 }
 
-@media screen and (max-device-width: 700px){
+@media screen and (max-device-width: 768px){
 	
 	.projects {
 		flex-direction: column;
+		margin: 0;
 	}
 
-	.projects li {
-		max-width: 98.5%
+	.project-left, .project-left > div, .project-right {
+		width: unset;
+	}
+
+	.project-left, .project-right { 
+		text-align: center;
+	}
+
+	.project-left > *, .project-right > *{
+		margin: 2.5% 0;
+	}
+
+	.project-left {
+		margin: 1%;
+	}
+
+	/* A hacky way to ensure a margin above and below the image on mobile */
+	.project-left p { margin-bottom: 5%;} .project-navigation { margin-top: 2.5%}
+
+	.project-navigation svg {
+		font-size: 42px;
 	}
 
 	.tech-projects .format-text, .projects li article p {

@@ -1,12 +1,12 @@
-import React, { useEffect, useContext } from 'react'
-import { graphql, navigate } from 'gatsby'
+import React, { useState } from 'react'
+import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 
 import visualStyles from '../styles/visual.module.css'
 
-import Context from '../../context'
-
 import Img from 'gatsby-image'
+
+import { FaChevronLeft, FaChevronRight, FaUndoAlt } from 'react-icons/fa'
 
 export const data = graphql`
     query ($slug: String) {
@@ -30,60 +30,70 @@ const VisualTemplate = (props) => {
 
     const {title, text, images} = props.data.contentfulVisual
 
-    const { isDesktop } = useContext(Context)
+    const image = 'image'
+    const description = 'description'
 
-    let counter = 0;
+    const [ showImageOrDescription, setshowImageOrDescription ] = useState(image)
+    const [ index, setIndex ] = useState(0)
 
-    const onImageScroll = () => {
-        let textSection = document.getElementById(visualStyles.text)
-        let textTitle = document.getElementById(visualStyles.textTitle)
+    const imageCount = images.length
 
-        if(window.pageYOffset < 150){
-            textSection.style.top = '30%'
-            textTitle.style.display = 'none'
-            counter = 0
-        } else if(counter === 0){
-            textSection.style.top = 0
-            textTitle.style.display = 'block'
-            counter += 1
-        }
+    const getActiveClass = (criteria) => {
+        return showImageOrDescription === criteria ? visualStyles.active : '' 
     }
 
-    useEffect(() => {
-        if(isDesktop){
-            document.body.onscroll = onImageScroll
-        }
-    }, [isDesktop])
-
-    useEffect(() => {
-        return () => {
-          document.body.onscroll = null
-        };
-      }, []);
+    const innerCircleDimensions = `${(index+1)/imageCount*100}%`
 
     return (
-        <Layout noFooter="true">
+        <Layout noFooter={true} noHeader={true}>
             <div className={visualStyles.visual}>
-                <h1>{title}</h1>
+                <header>
+                    <Link to='/visuals'>
+                        <button className="button">Back to projects</button>
+                    </Link>
+                    <h2>{title}</h2>
+                </header>
+                <p className="filter-button-container">
+                    <button className={`filter-button ${getActiveClass(image)}`} onClick={() => setshowImageOrDescription(image)}>Images</button> 
+                    | 
+                    <button className={`filter-button ${getActiveClass(description)}`}  onClick={() => setshowImageOrDescription(description)}>Description</button>
+                </p>
 
-                <section className={visualStyles.text} id={visualStyles.text}>
-                    <h1 id={visualStyles.textTitle}>{title}</h1>
-                    <p dangerouslySetInnerHTML={{__html: text.text}}>
-                    </p>
-                    <button onClick={ () => navigate('/visuals') }>Back</button>
-                </section>
-
-                <section className={visualStyles.images}>
-                    <ul>
-                    {
-                        images.map((image, index) =>
-                            <li key={index}>
-                                <Img fluid={image.fluid} alt={title} />
-                            </li> 
-                        )
-                    }
-                    </ul>
-                </section>
+                {
+                    showImageOrDescription === image ?
+                        <section className={visualStyles.images}>
+                            <Img fluid={images[index].fluid} alt={title} />
+                            <div className={visualStyles.buttonContainer}>
+                                { index > 0 && <FaChevronLeft 
+                                    onClick={() => setIndex(index-1)} /> 
+                                }
+                                <span>
+                                    <span className={visualStyles.outerCircle}>
+                                        <span className={visualStyles.innerCircle}
+                                        style={{
+                                            width: innerCircleDimensions,
+                                            height: innerCircleDimensions
+                                        }}>
+                                            <span className={visualStyles.restartBtn}>
+                                                {
+                                                    innerCircleDimensions === '100%' && 
+                                                        <FaUndoAlt onClick={() => setIndex(0)} 
+                                                    />
+                                                }
+                                            </span>
+                                        </span>
+                                    </span>                             
+                                </span>
+                                { index < imageCount - 1 && <FaChevronRight onClick={() => setIndex(index+1)} /> }
+                            </div>
+                        </section>
+                        :
+                        <section className={visualStyles.text} id={visualStyles.text}>
+                            <p dangerouslySetInnerHTML={{__html: text.text}}></p>
+                            <Link to='/visuals'>Exit</Link>
+                        </section>
+                }
+                
             </div>
         </Layout>
     )

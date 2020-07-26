@@ -1,8 +1,18 @@
-.visual h1 {
-    font-family: 'Merriweather', Helvetica, serif;
-    text-align: center;
+.visual header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+}
+
+.visual header a {
+    margin: .5em;
+}
+
+.visual h2 {
     text-transform: capitalize;
-    margin: 5% 0 2.5% 0;
+    text-align: center;
+    margin: 1em auto;
 }
 
 .back {
@@ -16,31 +26,36 @@
 }
 
 .visual .text {
-    width: 32.5%;
-    padding-left: 20px;
-    float: left;
-    position: fixed;
-    top: 30%; /* arbitrary figure, proceed with caution */
-    bottom: 0;
-    overflow-y: auto;
-    transition: .5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    margin: 0 15%;
+    text-align: justify;
 }
 
-@keyframes appear {
-    from {opacity: 0}
-    to {opacity: 1}
-  }
+.visual .tech-text {
+    width: 50%;
+    margin: auto;
+}
 
-#text-title {
-    display: none;
-    animation: appear 2s;
-    text-align: left;
+.visual .text a {
+    margin-top: 5em;
 }
 
 .visual .text p {
     font-size: 20px;
-    margin: 5% 0;
+    margin: 1em;
 }
+
+.visual .tech-text p {margin: 1em 0}
+
+.url {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+} .url a { text-decoration: 2px #0c0c0c dotted !important;}
 
 .visual .text button {
     width: 100%;
@@ -48,9 +63,8 @@
 }
 
 .visual .images {
-    list-style: none;
-    width: 65%;
-    float: right;
+    width: 50%;
+    margin: auto
 }
 
 .visual .images li {
@@ -60,8 +74,86 @@
     max-width: 100%;
 }
 
-@media screen and (max-device-width: 700px) {
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+
+.button-container svg {
+    color: #1e272e;
+    font-size: 40px; /* same height as inner and outer circles */
+    cursor: pointer
+} .button-container svg:hover {
+    color: pink
+}
+
+.restart-btn svg {
+    font-size: 25px;
+    color: white;
+}
+
+.project-meta {
+    width: 50%;
+    margin: auto;
+    text-transform: uppercase;
+}
+
+.project-meta > div {
+    display: flex;
+    justify-content: space-between;
+} .project-meta > div p {
+    color: #474747;
+    font-size: 18px;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+.outer-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid #1e272e;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} .inner-circle {
+    background: #1e272e;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} .inner-circle a {
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 15px 12px; /* did some trial and error here */
+    animation: appear 1.5s;
+}
+
+@keyframes appear {
+    from { opacity: 0; }
+    to {opacity: 1; }
+}
+
+@media screen and (max-device-width: 768px) {
     .visual .text {
         position: initial;
+    }
+
+    .visual .tech-text, .visual .images, .project-meta {
+        width: 90%;
+    }
+
+    .visual .tech-text p {
+        margin: 1em;
+    }
+
+    .visual .text {
+        margin: unset;
+        width: unset;
     }
 }

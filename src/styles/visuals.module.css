@@ -36,11 +36,12 @@
     margin: 0 7.5px;
     text-transform: capitalize;
     cursor: pointer;
+    padding: 0 5px;
 }
 
 .work-list li:hover {
-    font-weight: bolder;
-    color: #86c1e9
+    background: #1e272e;
+    color: #fff;
 }
 
 .works-header {

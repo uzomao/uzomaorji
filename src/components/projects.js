@@ -4,10 +4,14 @@
  * by both tech.js and terminal.js (respectively the non-interactive and interactive modes of viewing tech projects)
  */
 
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import React, { useState } from 'react'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Browser from '../components/browser'
+
+import projectsStyles from '../styles/projects.module.css'
+
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa'
 
 const Projects = (props) => {
 
@@ -30,32 +34,80 @@ const Projects = (props) => {
                     detailedDescription {
                         detailedDescription
                     }
+                    dateCompleted(formatString: "MMMM YYYY")
+                    projectType
+                    tags
+                    slug
                 }
             }
         }
     `)
 
-    const locationPathname = typeof window !== `undefined` ? window.location.pathname : ''
-
-    const listOfProjects = projects.allContentfulTech.nodes.map((project, index) =>
-        <li key={index}>
-            <article onClick={() => props.toggleProject(index)}>
-                <Browser projectImage={project.image[0].fluid.src} projectAlt={project.description} 
-                height={props.imgHeight} isLightTheme={props.isLightTheme} isTerminal={props.isTerminal} />
-                {
-                    locationPathname.includes('/tech') ?
-                        <p>{project.description}</p>
-                    :
-                        <p>{project.terminalName}</p>
-                }
-            </article>
-        </li>
-    )
+    const [ currentProjectIndex, setCurrentProjectIndex ] = useState(props.currentProjectIndex)
+    const currentProjectCount = currentProjectIndex + 1
+    const totalProjectCount = projects.allContentfulTech.nodes.length
+    const currentProject = projects.allContentfulTech.nodes[currentProjectIndex]
 
     return (
-        <ul className={props.className}>
-            {listOfProjects}
-        </ul>
+        <div className={props.className} style={{display: 'flex'}}>
+            <div className={projectsStyles.projectLeft}>
+                <h2 className={projectsStyles.projectTitle}>{currentProject.title}</h2>
+                <p className={projectsStyles.projectDescription}>{currentProject.description}</p>
+
+                <Browser 
+                    projectImage={currentProject.image[0].fluid}
+                    projectAlt={currentProject.description}
+                    isLightTheme={props.isLightTheme}
+                    isTerminal={props.isTerminal}
+                    includeOverlay={true}
+                    projectSlug={currentProject.slug}
+                    currentProjectIndex={currentProjectIndex}
+                />
+            </div>
+            <div className={projectsStyles.projectRight}>
+                <div>
+                    <div className={projectsStyles.projectNavigation}>
+                        { currentProjectCount !== 1 && 
+                            <FaArrowAltCircleLeft 
+                                onClick={
+                                    () => currentProjectCount === totalProjectCount ? 
+                                        setCurrentProjectIndex(0) 
+                                        :
+                                        setCurrentProjectIndex(currentProjectIndex - 1)
+                                }
+                            />  
+                        }
+                        { currentProjectCount !== totalProjectCount && 
+                            <FaArrowAltCircleRight 
+                                onClick={() => setCurrentProjectIndex(currentProjectIndex + 1) }
+                            /> 
+                        }
+                    </div>
+                    <p>{currentProjectCount} of {totalProjectCount}</p>
+                </div>
+
+                <p style={{fontSize: '21.5px', fontWeight: 'bold'}}>
+                    {currentProject.dateCompleted}
+                </p>
+
+                <div>
+                    <p>{currentProject.projectType}</p>
+                    <p style={{textTransform: 'lowercase'}}>
+                        {
+                            currentProject.tags.map((tag, index) => <span key={index}>{`[${tag}]`}</span>)
+                        }
+                    </p>
+                </div>
+
+                <div className>
+                    <Link to={`/tech/${currentProject.slug}`} state={{
+                        currentProjectIndex: currentProjectIndex
+                    }}>
+                        <button className='button' style={{width: '100%'}}>See Project</button>
+                    </Link>
+                </div>
+            </div>
+        </div>
     )
 }
 

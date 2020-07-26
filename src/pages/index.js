@@ -30,7 +30,7 @@ const Index = (props) => {
 		}, 2500);
     }
 
-    const techRoute = '/terminal'
+    const techRoute = '/tech'
     const visualRoute = '/visuals'
 
     const { isDesktop, isPortrait } = useContext(Context)
