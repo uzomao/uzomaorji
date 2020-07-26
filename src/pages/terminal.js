@@ -9,7 +9,7 @@ const Terminal = () => {
     const { isDesktop, isPortrait } = useContext(Context)
 
     useEffect(() => {
-		isPortrait && navigate('/tech')
+		!isDesktop && isPortrait && navigate('/tech')
 	}, [isPortrait])
 
     return (
@@ -29,7 +29,7 @@ const Terminal = () => {
                     <p>Please rotate your phone to go back</p>
                     :
                     <Link to='/tech'>
-                        <button className="button">Please click this to go back</button>
+                        <button className="button">Please check back later</button>
                     </Link>
             }
         </div>
