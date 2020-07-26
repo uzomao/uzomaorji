@@ -6,6 +6,8 @@ import visualStyles from '../styles/visual.module.css'
 
 import Img from 'gatsby-image'
 
+import { FaChevronLeft, FaChevronRight, FaUndoAlt } from 'react-icons/fa'
+
 export const data = graphql`
     query ($slug: String) {
         contentfulVisual (slug: {
@@ -59,8 +61,10 @@ const VisualTemplate = (props) => {
                     showImageOrDescription === image ?
                         <section className={visualStyles.images}>
                             <Img fluid={images[index].fluid} alt={title} />
-                            <div className="filter-button-container">
-                                { index > 0 && <button className="filter-button" onClick={() => setIndex(index-1)}>Prev</button> }
+                            <div className={visualStyles.buttonContainer}>
+                                { index > 0 && <FaChevronLeft 
+                                    onClick={() => setIndex(index-1)} /> 
+                                }
                                 <span>
                                     <span className={visualStyles.outerCircle}>
                                         <span className={visualStyles.innerCircle}
@@ -68,13 +72,17 @@ const VisualTemplate = (props) => {
                                             width: innerCircleDimensions,
                                             height: innerCircleDimensions
                                         }}>
-                                            {
-                                                innerCircleDimensions === '100%' && <Link to='/visuals'>Back</Link>
-                                            }
+                                            <span className={visualStyles.restartBtn}>
+                                                {
+                                                    innerCircleDimensions === '100%' && 
+                                                        <FaUndoAlt onClick={() => setIndex(0)} 
+                                                    />
+                                                }
+                                            </span>
                                         </span>
                                     </span>                             
                                 </span>
-                                { index < imageCount - 1 && <button className="filter-button" onClick={() => setIndex(index+1)}>Next</button> }
+                                { index < imageCount - 1 && <FaChevronRight onClick={() => setIndex(index+1)} /> }
                             </div>
                         </section>
                         :
