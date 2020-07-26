@@ -1,9 +1,6 @@
-// import React, { useState, useEffect, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 
-// import { Link, navigate } from 'gatsby'
-
-import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 import Projects from '../components/projects'
 import Layout from '../components/layout'
@@ -15,16 +12,16 @@ import Context from '../../context'
 
 const Tech = (props) => {
 
-	// const { isDesktop, isPortrait } = useContext(Context)
+	const { isDesktop, isPortrait } = useContext(Context)
 
-	// useEffect(() => {
-	// 	!isPortrait && navigate('/terminal')
-	// }, [isDesktop, isPortrait])
+	useEffect(() => {
+		!isPortrait && navigate('/terminal')
+	}, [isDesktop, isPortrait])
 
-	// const enableInteractiveMode = isDesktop ? 
-	// 		<Link to='/terminal'><span className='button'>switch to interactive console</span></Link>
-	// 		:
-	// 		<span><br></br>{`<rotate for interactive console>`}</span>
+	const enableInteractiveMode = isDesktop ? 
+			<Link to='/terminal'><span className='button'>switch to interactive console</span></Link>
+			:
+			<span><br></br>{`<rotate for interactive console>`}</span>
 
 	return (
 		<Layout>
@@ -32,8 +29,8 @@ const Tech = (props) => {
 
 				<p className={techStyles.formatText}>
 					Here's a selection of tech things I've made
-					{/* {` `}
-					{enableInteractiveMode} */}
+					{` `}
+					{enableInteractiveMode}
 				</p>
 
 				<Projects className={projectsStyles.projects} 
