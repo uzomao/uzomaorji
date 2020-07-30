@@ -15,10 +15,10 @@ const Header = ({ isLightTheme }) => {
 					id={headerStyles.header}
 					onMouseOver={() => {document.getElementById(headerStyles.header).innerHTML = 'creative technologist/visual artist'}}
 					onFocus={ () => void 0 }
-					onMouseOut={() => {document.getElementById(headerStyles.header).innerHTML = 'Uzoma Orji'}}
+					onMouseOut={() => {document.getElementById(headerStyles.header).innerHTML = 'uzoma chidumaga orji'}}
 					onBlur={ () => void 0 } 
 					className={headerThemeClass}>
-						Uzoma Orji
+						uzoma chidumaga orji
 				</Link>
 			</h2>
 
