@@ -10,8 +10,11 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import Browser from '../components/browser'
 
 import projectsStyles from '../styles/projects.module.css'
+import browserStyles from '../styles/browser.module.css'
 
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa'
+
+import Img from 'gatsby-image'
 
 const Projects = (props) => {
 
@@ -38,6 +41,10 @@ const Projects = (props) => {
                     projectType
                     tags
                     slug
+                    exhibitions {
+                        name
+                    }
+                    showInBrowser
                 }
             }
         }
@@ -62,6 +69,7 @@ const Projects = (props) => {
                     includeOverlay={true}
                     projectSlug={currentProject.slug}
                     currentProjectIndex={currentProjectIndex}
+                    showInBrowser={currentProject.showInBrowser}
                 />
             </div>
             <div className={projectsStyles.projectRight}>
@@ -99,7 +107,7 @@ const Projects = (props) => {
                     </p>
                 </div>
 
-                <div className>
+                <div>
                     <Link to={`/tech/${currentProject.slug}`} state={{
                         currentProjectIndex: currentProjectIndex
                     }}>

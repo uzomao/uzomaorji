@@ -27,6 +27,10 @@ export const data = graphql`
                     ...GatsbyContentfulFluid
                 }
             }
+            showInBrowser
+            exhibitions {
+                name
+            }
         }
     }
 `
@@ -41,7 +45,9 @@ const TechTemplate = (props) => {
         dateCompleted,
         projectType,
         tags,
-        image
+        image,
+        showInBrowser,
+        exhibitions
     } = props.data.contentfulTech
 
     const [ index, setIndex ] = useState(0)
@@ -72,6 +78,7 @@ const TechTemplate = (props) => {
                         isLightTheme={true}
                         isTerminal={false}
                         includeOverlay={false}
+                        showInBrowser={showInBrowser}
                     />
 
                     <div className={visualStyles.buttonContainer}>
@@ -117,6 +124,20 @@ const TechTemplate = (props) => {
                 <section className={`${visualStyles.text} ${visualStyles.techText}`} id={visualStyles.text}>
                     <p dangerouslySetInnerHTML={{__html: detailedDescription.detailedDescription}}></p>
                 </section>
+
+                {
+                    exhibitions &&
+                        <div className={visualStyles.techText} style={{marginBottom: '1em'}}>
+                            <h3 style={{margin: '1em 0'}}>Exhibited at:</h3>
+                            <ul>
+                                {
+                                    exhibitions.map(({name}, index) => 
+                                        <li key={index} className={visualStyles.techFontSize}>{name}</li>
+                                    )
+                                }
+                            </ul>
+                        </div>
+                }
 
                 {
                     url &&
