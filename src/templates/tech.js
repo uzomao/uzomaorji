@@ -8,6 +8,8 @@ import Browser from '../components/browser'
 
 import { FaChevronLeft, FaChevronRight, FaUndoAlt } from 'react-icons/fa'
 
+import Img from 'gatsby-image'
+
 export const data = graphql`
     query ($slug: String) {
         contentfulTech (slug: {
@@ -30,6 +32,7 @@ export const data = graphql`
             showInBrowser
             exhibitions {
                 name
+                url
             }
         }
     }
@@ -72,14 +75,18 @@ const TechTemplate = (props) => {
 
                 <section className={visualStyles.images}>
                     
-                    <Browser 
-                        projectImage={image[index].fluid}
-                        projectAlt={description}
-                        isLightTheme={true}
-                        isTerminal={false}
-                        includeOverlay={false}
-                        showInBrowser={showInBrowser}
-                    />
+                    {
+                        showInBrowser === false ?
+                            <Img fluid={image[index].fluid} alt={title} />
+                        :
+                            <Browser 
+                                projectImage={image[index].fluid}
+                                projectAlt={description}
+                                isLightTheme={true}
+                                isTerminal={false}
+                                includeOverlay={false}
+                            />
+                    }
 
                     <div className={visualStyles.buttonContainer}>
                         { index > 0 && <FaChevronLeft 
@@ -131,8 +138,12 @@ const TechTemplate = (props) => {
                             <h3 style={{margin: '1em 0'}}>Exhibited at:</h3>
                             <ul>
                                 {
-                                    exhibitions.map(({name}, index) => 
-                                        <li key={index} className={visualStyles.techFontSize}>{name}</li>
+                                    exhibitions.map(({name, url}, index) => 
+                                        <li key={index} className={visualStyles.techFontSize}>
+                                            <a href={url} target="_blank">
+                                                {name}
+                                            </a>
+                                        </li>
                                     )
                                 }
                             </ul>
