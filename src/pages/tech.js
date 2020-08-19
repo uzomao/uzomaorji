@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 
 import { Link, navigate } from 'gatsby'
 
@@ -14,30 +14,28 @@ const Tech = (props) => {
 
 	const { isDesktop, isPortrait } = useContext(Context)
 
+	const [ showFilterModal, setShowFilterModal ] = useState(false)
+
 	useEffect(() => {
 		!isPortrait && navigate('/terminal')
 	}, [isDesktop, isPortrait])
-
-	const enableInteractiveMode = isDesktop ? 
-			<Link to='/terminal'><span className='button'>switch to interactive console</span></Link>
-			:
-			<span><br></br>{`<rotate for interactive console>`}</span>
 
 	return (
 		<Layout>
 			<div className={techStyles.techProjects}>
 
 				<p className={techStyles.formatText}>
-					Here's a selection of tech things I've made
-					{` `}
-					{enableInteractiveMode}
+					Here's a selection of tech things I've made <br/><button className='button techy-button' onClick={() => {setShowFilterModal(!showFilterModal)}}>filter project by type</button>
 				</p>
 
 				<Projects className={projectsStyles.projects} 
 					isLightTheme={true} 
 					isTerminal={false}
 					currentProjectIndex={ 
-						props.location.state && props.location.state.currentProjectIndex ? props.location.state.currentProjectIndex : 0 }
+						props.location.state && props.location.state.currentProjectIndex ? props.location.state.currentProjectIndex : 0 
+					}
+					showFilterModal={showFilterModal}
+					setShowFilterModal={setShowFilterModal}
 				/>
 
 			</div>
