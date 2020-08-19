@@ -91,6 +91,50 @@
 	margin: 1em 0;
 }
 
+.filter-modal {
+	position: absolute;
+    right: 0;
+    left: 0;
+    width: 50%;
+	margin: auto;
+	background-color: #f7f1e3;
+	border: 2px solid #fff;
+	box-shadow: 15px 15px #f6cbcb;
+	padding: 2.5em;
+}
+
+.filter-modal .options {
+	display: flex;
+    flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 2.5em .5em;
+}
+
+.filter-modal .modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modal-header button {
+	font-weight: bold;
+	font-size: 24px;
+	font-family: 'Merriweather', serif;
+}
+
+.filter-modal .options div {
+	width: 33.3%;
+	display: flex;
+    flex-direction: column;
+	align-items: center;
+	cursor: pointer
+}
+
+.filter-modal .options div img {
+	max-width: 100%;
+	margin: .5em 2em;
+}
+
 @media screen and (max-device-width: 768px){
 	
 	.projects {
@@ -123,5 +167,18 @@
 
 	.tech-projects .format-text, .projects li article p {
 		text-align: center;
+	}
+
+	.filter-modal {
+		top: 0;
+		bottom: 0;
+		width: unset;
+		padding: .5em;
+	}
+
+	.filter-modal .options {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 }

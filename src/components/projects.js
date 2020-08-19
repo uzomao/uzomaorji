@@ -10,11 +10,13 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import Browser from '../components/browser'
 
 import projectsStyles from '../styles/projects.module.css'
-import browserStyles from '../styles/browser.module.css'
 
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from 'react-icons/fa'
 
 import Img from 'gatsby-image'
+import artTech from '../images/art_tech.png'
+import clientPersonal from '../images/client_personal.png'
+import all from '../images/all_logo.png'
 
 const Projects = (props) => {
 
@@ -50,10 +52,27 @@ const Projects = (props) => {
         }
     `)
 
+    const [ projectFilter, setProjectFilter ] = useState(null)
+
+    let allProjects = projects.allContentfulTech.nodes
+
+    if(projectFilter){
+        if(projectFilter === 'Art/Tech'){
+            allProjects = allProjects.filter(({projectType}) => projectType === 'Art/Tech')
+        } else if(projectFilter === 'Client/Personal'){
+            allProjects = allProjects.filter(({projectType}) => projectType === 'Client Project' || projectType === 'Personal Project')
+        }
+    }
+
+    const filterProjects = (filter) => {
+        setProjectFilter(filter)
+        props.setShowFilterModal(false)
+    }
+
     const [ currentProjectIndex, setCurrentProjectIndex ] = useState(props.currentProjectIndex)
     const currentProjectCount = currentProjectIndex + 1
-    const totalProjectCount = projects.allContentfulTech.nodes.length
-    const currentProject = projects.allContentfulTech.nodes[currentProjectIndex]
+    const totalProjectCount = allProjects.length
+    const currentProject = allProjects[currentProjectIndex]
 
     return (
         <div className={props.className} style={{display: 'flex'}}>
@@ -115,6 +134,32 @@ const Projects = (props) => {
                     </Link>
                 </div>
             </div>
+
+            {
+                props.showFilterModal &&
+                    <div className={projectsStyles.filterModal}>
+                        <div className={projectsStyles.modalHeader}>
+                            <p>Show me projects that are:</p>
+                            <button className="filter-button" onClick={() => props.setShowFilterModal(false)}>
+                                X
+                            </button>
+                        </div>
+                        <div className={projectsStyles.options}>
+                            <div onClick={() => {filterProjects('Art/Tech')}}>
+                                <img src={artTech} alt="Illustration of Uzoma for Art/Tech projects" />
+                                <button className="techy-button button">Art/Tech</button>
+                            </div>
+                            <div onClick={() => {filterProjects('Client/Personal')}}>
+                                <img src={clientPersonal} alt="Illustration of Uzoma for Client/Personal projects" />
+                                <button className="techy-button button">Client/Personal</button>
+                            </div>
+                            <div onClick={() => {filterProjects(null)}}>
+                                <img src={all} alt="Illustration of Uzoma for all projects" />
+                                <button className="techy-button button">Either</button>
+                            </div>
+                        </div>
+                    </div>
+            }
         </div>
     )
 }

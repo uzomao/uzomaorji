@@ -101,6 +101,11 @@ a {
   color: #203748;
 }
 
+.techy-button {
+  font-size: 18px;
+  font-family: 'PerfectDOS', 'Courier', 'Inconsolata', sans-serif;
+}
+
 @media screen and (max-device-width: 700px){
   p, button, a {
     font-size: 18px;
