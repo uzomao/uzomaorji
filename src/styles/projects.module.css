@@ -168,4 +168,17 @@
 	.tech-projects .format-text, .projects li article p {
 		text-align: center;
 	}
+
+	.filter-modal {
+		top: 0;
+		bottom: 0;
+		width: unset;
+		padding: .5em;
+	}
+
+	.filter-modal .options {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
 }
