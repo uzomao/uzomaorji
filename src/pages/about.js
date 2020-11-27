@@ -30,22 +30,16 @@ const About = () => {
                                         Uzoma Chidumaga Orji is a creative technologist and visual artist from Owerri, Nigeria.
                                     </p>
                                     <p>
-                                        As a technologist he seeks to design engaging human-centred digital experiences that bring the arts and 
-                                        tech into the same conversation.
+                                        As an artist he observes and then creates representations of society and of history; 
+                                        visual metaphors that unpack his millennial Igbo Nigerian cultural context and 
+                                        explore post-colonial crises of identity.
                                     </p>
                                     <p>
-                                        As an artist he observes and then creates representations of society and of history; visual metaphors that explain
-                                        his millennial Igbo Nigerian cultural context and the cultural environment he hopes to one day live in.
+                                        As a technologist he is interested in how the digital can be used to access 
+                                        ancestral truths in the present day.
                                     </p>
-
                                     <p>
-                                        The essence of his practice is indeed identity, particularly as pertains to self, culture, and nationality. 
-                                        His work uses his notions of his identity as a point of exit to interrogate who we are, 
-                                        how we have come to be and who we aspire to become. 
-                                    </p>
-
-                                    <p>
-                                        He lives and works in Abuja, Nigeria.
+                                        He lives, works and has his being in Abuja, Nigeria.
                                     </p>
                                 </>
                                 :
