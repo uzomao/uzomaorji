@@ -140,7 +140,7 @@ const TechTemplate = (props) => {
                                 {
                                     exhibitions.map(({name, url}, index) => 
                                         <li key={index} className={visualStyles.techFontSize}>
-                                            <a href={url} target="_blank">
+                                            <a href={url} target="_blank" rel="noopener noreferrer">
                                                 {name}
                                             </a>
                                         </li>
