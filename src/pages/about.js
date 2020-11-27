@@ -23,6 +23,25 @@ const About = () => {
                     workExhibited
                 }
             }
+
+            allContentfulResidenciesAndFellowships{
+                nodes {
+                    title
+                    project
+                    startDate(formatString:"MMMM YYYY")
+                    endDate(formatString:"MMMM YYYY")
+                    url
+                }
+            }
+
+            allContentfulPress{
+                nodes {
+                    publicationTitle
+                    articleTitle
+                    url
+                }
+            }
+
         }
     `)
 
@@ -31,6 +50,8 @@ const About = () => {
     const toggleText = isPartyVersion ?  'see the version i submit in applications' : 'see the version I say at parties'
 
     const exhibitions = data.allContentfulExhibition.nodes
+    const residenciesAndFellowships = data.allContentfulResidenciesAndFellowships.nodes
+    const press = data.allContentfulPress.nodes
 
     return (
         <Layout>
@@ -117,15 +138,42 @@ const About = () => {
                                 {date}
                                 <span> - </span>
                                 {name}
-                                <br>
-                                </br>
+                                <br></br>
                                 <span className={aboutStyles.exhibitionDescription}>
-                                    {workExhibited}{` `}
                                     <a href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        <FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
+                                        {workExhibited}{` `}<FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
+                                    </a>
+                                </span>
+                            </p>
+                        )
+
+                    }
+                </section>
+
+                <section className={aboutStyles.aboutText}>
+                    <h2>Residencies and Fellowships</h2>
+
+                    {/* automate the following: */}
+                    {
+                        residenciesAndFellowships.map(({title, startDate, endDate, url, project}, index) => 
+                            <p key={index}>
+                                <span style={
+                                    {textTransform: 'uppercase', color: '#333', fontSize: '18px'}
+                                }>
+                                    {startDate} - {endDate}
+                                </span>
+                                <br></br>
+                                {title}
+                                <br></br>
+                                <span className={aboutStyles.exhibitionDescription}>
+                                    <a href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {project}{` `}<FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
                                     </a>
                                 </span>
                             </p>
@@ -137,13 +185,17 @@ const About = () => {
                 <section className={aboutStyles.aboutText}>
                     <h2>Press</h2>
 
-                    <p>
-                        A'naala Blog
-                        <span> - </span>
-                        <a href="https://www.anaalablog.com/home/uzoma-orji-swimming-in-the-divide-pt-1">
-                            Uzoma Orji: Swimming in the Divide (pt. 1)
-                        </a>
-                    </p>
+                    {
+                        press.map(({publicationTitle, articleTitle, url}, index) => 
+                            <p key={index}>
+                                {publicationTitle}
+                                <span> - </span>
+                                <a href={url}>
+                                    {articleTitle} <FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
+                                </a>
+                            </p>
+                        )
+                    }
                 </section>
 
                 <section className={aboutStyles.aboutText} style={{marginBottom: '3em'}}>

@@ -28,6 +28,11 @@
     font-size: 20px;
 }
 
+.about-text h2 {
+    width: 60%;
+    padding-bottom: 5px;
+}
+
 .about-text p.new-friend, span.new-friend {
     font-style: italic;
 }
@@ -36,8 +41,9 @@
     font-size: 20px;
 }
 
-.about-text span.exhibition-description {
+span.exhibition-description a {
     font-size: 18px;
+    text-decoration: none;
 }
 
 .about-section {
