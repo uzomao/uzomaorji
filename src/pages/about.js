@@ -4,11 +4,33 @@ import aboutStyles from '../styles/about.module.css'
 
 import Layout from '../components/layout'
 
+import { useStaticQuery, graphql } from 'gatsby'
+
+import { FaExternalLinkAlt } from 'react-icons/fa'
+
 const About = () => {
+
+    const data = useStaticQuery(graphql`
+        query {
+            allContentfulExhibition(sort: {
+                fields: date
+                order: ASC
+              }) {
+                nodes {
+                    name
+                    url
+                    date(formatString:"YYYY")
+                    workExhibited
+                }
+            }
+        }
+    `)
 
     const [ isPartyVersion, setIsPartyVersion ] = useState(false)
 
     const toggleText = isPartyVersion ?  'see the version i submit in applications' : 'see the version I say at parties'
+
+    const exhibitions = data.allContentfulExhibition.nodes
 
     return (
         <Layout>
@@ -89,42 +111,27 @@ const About = () => {
                     <h2>Exhibitions</h2>
 
                     {/* automate the following: */}
-                    <p>
-                        2018
-                        <span> - </span>
-                        <a href='https://opendialogueexhibition.com/Uzoma-Orji' 
-                        target='_blank'
-                        rel='noopener noreferrer' >
-                            CSM Open Dialogue: Artists + Designers of Afro-Carribean Descent
-                        </a>
-                        <br>
-                        </br>
-                        <span className={aboutStyles.exhibitionDescription}>YOU ARE THE SOUL OF A NATION</span>
-                    </p>
-                    <p>
-                        2019
-                        <span> - </span>
-                        <a href='https://www.lagosphotofestival.com/exhibit/the-baptism-of-an-igbo-man' 
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                            Lagos Photo Festival
-                        </a>
-                        <br>
-                        </br>
-                        <span className={aboutStyles.exhibitionDescription}>The Baptism of an Igbo Man</span>
-                    </p>
-                    <p>
-                        2019
-                        <span> - </span>
-                        <a href='https://www.instagram.com/p/B44y4E_FFxx/' 
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                            Naija Tech Creatives/Abuja Art Week
-                        </a>
-                        <br>
-                        </br>
-                        <span className={aboutStyles.exhibitionDescription}>The Baptism of an Igbo Man Immersive VR Experience</span>
-                    </p>
+                    {
+                        exhibitions.map(({name, date, url, workExhibited}, index) => 
+                            <p key={index}>
+                                {date}
+                                <span> - </span>
+                                {name}
+                                <br>
+                                </br>
+                                <span className={aboutStyles.exhibitionDescription}>
+                                    {workExhibited}{` `}
+                                    <a href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
+                                    </a>
+                                </span>
+                            </p>
+                        )
+
+                    }
                 </section>
 
                 <section className={aboutStyles.aboutText}>
