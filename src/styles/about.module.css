@@ -58,9 +58,7 @@ span.exhibition-description a {
 .form-circle {
     width: 120px;
     height: 120px;
-    border-radius: 100%;
-    border: 1.5px solid #1e272e;
-    margin: 0 .5em;
+    margin: 1em .5em;
 }
 
 .toggle-btn {
