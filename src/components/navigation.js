@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaTimes, FaRegEnvelope, FaInstagram } from 'react-icons/fa'
+import { FaBars, FaTimes, FaRegEnvelope, FaStarOfLife } from 'react-icons/fa'
 
 import { Link } from 'gatsby'
 
@@ -60,8 +60,8 @@ export default class Navigation extends React.Component {
                 <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
                     <li><FaRegEnvelope /></li>
                 </a>
-                <a href="http://instagram.com/uzomaorji_" target="_blank" rel="noopener noreferrer">
-                    <li><FaInstagram /></li>
+                <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer" style={{fontSize: '18px'}}>
+                    <li><FaStarOfLife /><FaStarOfLife /></li>
                 </a>
             </span>
         </ul>

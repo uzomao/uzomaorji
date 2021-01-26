@@ -200,12 +200,12 @@ const About = () => {
 
                 <section className={aboutStyles.aboutText} style={{marginBottom: '3em'}}>
                     <p>
-                        <a href="http://instagram.com/uzomaorji_" target="_blank" rel="noopener noreferrer">
-                            Instagram
-                        </a>
-                        <span>, </span>
                         <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
                             Email
+                        </a>
+                        <span>, </span>
+                        <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer">
+                            Are.na
                         </a>
                     </p>
                 </section>
