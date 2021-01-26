@@ -8,6 +8,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import { FaExternalLinkAlt } from 'react-icons/fa'
 
+import artTech from '../images/art_tech.png'
+
 const About = () => {
 
     const data = useStaticQuery(graphql`
@@ -62,8 +64,7 @@ const About = () => {
                     <div className={aboutStyles.aboutText}>
 
                         <div className={aboutStyles.formCircles}>
-                            <div className={aboutStyles.formCircle} style={{background: '#87c1e9'}}></div>
-                            <div className={aboutStyles.formCircle} style={{background: '#ffcccc'}}></div>
+                            <img src={artTech} className={aboutStyles.formCircle} alt="uzoma logo, illustrated image of uzoma wearing goggles with cherry blossoms and stars on them" />
                         </div>
 
                         {
