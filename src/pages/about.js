@@ -145,7 +145,7 @@ const About = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        {workExhibited}{` `}<FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
+                                        {workExhibited}{` `}<FaExternalLinkAlt className='external-link-icon' />
                                     </a>
                                 </span>
                             </p>
@@ -174,7 +174,7 @@ const About = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        {project}{` `}<FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
+                                        {project}{` `}<FaExternalLinkAlt className='external-link-icon' />
                                     </a>
                                 </span>
                             </p>
@@ -192,7 +192,7 @@ const About = () => {
                                 {publicationTitle}
                                 <span> - </span>
                                 <a href={url}>
-                                    {articleTitle} <FaExternalLinkAlt className={aboutStyles.externalLinkIcon} />
+                                    {articleTitle} <FaExternalLinkAlt className='external-link-icon' />
                                 </a>
                             </p>
                         )

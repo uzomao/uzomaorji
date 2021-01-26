@@ -67,11 +67,6 @@ span.exhibition-description a {
     font-weight: bold;
 }
 
-.external-link-icon {
-    width: 17px;
-    color: #333;
-}
-
 @media screen and (max-device-width: 500px){
     .about-text p {
         width: 85%

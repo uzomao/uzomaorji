@@ -65,8 +65,11 @@
 .url {
     display: flex;
     justify-content: center;
+    margin-bottom: 1.5em;
+} .url a { text-decoration: 2px #0c0c0c underline !important;}
+.url:last-child {
     margin-bottom: 2em;
-} .url a { text-decoration: 2px #0c0c0c dotted !important;}
+}
 
 .visual .text button {
     width: 100%;
