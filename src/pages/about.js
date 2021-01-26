@@ -70,7 +70,7 @@ const About = () => {
                             !isPartyVersion ?
                                 <>
                                     <p>
-                                        Uzoma Chidumaga Orji is a creative technologist and visual artist from Owerri, Nigeria.
+                                        Chidumaga Uzoma Orji is a creative technologist and visual artist from Owerri, Nigeria.
                                     </p>
                                     <p>
                                         As an artist he observes and then creates representations of society and of history; 

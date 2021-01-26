@@ -6,10 +6,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Uzoma Chidumaga Orji`,
+    title: `Chidumaga Uzoma Orji`,
     titleTemplate: "%s | Visual Artist & Creative Technologist",
     siteUrl: `https://uzomaorji.com`,
-    description: `Portfolio website of visual artist and creative technologist Uzoma Chidumaga Orji`,
+    description: `Portfolio website of visual artist and creative technologist Chidumaga Uzoma Orji`,
     image: '/seo.jpg'
   },
   plugins: [
