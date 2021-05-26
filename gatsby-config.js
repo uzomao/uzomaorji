@@ -46,12 +46,10 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-fathom',
+      resolve: `@raae/gatsby-plugin-fathom`,
       options: {
-        // Unique site id
-        siteId: 'HLBXGCIL',
-        trackingUrl: 'uzomaorji.com'
-      }
-    }
+        site: "HLBXGCIL",
+      },
+    },
   ]
 }
