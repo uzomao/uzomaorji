@@ -49,11 +49,8 @@ module.exports = {
       resolve: 'gatsby-plugin-fathom',
       options: {
         // Unique site id
-        siteId: 'MTWLAMNY',
-        // Domain whitelist
-        whitelistHostnames: [
-          'uzomaorji.com'
-        ]
+        siteId: 'HLBXGCIL',
+        trackingUrl: 'uzomaorji.com'
       }
     }
   ]
