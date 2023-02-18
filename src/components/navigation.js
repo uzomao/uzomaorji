@@ -7,13 +7,16 @@ import navigationStyles from '../styles/navigation.module.css'
 
 import JoinMailingList from './join-mailing-list'
 
+import Ticker from './ticker'
+
 import Context from '../../context'
 
 export default class Navigation extends React.Component {
 
     state = {
         isOpen: false,
-        isMailingList: false
+        isMailingList: false,
+        showTicker: true
     }
 
     toggleIsOpen = () => {
@@ -25,6 +28,18 @@ export default class Navigation extends React.Component {
     closeMailingListModal = () => {
         this.setState({
             isMailingList: false
+        })
+    }
+
+    openMailingListModal = () => {
+        this.setState({
+            isMailingList: true
+        })
+    }
+
+    hideTicker = () => {
+        this.setState({
+            showTicker: false
         })
     }
 
@@ -87,6 +102,15 @@ export default class Navigation extends React.Component {
                     </React.Fragment>
                     :
                     <div className={navigationStyles.navigationMenuDesktop}>
+                        {
+                            this.state.showTicker &&
+                                <Ticker 
+                                    tickerText={'Become a loving friend today, click here to subscribe to my mailing list for juicy creative updates'} 
+                                    openMailingListModal={this.openMailingListModal}
+                                    isMailingList={this.state.isMailingList}
+                                    hideTicker={this.hideTicker}
+                                />
+                        }
                         {navigationMenu}
 
                         {
