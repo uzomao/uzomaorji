@@ -23,9 +23,23 @@
 
 .about-text p{
     text-align: justify;
-    margin: .55rem;
     width: 60%;
     font-size: 20px;
+    margin: .55rem;
+}
+
+.left-adjust, .left-adjust-section p {
+    margin-left: 20%;
+}
+
+.see-more-toggle {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.about-text button {
+    margin-top: .55rem;
+    margin-left: 20%;
 }
 
 .about-text h2 {

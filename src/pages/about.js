@@ -43,7 +43,20 @@ const About = () => {
                     url
                 }
             }
-
+            
+            allContentfulAboutPage{
+                nodes {
+                    seriousVersion {
+                        seriousVersion
+                    }
+                    partyVersion {
+                        partyVersion
+                    }
+                    seeMore {
+                        seeMore
+                    }
+                }
+            }
         }
     `)
 
@@ -54,6 +67,10 @@ const About = () => {
     const exhibitions = data.allContentfulExhibition.nodes
     const residenciesAndFellowships = data.allContentfulResidenciesAndFellowships.nodes
     const press = data.allContentfulPress.nodes
+
+    const aboutPage = data.allContentfulAboutPage.nodes[0]
+
+    const [ seeMore, setSeeMore ] = useState(false)
 
     return (
         <Layout>
@@ -66,66 +83,25 @@ const About = () => {
                         <div className={aboutStyles.formCircles}>
                             <img src={artTech} className={aboutStyles.formCircle} alt="uzoma logo, illustrated image of uzoma wearing goggles with cherry blossoms and stars on them" />
                         </div>
+                        
+                        <div dangerouslySetInnerHTML={{__html: isPartyVersion ? aboutPage.partyVersion.partyVersion : aboutPage.seriousVersion.seriousVersion}} className={aboutStyles.leftAdjustSection} />
 
-                        {
-                            !isPartyVersion ?
-                                <>
-                                    <p>
-                                        Chidumaga Uzoma Orji is a creative technologist and visual artist from Owerri, Nigeria.
-                                    </p>
-                                    <p>
-                                        As an artist he observes and then creates representations of society and of history; 
-                                        visual metaphors that unpack his millennial Igbo Nigerian cultural context and 
-                                        explore post-colonial crises of identity.
-                                    </p>
-                                    <p>
-                                        As a technologist he is interested in how the digital can be used to access 
-                                        ancestral truths in the present day.
-                                    </p>
-                                    <p>
-                                        He lives, works and has his being in Abuja, Nigeria.
-                                    </p>
-                                </>
-                                :
-                                <>
-                                    <p>
-                                        [someone i've just met]: <span className={aboutStyles.newFriend}>so what do you do?</span>
-                                    </p>
-                                    <p>
-                                        [me]: *sips drink in panic* umm, i'm an artist
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        what kind of artist?
-                                    </p>
-                                    <p>
-                                        well I do like these conceptual photoshoots that explore themes i'm interested in. i also make websites
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        oh for real?
-                                    </p>
-                                    <p>
-                                        yeah. and apps and games. i'm very interested in interactive tech and design. like tech that's really fun and engaging.
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        sounds cool man.
-                                    </p>
-                                    <p>
-                                        yeah, it's fun. there's other stuff but, yeah. how about you?
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        I'm a cancer researcher.
-                                    </p>
-                                    <p>
-                                        <span role="img" aria-label="mindblown emoji">🤯</span>
-                                    </p>
-                                </>
+                        { 
+                            !isPartyVersion && !seeMore &&
+                                <p onClick={() => setSeeMore(true)} className={`${aboutStyles.leftAdjust} ${aboutStyles.seeMoreToggle}`}>Read More...</p>
                         }
 
-                        <p>
-                            <button onClick={() => setIsPartyVersion(!isPartyVersion)} className={aboutStyles.toggleBtn}>
-                                { toggleText }
-                            </button>
-                        </p>
+                        { seeMore && 
+                            <>
+                                <div dangerouslySetInnerHTML={{__html: aboutPage.seeMore.seeMore}} className={aboutStyles.leftAdjustSection} />
+                                <p onClick={() => setSeeMore(false)} className={`${aboutStyles.leftAdjust} ${aboutStyles.seeMoreToggle}`}>Read Less...</p>
+                            </>
+                        }
+
+                        <button onClick={() => setIsPartyVersion(!isPartyVersion)} className={aboutStyles.toggleBtn}>
+                            { toggleText }
+                        </button>
+                        
                     </div>
                 </section>
 
@@ -201,12 +177,20 @@ const About = () => {
 
                 <section className={aboutStyles.aboutText} style={{marginBottom: '3em'}}>
                     <p>
+                        <a href="https://uzomas.garden" target="_blank" rel="noopener noreferrer">
+                            Garden 🌻
+                        </a>
+                        <span>, </span>
                         <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
                             Email
                         </a>
                         <span>, </span>
                         <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer">
                             Are.na
+                        </a>
+                        <span>, </span>
+                        <a href="https://www.instagram.com/uzzzoma" target="_blank" rel="noopener noreferrer">
+                            Instagram
                         </a>
                     </p>
                 </section>
