@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaTimes, FaRegEnvelope, FaStarOfLife } from 'react-icons/fa'
+import { FaBars, FaTimes, FaRegEnvelope, FaStarOfLife, FaInstagram, FaExternalLinkAlt } from 'react-icons/fa'
 
 import { Link } from 'gatsby'
 
@@ -66,14 +66,19 @@ export default class Navigation extends React.Component {
             {/* <Link to="/blog" activeClassName={navigationStyles.active}><li>Blog</li></Link> */}
 
             <li onClick={() => {this.setState({ isMailingList: true})}}
-            className={navigationStyles.mailingList}
+                className={navigationStyles.mailingList}
             >
-                Join Mailing List
+                Subscribe
             </li>
+
+            <li><a href='https://uzomas.garden' target='_blank' rel='noopener noreferrer'><span role="img" aria-label='sunflower emoji'>🌻</span> Garden <span role="img" aria-label='sunflower emoji'>🌻</span></a></li>
             
             <span className={navigationStyles.communicationLinks}>
                 <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
                     <li><FaRegEnvelope /></li>
+                </a>
+                <a href="https://instagram.com/uzzzoma" target="_blank" rel="noopener noreferrer">
+                    <li><FaInstagram /></li>
                 </a>
                 <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer" style={{fontSize: '18px'}}>
                     <li><FaStarOfLife /><FaStarOfLife /></li>

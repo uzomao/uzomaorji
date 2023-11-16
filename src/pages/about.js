@@ -16,7 +16,7 @@ const About = () => {
         query {
             allContentfulExhibition(sort: {
                 fields: date
-                order: ASC
+                order: DESC
               }) {
                 nodes {
                     name
@@ -108,7 +108,6 @@ const About = () => {
                 <section className={aboutStyles.aboutText}>
                     <h2>Exhibitions</h2>
 
-                    {/* automate the following: */}
                     {
                         exhibitions.map(({name, date, url, workExhibited}, index) => 
                             <p key={index}>
@@ -160,7 +159,7 @@ const About = () => {
                 </section>
 
                 <section className={aboutStyles.aboutText}>
-                    <h2>Press</h2>
+                    <h2>Speaking Engagements & Press</h2>
 
                     {
                         press.map(({publicationTitle, articleTitle, url}, index) => 
