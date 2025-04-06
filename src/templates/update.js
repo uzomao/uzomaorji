@@ -8,6 +8,8 @@ import Img from 'gatsby-image'
 
 import { FaExternalLinkAlt } from 'react-icons/fa'
 
+import RichTextRenderer from '../utils/rich-text-renderer'
+
 export const data = graphql`
     query ($slug: String) {
         contentfulUpdate (slug: {
@@ -72,9 +74,9 @@ const UpdateTemplate = (props) => {
                     </div>
                 </section>
 
-                {/* <section className={`${visualStyles.text} ${visualStyles.techText}`} id={visualStyles.text}>
-                    <p dangerouslySetInnerHTML={{__html: detailedDescription.detailedDescription}}></p>
-                </section> */}
+                <section className={`${visualStyles.text} ${visualStyles.techText}`} id={visualStyles.text}>
+                    <RichTextRenderer content={body} />
+                </section>
 
                 {
                     link &&
