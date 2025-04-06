@@ -1,0 +1,59 @@
+.uzomas {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+}
+
+area {
+    cursor: pointer;
+}
+
+#choice-text {
+    position: absolute;
+    left: 0;
+    bottom: 25px;
+    right: 0;
+    text-align: center;
+}
+
+#choice-text h1 {
+    font-family: 'Oswald', Helvetica, sans-serif;
+    text-transform: uppercase;
+    color:#1e272e;
+    font-size: 2rem;
+    text-shadow: 1.5px 1.5px #f7f1e3;
+    word-spacing: 10px;
+}
+
+.user-choice:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+}
+  
+@keyframes ellipsis {
+    to {
+        width: 20px;    
+    }
+}
+
+@-webkit-keyframes ellipsis {
+    to {
+        width: 20px;    
+    }
+}
+
+@media screen and (max-device-width: 700px){
+    .uzomas-header {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    #choice-text h1 {
+        font-size: 1.25rem;
+    }
+}

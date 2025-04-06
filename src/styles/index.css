@@ -111,6 +111,32 @@ a {
   color: #333;
 }
 
+.main-header-text {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  font-family: 'Oswald', Helvetica, sans-serif;
+  text-transform: uppercase;
+  color:#ffcccc;
+  font-size: 3.5rem;
+  text-shadow: 1.5px 1.5px #ffb8b8;
+  word-spacing: 10px;
+  animation: blinking 3s linear infinite;
+  z-index: 100;
+}
+
+@keyframes blinking {
+	50% {
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes blinking {
+    50% {
+        opacity: 0
+    }
+}
+
 @media screen and (max-device-width: 700px){
   p, button, a {
     font-size: 18px;
