@@ -7,6 +7,8 @@ import inhibitions from '../images/inhibitions3.jpg'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
+import { Link } from 'gatsby'
+
 const Index = () => {
 
     const marqueeText = 'Updates from the Uziverse'
@@ -16,14 +18,14 @@ const Index = () => {
             allContentfulUpdate {
                 nodes {
                     title
-                    date
+                    date(formatString:"MMMM YYYY")
                     body {
                         raw
                     }
                     tag
                     slug
                     coverImage {
-                        fluid {
+                        fluid (maxHeight: 400, maxWidth: 400, quality: 90) {
                             ...GatsbyContentfulFluid
                         }
                     }
@@ -55,11 +57,13 @@ const Index = () => {
                 <div className={styles.updates}>
                     {
                         updates &&
-                            updates.map(({ slug, title, coverImage }) => 
-                                <div key={slug} className={styles.update}>
+                            updates.map(({ slug, title, coverImage, date }) => 
+                                
+                                <Link to={`/update/${slug}`} key={slug} className={styles.update}>
                                     <Img fluid={coverImage.fluid} alt={`Image of ${title}`} />
                                     <p className={styles.updateTitle}>{title}</p>
-                                </div>
+                                    <p style={{fontSize: '18px', marginTop: '10px'}}>{date}</p>
+                                </Link>
                             )
                     }
                 </div>

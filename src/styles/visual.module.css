@@ -70,6 +70,9 @@
 .url:last-child {
     margin-bottom: 2em;
 }
+.url a:hover {
+    color: #ffcccc;
+}
 
 .visual .text button {
     width: 100%;
@@ -77,8 +80,8 @@
 }
 
 .visual .images {
-    width: 50%;
-    margin: auto
+    display: flex;
+    justify-content: center;
 }
 
 .visual .images li {
