@@ -23,9 +23,28 @@
 
 .about-text p{
     text-align: justify;
-    margin: .55rem;
     width: 60%;
     font-size: 20px;
+    margin: .55rem;
+}
+
+.left-adjust, .left-adjust-section p {
+    margin-left: 20%;
+}
+
+.see-more-toggle {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.about-text button {
+    margin-top: .55rem;
+    margin-left: 20%;
+}
+
+.about-text h2 {
+    width: 60%;
+    padding-bottom: 5px;
 }
 
 .about-text p.new-friend, span.new-friend {
@@ -36,8 +55,9 @@
     font-size: 20px;
 }
 
-.about-text span.exhibition-description {
+span.exhibition-description a {
     font-size: 18px;
+    text-decoration: none;
 }
 
 .about-section {
@@ -50,10 +70,9 @@
     margin: .25em 0;
 }
 .form-circle {
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-    margin: 0 .5em;
+    width: 120px;
+    height: 120px;
+    margin: 1em .5em;
 }
 
 .toggle-btn {

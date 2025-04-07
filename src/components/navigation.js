@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaBars, FaTimes, FaRegEnvelope, FaInstagram } from 'react-icons/fa'
+import { FaBars, FaTimes, FaRegEnvelope, FaStarOfLife, FaInstagram, FaBookmark, FaLinkedin } from 'react-icons/fa'
 
 import { Link } from 'gatsby'
 
@@ -7,13 +7,16 @@ import navigationStyles from '../styles/navigation.module.css'
 
 import JoinMailingList from './join-mailing-list'
 
+import Ticker from './ticker'
+
 import Context from '../../context'
 
 export default class Navigation extends React.Component {
 
     state = {
         isOpen: false,
-        isMailingList: false
+        isMailingList: false,
+        showTicker: true,
     }
 
     toggleIsOpen = () => {
@@ -28,41 +31,104 @@ export default class Navigation extends React.Component {
         })
     }
 
-    static contextType = Context
+    openMailingListModal = () => {
+        this.setState({
+            isMailingList: true
+        })
+    }
 
+    hideTicker = () => {
+        this.setState({
+            showTicker: false
+        })
+    }
+
+    static contextType = Context
+    
     render(){
+        
+        const currentPathname = typeof(window) !== `undefined` ? window.location.pathname : ''
+        // Only show the portfolio sub-menu after the visitor has engaged with the portfolio selection page
+        const visitorHasSelectedPortfolio = typeof(sessionStorage) !== `undefined` ? 
+                                        sessionStorage.getItem('hasVisitorSelectedPortfolio') :
+                                        false
+
+        const setPortfolioLinksClassName = () => {
+            if(currentPathname.includes('/portfolio')){
+                return navigationStyles.displayPortfolioLinks
+            } else if(visitorHasSelectedPortfolio){
+                return navigationStyles.enableHoverEffect
+            } else {
+                return ''
+            }
+        }
 
         const { isDesktop, isPortrait } = this.context
 
         const iconStyles = {width: '40px', height: '40px'}
 
         const navigationMenu = <ul>
-            <Link to='/about' activeClassName={navigationStyles.active}><li>About</li></Link>
+            <li>
+                <Link to='/about' activeClassName={navigationStyles.active}>
+                    About
+                </Link>
+            </li>
 
-            <Link to='/visuals' activeClassName={navigationStyles.active}><li>Visuals</li></Link>
-            
-            {
-                !isDesktop && !isPortrait ?
-                    <Link to='/terminal' activeClassName={navigationStyles.active}><li>Terminal</li></Link>
-                    :
-                    <Link to='/tech' activeClassName={navigationStyles.active}><li>Tech</li></Link>
-            }
+            <li id={navigationStyles.portfolio}>
+                <Link to='/portfolio' 
+                    activeClassName={navigationStyles.active}
+                >
+                    Portfolio
+                </Link>
+                <ul className={setPortfolioLinksClassName()}>
+                    <li>
+                        <Link to='/portfolio/visuals' activeClassName={navigationStyles.active}>
+                            Visual
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to='/portfolio/tech' activeClassName={navigationStyles.active}>
+                            Tech
+                        </Link>
+                    </li>  
+                </ul>
+                {/* {
+                    currentPathname.includes('portfolio') &&
+                        <ul>
+                            <li>
+                                <Link to='/portfolio/visuals' activeClassName={navigationStyles.active}><li>Visual</li></Link>
+                                <Link to='/portfolio/tech' activeClassName={navigationStyles.active}><li>Tech</li></Link>
+                            </li>
+                        </ul>
+                } */}
+            </li>
 
             {/* <Link to="/blog" activeClassName={navigationStyles.active}><li>Blog</li></Link> */}
 
             <li onClick={() => {this.setState({ isMailingList: true})}}
-            className={navigationStyles.mailingList}
+                className={navigationStyles.mailingList}
             >
-                Join Mailing List
+                Subscribe
             </li>
+
+            <li><a href='https://uzomas.garden' target='_blank' rel='noopener noreferrer'><span role="img" aria-label='sunflower emoji'>🌻</span> Garden <span role="img" aria-label='sunflower emoji'>🌻</span></a></li>
             
             <span className={navigationStyles.communicationLinks}>
-                <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
+                <a href="mailto:uzoma@uzoma.studio" target="_blank" rel="noopener noreferrer" className={navigationStyles.socialLink}>
                     <li><FaRegEnvelope /></li>
                 </a>
-                <a href="http://instagram.com/uzomaorji_" target="_blank" rel="noopener noreferrer">
+                <a href="https://linkedin.com/in/uzomacorji" target="_blank" rel="noopener noreferrer" className={navigationStyles.socialLink}>
+                    <li><FaLinkedin /></li>
+                </a>
+                <a href="https://instagram.com/uzzzoma" target="_blank" rel="noopener noreferrer" className={navigationStyles.socialLink}>
                     <li><FaInstagram /></li>
                 </a>
+                {/* <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer" style={{fontSize: '18px'}} className={navigationStyles.socialLink}>
+                    <li><FaStarOfLife /><FaStarOfLife /></li>
+                </a>
+                <a href="https://thegardendispatch.substack.com" target="_blank" rel="noopener noreferrer" style={{fontSize: '18px'}} className={navigationStyles.socialLink}>
+                    <li><FaBookmark /></li>
+                </a> */}
             </span>
         </ul>
 
@@ -87,6 +153,16 @@ export default class Navigation extends React.Component {
                     </React.Fragment>
                     :
                     <div className={navigationStyles.navigationMenuDesktop}>
+                        {
+                            this.state.showTicker &&
+                                <Ticker 
+                                    tickerText={'Become a loving friend today, click here to subscribe to my mailing list for juicy creative updates'} 
+                                    openMailingListModal={this.openMailingListModal}
+                                    isMailingList={this.state.isMailingList}
+                                    hideTicker={this.hideTicker}
+                                />
+                        }
+
                         {navigationMenu}
 
                         {

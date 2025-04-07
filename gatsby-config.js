@@ -6,12 +6,13 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Uzoma Chidumaga Orji`,
+    title: `Chidumaga Uzoma Orji`,
     titleTemplate: "%s | Visual Artist & Creative Technologist",
     siteUrl: `https://uzomaorji.com`,
-    description: `Portfolio website of visual artist and creative technologist Uzoma Chidumaga Orji`,
+    description: `Portfolio website of visual artist and creative technologist Chidumaga Uzoma Orji`,
     image: '/seo.jpg'
   },
+  flags: { PRESERVE_WEBPACK_CACHE: true },
   plugins: [
     {
       resolve: 'gatsby-plugin-web-font-loader',
@@ -26,6 +27,13 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.GARDEN_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GARDEN_CONTENTFUL_ACCESS_TOKEN,
       },
     },
     `gatsby-image`,
@@ -46,15 +54,10 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-fathom',
+      resolve: `@raae/gatsby-plugin-fathom`,
       options: {
-        // Unique site id
-        siteId: 'MTWLAMNY',
-        // Domain whitelist
-        whitelistHostnames: [
-          'uzomaorji.com'
-        ]
-      }
-    }
+        site: "HLBXGCIL",
+      },
+    },
   ]
 }

@@ -6,7 +6,7 @@ import visualStyles from '../styles/visual.module.css'
 
 import Browser from '../components/browser'
 
-import { FaChevronLeft, FaChevronRight, FaUndoAlt } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight, FaUndoAlt, FaExternalLinkAlt } from 'react-icons/fa'
 
 import Img from 'gatsby-image'
 
@@ -34,6 +34,7 @@ export const data = graphql`
                 name
                 url
             }
+            caseStudyUrl
         }
     }
 `
@@ -50,7 +51,8 @@ const TechTemplate = (props) => {
         tags,
         image,
         showInBrowser,
-        exhibitions
+        exhibitions,
+        caseStudyUrl
     } = props.data.contentfulTech
 
     const [ index, setIndex ] = useState(0)
@@ -154,7 +156,15 @@ const TechTemplate = (props) => {
                     url &&
                         <p className={visualStyles.url}>
                             <a href={url} target="_blank" rel="noopener noreferrer">
-                                {url.split('://')[1]}
+                                {url.split('://')[1]} <FaExternalLinkAlt className="external-link-icon" />
+                            </a>
+                        </p>
+                }
+                {
+                    caseStudyUrl &&
+                        <p className={visualStyles.url}>
+                            <a href={caseStudyUrl} target="_blank" rel="noopener noreferrer">
+                                Read case study <FaExternalLinkAlt className="external-link-icon" />
                             </a>
                         </p>
                 }

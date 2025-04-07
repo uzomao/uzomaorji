@@ -65,17 +65,28 @@
 .url {
     display: flex;
     justify-content: center;
+    margin-bottom: 1.5em;
+} .url a { text-decoration: 2px #0c0c0c underline !important;}
+.url:last-child {
     margin-bottom: 2em;
-} .url a { text-decoration: 2px #0c0c0c dotted !important;}
+}
+.url a:hover {
+    color: #ffcccc;
+}
 
 .visual .text button {
     width: 100%;
     margin: 1em 0;
 }
 
+.visual .fixed-image {
+    display: flex;
+    justify-content: center;
+}
+
 .visual .images {
     width: 50%;
-    margin: auto
+    margin: auto;
 }
 
 .visual .images li {

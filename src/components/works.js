@@ -24,7 +24,7 @@ const Works = ( { works } ) => {
                 works.map((work, index) => 
                     <Link key={index} to={`/visuals/${work.slug}`}>
                         <li style={{width: width}}>
-                            <Img fluid={work.images[0].fluid} alt='Uzoma Chidumaga Orji visual' />
+                            <Img fluid={work.images[0].fluid} alt='Chidumaga Uzoma Orji visual' />
                         </li>
                         <p className={workStyles.workTitle}>{work.title}</p>
                     </Link>

@@ -1,5 +1,5 @@
 <h1 align="center">
-  Uzoma Chidumaga Orji portfolio website
+  Chidumaga Uzoma Orji portfolio website
 </h1>
 
 <a href="https://uzomaorji.com">Link to site</a>

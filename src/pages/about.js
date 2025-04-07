@@ -4,11 +4,73 @@ import aboutStyles from '../styles/about.module.css'
 
 import Layout from '../components/layout'
 
+import { useStaticQuery, graphql } from 'gatsby'
+
+import { FaExternalLinkAlt } from 'react-icons/fa'
+
+import artTech from '../images/art_tech.png'
+
 const About = () => {
+
+    const data = useStaticQuery(graphql`
+        query {
+            allContentfulExhibition(sort: {
+                fields: date
+                order: DESC
+              }) {
+                nodes {
+                    name
+                    url
+                    date(formatString:"YYYY")
+                    workExhibited
+                }
+            }
+
+            allContentfulResidenciesAndFellowships{
+                nodes {
+                    title
+                    project
+                    startDate(formatString:"MMMM YYYY")
+                    endDate(formatString:"MMMM YYYY")
+                    url
+                }
+            }
+
+            allContentfulPress{
+                nodes {
+                    publicationTitle
+                    articleTitle
+                    url
+                }
+            }
+            
+            allContentfulAboutPage{
+                nodes {
+                    seriousVersion {
+                        seriousVersion
+                    }
+                    partyVersion {
+                        partyVersion
+                    }
+                    seeMore {
+                        seeMore
+                    }
+                }
+            }
+        }
+    `)
 
     const [ isPartyVersion, setIsPartyVersion ] = useState(false)
 
     const toggleText = isPartyVersion ?  'see the version i submit in applications' : 'see the version I say at parties'
+
+    const exhibitions = data.allContentfulExhibition.nodes
+    const residenciesAndFellowships = data.allContentfulResidenciesAndFellowships.nodes
+    const press = data.allContentfulPress.nodes
+
+    const aboutPage = data.allContentfulAboutPage.nodes[0]
+
+    const [ seeMore, setSeeMore ] = useState(false)
 
     return (
         <Layout>
@@ -19,140 +81,132 @@ const About = () => {
                     <div className={aboutStyles.aboutText}>
 
                         <div className={aboutStyles.formCircles}>
-                            <div className={aboutStyles.formCircle} style={{background: '#87c1e9'}}></div>
-                            <div className={aboutStyles.formCircle} style={{background: '#ffcccc'}}></div>
+                            <img src={artTech} className={aboutStyles.formCircle} alt="uzoma logo, illustrated image of uzoma wearing goggles with cherry blossoms and stars on them" />
                         </div>
+                        
+                        <div dangerouslySetInnerHTML={{__html: isPartyVersion ? aboutPage.partyVersion.partyVersion : aboutPage.seriousVersion.seriousVersion}} className={aboutStyles.leftAdjustSection} />
 
-                        {
-                            !isPartyVersion ?
-                                <>
-                                    <p>
-                                        Uzoma Chidumaga Orji is a creative technologist and visual artist from Owerri, Nigeria.
-                                    </p>
-                                    <p>
-                                        As a technologist he seeks to design engaging human-centred digital experiences that bring the arts and 
-                                        tech into the same conversation.
-                                    </p>
-                                    <p>
-                                        As an artist he observes and then creates representations of society and of history; visual metaphors that explain
-                                        his millennial Igbo Nigerian cultural context and the cultural environment he hopes to one day live in.
-                                    </p>
-
-                                    <p>
-                                        The essence of his practice is indeed identity, particularly as pertains to self, culture, and nationality. 
-                                        His work uses his notions of his identity as a point of exit to interrogate who we are, 
-                                        how we have come to be and who we aspire to become. 
-                                    </p>
-
-                                    <p>
-                                        He lives and works in Abuja, Nigeria.
-                                    </p>
-                                </>
-                                :
-                                <>
-                                    <p>
-                                        [someone i've just met]: <span className={aboutStyles.newFriend}>so what do you do?</span>
-                                    </p>
-                                    <p>
-                                        [me]: *sips drink in panic* umm, i'm an artist
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        what kind of artist?
-                                    </p>
-                                    <p>
-                                        well I do like these conceptual photoshoots that explore themes i'm interested in. i also make websites
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        oh for real?
-                                    </p>
-                                    <p>
-                                        yeah. and apps and games. i'm very interested in interactive tech and design. like tech that's really fun and engaging.
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        sounds cool man.
-                                    </p>
-                                    <p>
-                                        yeah, it's fun. there's other stuff but, yeah. how about you?
-                                    </p>
-                                    <p className={aboutStyles.newFriend}>
-                                        I'm a cancer researcher.
-                                    </p>
-                                    <p>
-                                        <span role="img" aria-label="mindblown emoji">🤯</span>
-                                    </p>
-                                </>
+                        { 
+                            !isPartyVersion && !seeMore &&
+                                <p onClick={() => setSeeMore(true)} className={`${aboutStyles.leftAdjust} ${aboutStyles.seeMoreToggle}`}>Read More...</p>
                         }
 
-                        <p>
-                            <button onClick={() => setIsPartyVersion(!isPartyVersion)} className={aboutStyles.toggleBtn}>
-                                { toggleText }
-                            </button>
-                        </p>
+                        { seeMore && 
+                            <>
+                                <div dangerouslySetInnerHTML={{__html: aboutPage.seeMore.seeMore}} className={aboutStyles.leftAdjustSection} />
+                                <p onClick={() => setSeeMore(false)} className={`${aboutStyles.leftAdjust} ${aboutStyles.seeMoreToggle}`}>Read Less...</p>
+                            </>
+                        }
+
+                        <button onClick={() => setIsPartyVersion(!isPartyVersion)} className={aboutStyles.toggleBtn}>
+                            { toggleText }
+                        </button>
+                        
                     </div>
                 </section>
 
                 <section className={aboutStyles.aboutText}>
                     <h2>Exhibitions</h2>
 
-                    {/* automate the following: */}
-                    <p>
-                        2018
-                        <span> - </span>
-                        <a href='https://opendialogueexhibition.com/Uzoma-Orji' 
-                        target='_blank'
-                        rel='noopener noreferrer' >
-                            CSM Open Dialogue: Artists + Designers of Afro-Carribean Descent
-                        </a>
-                        <br>
-                        </br>
-                        <span className={aboutStyles.exhibitionDescription}>YOU ARE THE SOUL OF A NATION</span>
-                    </p>
-                    <p>
-                        2019
-                        <span> - </span>
-                        <a href='https://www.lagosphotofestival.com/exhibit/the-baptism-of-an-igbo-man' 
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                            Lagos Photo Festival
-                        </a>
-                        <br>
-                        </br>
-                        <span className={aboutStyles.exhibitionDescription}>The Baptism of an Igbo Man</span>
-                    </p>
-                    <p>
-                        2019
-                        <span> - </span>
-                        <a href='https://www.instagram.com/p/B44y4E_FFxx/' 
-                        target='_blank'
-                        rel='noopener noreferrer'>
-                            Naija Tech Creatives/Abuja Art Week
-                        </a>
-                        <br>
-                        </br>
-                        <span className={aboutStyles.exhibitionDescription}>The Baptism of an Igbo Man Immersive VR Experience</span>
-                    </p>
+                    {
+                        exhibitions.map(({name, date, url, workExhibited}, index) => 
+                            <p key={index}>
+                                {date}
+                                <span> - </span>
+                                {name}
+                                <br></br>
+                                <span className={aboutStyles.exhibitionDescription}>
+                                    <a href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {workExhibited}{` `}<FaExternalLinkAlt className='external-link-icon' />
+                                    </a>
+                                </span>
+                            </p>
+                        )
+
+                    }
                 </section>
 
                 <section className={aboutStyles.aboutText}>
-                    <h2>Press</h2>
+                    <h2>Residencies and Fellowships</h2>
 
+                    {/* automate the following: */}
+                    {
+                        residenciesAndFellowships.map(({title, startDate, endDate, url, project}, index) => 
+                            <p key={index}>
+                                <span style={
+                                    {textTransform: 'uppercase', color: '#333', fontSize: '18px'}
+                                }>
+                                    {startDate} - {endDate}
+                                </span>
+                                <br></br>
+                                {title}
+                                <br></br>
+                                <span className={aboutStyles.exhibitionDescription}>
+                                    <a href={url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {project}{` `}<FaExternalLinkAlt className='external-link-icon' />
+                                    </a>
+                                </span>
+                            </p>
+                        )
+
+                    }
+                </section>
+
+                <section className={aboutStyles.aboutText}>
+                    <h2>Speaking Engagements & Press</h2>
+
+                    {
+                        press.map(({publicationTitle, articleTitle, url}, index) => 
+                            <p key={index}>
+                                {publicationTitle}
+                                <span> - </span>
+                                <a href={url}>
+                                    {articleTitle} <FaExternalLinkAlt className='external-link-icon' />
+                                </a>
+                            </p>
+                        )
+                    }
+                </section>
+                <section className={aboutStyles.aboutText}>
+                    <h2>Skills and Interests</h2>
+                    
                     <p>
-                        A'naala Blog
-                        <span> - </span>
-                        <a href="https://www.anaalablog.com/home/uzoma-orji-swimming-in-the-divide-pt-1">
-                            Uzoma Orji: Swimming in the Divide (pt. 1)
-                        </a>
+                        🤔 Creative Strategy ~ 🎨 Interaction Design ~ 👨🏾‍💻 Web Development
+                        ~ 👨🏾‍💻 Web Design ~ 🎨 UI/UX Design ~ 🗣️ Public Speaking ~ 👾 Digital Marketing
                     </p>
+
                 </section>
 
                 <section className={aboutStyles.aboutText} style={{marginBottom: '3em'}}>
                     <p>
-                        <a href="http://instagram.com/uzomaorji_" target="_blank" rel="noopener noreferrer">
-                            Instagram
+                        <a href="https://uzomas.garden" target="_blank" rel="noopener noreferrer">
+                            Garden 🌻
                         </a>
                         <span>, </span>
                         <a href="mailto:chidumaga@gmail.com" target="_blank" rel="noopener noreferrer">
                             Email
+                        </a>
+                        <span>, </span>
+                        <a href="https://linkedin.com/in/uzomacorji" target="_blank" rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                        <span>, </span>
+                        <a href="https://www.instagram.com/uzzzoma" target="_blank" rel="noopener noreferrer">
+                            Instagram
+                        </a>
+                        <span>, </span>
+                        <a href="https://thegardendispatch.substack.com" target="_blank" rel="noopener noreferrer">
+                            Substack
+                        </a>
+                        <span>, </span>
+                        <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer">
+                            Are.na
                         </a>
                     </p>
                 </section>
