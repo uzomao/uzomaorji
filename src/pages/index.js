@@ -15,7 +15,7 @@ const Index = () => {
 
     const data = useStaticQuery(graphql`
         query {
-            allContentfulUpdate {
+            allContentfulUpdate(sort: {fields: date, order: DESC}) {
                 nodes {
                     title
                     date(formatString:"MMMM YYYY")

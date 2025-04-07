@@ -16,7 +16,7 @@ export default class Navigation extends React.Component {
     state = {
         isOpen: false,
         isMailingList: false,
-        showTicker: true
+        showTicker: true,
     }
 
     toggleIsOpen = () => {
@@ -44,24 +44,64 @@ export default class Navigation extends React.Component {
     }
 
     static contextType = Context
-
+    
     render(){
+        
+        const currentPathname = typeof(window) !== `undefined` ? window.location.pathname : ''
+        // Only show the portfolio sub-menu after the visitor has engaged with the portfolio selection page
+        const visitorHasSelectedPortfolio = typeof(sessionStorage) !== `undefined` ? 
+                                        sessionStorage.getItem('hasVisitorSelectedPortfolio') :
+                                        false
+
+        const setPortfolioLinksClassName = () => {
+            if(currentPathname.includes('/portfolio')){
+                return navigationStyles.displayPortfolioLinks
+            } else if(visitorHasSelectedPortfolio){
+                return navigationStyles.enableHoverEffect
+            } else {
+                return ''
+            }
+        }
 
         const { isDesktop, isPortrait } = this.context
 
         const iconStyles = {width: '40px', height: '40px'}
 
         const navigationMenu = <ul>
-            <Link to='/about' activeClassName={navigationStyles.active}><li>About</li></Link>
+            <li>
+                <Link to='/about' activeClassName={navigationStyles.active}>
+                    About
+                </Link>
+            </li>
 
-            <Link to='/visuals' activeClassName={navigationStyles.active}><li>Visuals</li></Link>
-            
-            {
-                !isDesktop && !isPortrait ?
-                    <Link to='/terminal' activeClassName={navigationStyles.active}><li>Terminal</li></Link>
-                    :
-                    <Link to='/tech' activeClassName={navigationStyles.active}><li>Tech</li></Link>
-            }
+            <li id={navigationStyles.portfolio}>
+                <Link to='/portfolio' 
+                    activeClassName={navigationStyles.active}
+                >
+                    Portfolio
+                </Link>
+                <ul className={setPortfolioLinksClassName()}>
+                    <li>
+                        <Link to='/portfolio/visuals' activeClassName={navigationStyles.active}>
+                            Visual
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to='/portfolio/tech' activeClassName={navigationStyles.active}>
+                            Tech
+                        </Link>
+                    </li>  
+                </ul>
+                {/* {
+                    currentPathname.includes('portfolio') &&
+                        <ul>
+                            <li>
+                                <Link to='/portfolio/visuals' activeClassName={navigationStyles.active}><li>Visual</li></Link>
+                                <Link to='/portfolio/tech' activeClassName={navigationStyles.active}><li>Tech</li></Link>
+                            </li>
+                        </ul>
+                } */}
+            </li>
 
             {/* <Link to="/blog" activeClassName={navigationStyles.active}><li>Blog</li></Link> */}
 
@@ -116,6 +156,7 @@ export default class Navigation extends React.Component {
                                     hideTicker={this.hideTicker}
                                 />
                         }
+
                         {navigationMenu}
 
                         {

@@ -79,9 +79,14 @@
     margin: 1em 0;
 }
 
-.visual .images {
+.visual .fixed-image {
     display: flex;
     justify-content: center;
+}
+
+.visual .images {
+    width: 50%;
+    margin: auto;
 }
 
 .visual .images li {

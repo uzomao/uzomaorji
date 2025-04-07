@@ -54,7 +54,7 @@ const UpdateTemplate = (props) => {
                     <h2 style={{fontSize: '1.75rem'}}>{title}</h2>
                 </header>
 
-                <section className={`${visualStyles.images} ${visualStyles.fixedImage}`}>
+                <section className={`${visualStyles.fixedImage}`}>
                     <Img fixed={coverImage.fixed} alt={title} style={{borderRadius: '20px'}} />
                 </section>
 
