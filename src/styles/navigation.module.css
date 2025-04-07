@@ -72,8 +72,8 @@
     margin-left: .5em;
 }
 
-.communication-links li a:hover {
-    text-decoration: underline;
+.social-link:hover {
+    color: #ffcccc;
 }
 
 #portfolio {
