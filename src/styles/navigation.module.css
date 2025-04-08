@@ -62,6 +62,8 @@
 
 .navigation-menu-desktop ul a:hover, .mailing-list:hover {
     text-decoration: underline;
+    font-style: unset;
+    color: inherit;
 }
 
 .active {
