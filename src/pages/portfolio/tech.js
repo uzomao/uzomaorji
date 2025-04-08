@@ -2,13 +2,13 @@ import React, { useState, useEffect, useContext } from 'react'
 
 import { Link, navigate } from 'gatsby'
 
-import Projects from '../components/projects'
-import Layout from '../components/layout'
+import Projects from '../../components/projects'
+import Layout from '../../components/layout'
 
-import projectsStyles from '../styles/projects.module.css'
-import techStyles from '../styles/tech.module.css';
+import projectsStyles from '../../styles/projects.module.css'
+import techStyles from '../../styles/tech.module.css';
 
-import Context from '../../context'
+import Context from '../../../context'
 
 const Tech = (props) => {
 

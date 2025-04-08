@@ -72,8 +72,44 @@
     margin-left: .5em;
 }
 
-.communication-links li a:hover {
-    text-decoration: underline;
+.social-link:hover {
+    color: #ffcccc;
+}
+
+#portfolio {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#portfolio ul {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 1s ease-in-out, max-height 1s ease-in-out;
+}
+
+#portfolio ul.display-portfolio-links {
+    opacity: 1;
+    max-height: 500px;
+}
+
+#portfolio ul li {
+    margin: .125rem 0;
+}
+
+#portfolio ul li a {
+    font-size: 1.125rem;
+}
+
+#portfolio ul li::before {
+    content: '•'
+}
+
+#portfolio:hover > ul.enable-hover-effect {
+    opacity: 1;
+    max-height: 500px; /* Set a high enough value */
 }
 
 @keyframes menu-slidein {

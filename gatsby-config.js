@@ -29,6 +29,13 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.GARDEN_CONTENTFUL_SPACE_ID,
+        accessToken: process.env.GARDEN_CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
     `gatsby-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

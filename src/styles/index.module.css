@@ -1,85 +1,79 @@
-.uzomas {
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-    margin: auto;
+.wrapper {
+    padding: 0 5%;
 }
 
-.uzomas-header {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    font-family: 'Oswald', Helvetica, sans-serif;
-    text-transform: uppercase;
-    color:#ffcccc;
-    font-size: 3.5rem;
-    text-shadow: 1.5px 1.5px #ffb8b8;
-    word-spacing: 10px;
-    animation: blinking 3s linear infinite;
-    z-index: 100;
+.image-wrapper {
+    margin-bottom: 3rem;
 }
 
-area {
-    cursor: pointer;
+.banner {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: 25% 25%;
+    border-radius: 20px;
+    border: 4px solid #fff;
 }
 
-#choice-text {
-    position: absolute;
-    left: 0;
-    bottom: 25px;
-    right: 0;
-    text-align: center;
-}
-
-#choice-text h1 {
-    font-family: 'Oswald', Helvetica, sans-serif;
-    text-transform: uppercase;
-    color:#1e272e;
-    font-size: 2rem;
-    text-shadow: 1.5px 1.5px #f7f1e3;
-    word-spacing: 10px;
-}
-
-.user-choice:after {
-    overflow: hidden;
+.header-text {
+    font-size: 4rem !important;
+    font-weight: bolder;
     display: inline-block;
-    vertical-align: bottom;
-    -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
-    animation: ellipsis steps(4,end) 900ms infinite;
-    content: "\2026"; /* ascii code for the ellipsis character */
-    width: 0px;
+    white-space: nowrap;
+    animation: none !important;
+    position: relative !important;
+}
+
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.marquee {
+    display: flex;
+    gap: 2rem; /* Adjust spacing between repeats */
+    animation: marquee-scroll 15s linear infinite;
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
 }
   
-@keyframes ellipsis {
-    to {
-        width: 20px;    
-    }
+.updates {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-@-webkit-keyframes ellipsis {
-    to {
-        width: 20px;    
-    }
+.update {
+    width: calc(33.3% - 2rem);
+    margin: 1rem;
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    text-decoration: none;
 }
 
-@keyframes blinking {
-	50% {
-        opacity: 0
-    }
+.update:hover {
+    background: rgb(255, 204, 204, 0.7);
 }
 
-@-webkit-keyframes blinking {
-    50% {
-        opacity: 0
-    }
+.update:hover > p {
+    font-weight: bolder;
 }
 
-@media screen and (max-device-width: 700px){
-    .uzomas-header {
-        font-size: 2.5rem;
-        text-align: center;
-    }
+.update img {
+    border-radius: 10px;
+}
 
-    #choice-text h1 {
-        font-size: 1.25rem;
-    }
+.update-title {
+    margin-top: 1rem
 }

@@ -5,6 +5,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const visualTemplate = path.resolve(`./src/templates/visual.js`)
     const techTemplate = path.resolve(`./src/templates/tech.js`)
+    const updateTemplate = path.resolve(`./src/templates/update.js`)
 
     const visuals = await graphql(`
         query {
@@ -41,6 +42,26 @@ module.exports.createPages = async ({ graphql, actions }) => {
         createPage({
             component: techTemplate,
             path: `/tech/${slug}`,
+            context: {
+                slug
+            }
+        })
+    })
+    
+    const updates = await graphql(`
+        query {
+            allContentfulUpdate {
+                nodes {
+                    slug
+                }
+            }
+        }
+    `)
+
+    updates.data.allContentfulUpdate.nodes.forEach(( {slug} ) => {
+        createPage({
+            component: updateTemplate,
+            path: `/update/${slug}`,
             context: {
                 slug
             }

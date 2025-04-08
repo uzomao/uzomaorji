@@ -173,6 +173,15 @@ const About = () => {
                         )
                     }
                 </section>
+                <section className={aboutStyles.aboutText}>
+                    <h2>Skills and Interests</h2>
+                    
+                    <p>
+                        🤔 Creative Strategy ~ 🎨 Interaction Design ~ 👨🏾‍💻 Web Development
+                        ~ 👨🏾‍💻 Web Design ~ 🎨 UI/UX Design ~ 🗣️ Public Speaking ~ 👾 Digital Marketing
+                    </p>
+
+                </section>
 
                 <section className={aboutStyles.aboutText} style={{marginBottom: '3em'}}>
                     <p>
@@ -184,12 +193,20 @@ const About = () => {
                             Email
                         </a>
                         <span>, </span>
-                        <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer">
-                            Are.na
+                        <a href="https://linkedin.com/in/uzomacorji" target="_blank" rel="noopener noreferrer">
+                            LinkedIn
                         </a>
                         <span>, </span>
                         <a href="https://www.instagram.com/uzzzoma" target="_blank" rel="noopener noreferrer">
                             Instagram
+                        </a>
+                        <span>, </span>
+                        <a href="https://thegardendispatch.substack.com" target="_blank" rel="noopener noreferrer">
+                            Substack
+                        </a>
+                        <span>, </span>
+                        <a href="https://www.are.na/chidumaga-uzoma-orji" target="_blank" rel="noopener noreferrer">
+                            Are.na
                         </a>
                     </p>
                 </section>

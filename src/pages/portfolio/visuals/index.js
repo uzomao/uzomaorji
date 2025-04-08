@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 
-import Layout from '../../components/layout'
-import Works from '../../components/works'
-import RotateNotice from '../../components/rotate-notice'
+import Layout from '../../../components/layout'
+import Works from '../../../components/works'
+import RotateNotice from '../../../components/rotate-notice'
 
-import Context from '../../../context'
+import Context from '../../../../context'
 
-import background from '../../images/visuals-bg-3.jpg'
+import background from '../../../images/visuals-bg-3.jpg'
 
-import visualStyles from '../../styles/visuals.module.css'
+import visualStyles from '../../../styles/visuals.module.css'
 
 const Visuals = () => {
 

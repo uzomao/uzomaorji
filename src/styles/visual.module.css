@@ -70,15 +70,23 @@
 .url:last-child {
     margin-bottom: 2em;
 }
+.url a:hover {
+    color: #ffcccc;
+}
 
 .visual .text button {
     width: 100%;
     margin: 1em 0;
 }
 
+.visual .fixed-image {
+    display: flex;
+    justify-content: center;
+}
+
 .visual .images {
     width: 50%;
-    margin: auto
+    margin: auto;
 }
 
 .visual .images li {
