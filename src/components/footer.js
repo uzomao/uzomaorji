@@ -8,11 +8,11 @@ const Footer = () => {
         <main className={footerStyles.footer}>
             <section>
                 <p>
-                    {/* <span>
+                    <span>
                         &copy; Chidumaga Uzoma Orji {new Date().getFullYear()} 
                         <span role="img" aria-label="uzoma artist emoji">👨🏾‍🎨</span>
                         <span role="img" aria-label="uzoma artist emoji">👨🏾‍💻</span>
-                    </span> */}
+                    </span>
                     
                     {/* TODO ONE DAY MAYBE:
                     <span>

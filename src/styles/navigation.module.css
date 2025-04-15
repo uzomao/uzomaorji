@@ -158,7 +158,6 @@
     .navigation-menu a, .navigation-menu li {
         font-size: 2rem;
         text-align: center;
-        text-transform: uppercase;
         padding: .75rem;
     }
 
