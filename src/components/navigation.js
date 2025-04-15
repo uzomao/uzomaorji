@@ -16,7 +16,7 @@ export default class Navigation extends React.Component {
     state = {
         isOpen: false,
         isMailingList: false,
-        showTicker: true,
+        showTicker: false,
     }
 
     toggleIsOpen = () => {
