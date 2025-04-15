@@ -77,3 +77,14 @@
 .update-title {
     margin-top: 1rem
 }
+
+@media screen and (max-device-width: 768px){
+    .banner {
+        height: 250px;
+        margin: 2.5rem 0;
+    }
+
+    .update {
+       width: calc(100% - 2rem);
+    }
+}

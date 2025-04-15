@@ -176,6 +176,8 @@
         font-size: 16.5px;
     }
 
+    .visual .tech-text p { margin: 1em }
+
     .visual .text {
         margin: unset;
         width: unset;

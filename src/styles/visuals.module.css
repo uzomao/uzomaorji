@@ -68,9 +68,22 @@
     text-transform: capitalize;
 }
 
-@media screen and (max-device-width: 700px) {
+@media screen and (max-device-width: 768px) {
 
-    .work-list {
-        height: 175px;
+    .backdrop {
+        object-fit: cover;
+    }
+
+    .work-list, .work-list li {
+        height: unset;
+        margin: 10px;
+    }
+
+    .show-backdrop-on-mobile {
+        display: block;
+    }
+
+    .hide-backdrop-on-mobile {
+        display: none;
     }
 }

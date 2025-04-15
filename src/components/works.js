@@ -11,10 +11,10 @@ const Works = ( { works } ) => {
     const maxWorkLength = 3
 
     useEffect (() => {
-        if(typeof window !== `undefined` && window.innerWidth < 900) {
-            works.length > maxWorkLength ? setWidth('175px') : setWidth('200px')
+        if(typeof window !== `undefined` && window.innerWidth >= 768) {
+            works.length > maxWorkLength && setWidth('175px')
         } else {
-            works.length > maxWorkLength ? setWidth('350px') : setWidth('400px')
+            works.length > maxWorkLength && setWidth('350px')
         }
     }, [works.length])
 
@@ -22,7 +22,7 @@ const Works = ( { works } ) => {
         <ul className={workStyles.works}>
             {
                 works.map((work, index) => 
-                    <Link key={index} to={`/visuals/${work.slug}`}>
+                    <Link key={index} to={`/portfolio/visuals/${work.slug}`}>
                         <li style={{width: width}}>
                             <Img fluid={work.images[0].fluid} alt='Chidumaga Uzoma Orji visual' />
                         </li>

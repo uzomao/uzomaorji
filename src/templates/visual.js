@@ -48,7 +48,7 @@ const VisualTemplate = (props) => {
         <Layout noFooter={true} noHeader={true}>
             <div className={visualStyles.visual}>
                 <header>
-                    <Link to='/visuals'>
+                    <Link to='/portfolio/visuals'>
                         <button className="button">Back to projects</button>
                     </Link>
                     <h2>{title}</h2>
@@ -90,7 +90,7 @@ const VisualTemplate = (props) => {
                         :
                         <section className={visualStyles.text} id={visualStyles.text}>
                             <p dangerouslySetInnerHTML={{__html: text.text}}></p>
-                            <Link to='/visuals'>Exit</Link>
+                            <Link to='/portfolio/visuals'>Exit</Link>
                         </section>
                 }
                 

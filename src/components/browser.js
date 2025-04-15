@@ -9,7 +9,7 @@ const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, proj
     currentProjectIndex, isTerminal, showInBrowser } ) => {
 
     const themeClass = isLightTheme ? browserStyles.lightTheme : browserStyles.darkTheme
-    const headerWidth = isTerminal ? {width: '100%'} : {width: '40%'}
+    const headerWidth = { width: '100%' }
 
     const isBrowserDisplay = showInBrowser !== false
     // I'm using the browser with some modifications to display non-browser based projects
@@ -33,7 +33,7 @@ const Browser = ( { projectImage, projectAlt, isLightTheme, includeOverlay, proj
                 />
                 {
                     includeOverlay &&
-                        <Link to={`/tech/${projectSlug}`} state={{currentProjectIndex: currentProjectIndex}}>
+                        <Link to={`/portfolio/tech/${projectSlug}`} state={{currentProjectIndex: currentProjectIndex}}>
                             <div className={!isBrowserDisplay ? `${browserStyles.overlay} ${browserStyles.overlayNoBrowser}` 
                                                             : browserStyles.overlay}>
                                 <p className={browserStyles.overlayText}>SEE PROJECT</p>

@@ -9,7 +9,7 @@ const Terminal = () => {
     const { isDesktop, isPortrait } = useContext(Context)
 
     useEffect(() => {
-		!isDesktop && isPortrait && navigate('/tech')
+		!isDesktop && isPortrait && navigate('/portfolio/tech')
 	}, [isPortrait])
 
     return (
@@ -21,14 +21,11 @@ const Terminal = () => {
             justifyContent: 'center',
             alignItems: 'center',
         }}>
-            <p style={{
-                width: '50%', margin: '2em auto', textAlign: 'justify'
-            }}>This page used to be something really exciting. I'm currently making it even <i>excitinger</i> <span role='img' aria-label='man technologist'>👨🏾‍💻</span></p>
             {
                 !isDesktop ?
-                    <p>Please rotate your phone to go back</p>
+                    <p>{`Rotate your phone again (it's a game)`}</p>
                     :
-                    <Link to='/tech'>
+                    <Link to='/portfolio/tech'>
                         <button className="button">Please check back later</button>
                     </Link>
             }

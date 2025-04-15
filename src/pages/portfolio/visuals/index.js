@@ -72,60 +72,64 @@ const Visuals = () => {
         query.allContentfulVisual.nodes.filter(node => node.year === filterValue) 
         : 
         query.allContentfulVisual.nodes.filter(node => node.category === filterValue)
+
+        console.log(isOptionClicked);
+        
     
     return (
         <Layout noFooter="true">
-            <div>
-                {
-                    !isDesktop && isPortrait && 
-                        <RotateNotice />
-                }
-                <img src={background} className={visualStyles.backdrop} alt="Gallery backdrop" />
-                {
-                    !isOptionClicked ? 
-                        <div>
-                            <p className={visualStyles.backdropText}>
-                                Filter By: 
-                                <span onClick={() => { set({filterBy: filterByYear})}} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
-                                |
-                                <span onClick={() => set({filterBy: filterByTheme})} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
-                            </p>
+            {
+                !isDesktop && !isPortrait ?
+                    <RotateNotice />
+                    :
+                    <div>
+                        <img src={background} className={`${visualStyles.backdrop} ${isOptionClicked ? visualStyles.hideBackdropOnMobile : visualStyles.showBackdropOnMobile}` } alt="Gallery backdrop" />
+                        {
+                            !isOptionClicked ? 
+                                <div>
+                                    <p className={visualStyles.backdropText}>
+                                        Filter By: 
+                                        <span onClick={() => { set({filterBy: filterByYear})}} className={`${visualStyles.filter} ${getActiveClass(filterByYear)}`}>Year</span>
+                                        |
+                                        <span onClick={() => set({filterBy: filterByTheme})} className={`${visualStyles.filter} ${getActiveClass(filterByTheme)}`}>Theme</span>
+                                    </p>
 
-                            <ul className={visualStyles.workList}>
-                                {
-                                    filterBy === filterByYear ?
-                                        yearsList
-                                    :
-                                        <React.Fragment>
-                                            <p style={{marginBottom: '.5em'}}>Reflections on:</p>
-                                            {themesList}
-                                        </React.Fragment>
-                                }
-                            </ul>
-                        </div>
-                        :
-                        <div>
-                            <div className={visualStyles.worksHeader}>
-                                <p>
-                                    <button
-                                    onClick={() => set({isOptionClicked: false})}
-                                    >
-                                        <span role="img" aria-label="go back emoji">👈🏾</span>
-                                        {` `}
-                                        Back
-                                    </button>
-                                    <span>{`${filterBy.charAt(0).toUpperCase() + filterBy.slice(1)}: ${filterValue}`}</span>
-                                </p>
+                                    <ul className={visualStyles.workList}>
+                                        {
+                                            filterBy === filterByYear ?
+                                                yearsList
+                                            :
+                                                <React.Fragment>
+                                                    <p style={{marginBottom: '.5em'}}>Reflections on:</p>
+                                                    {themesList}
+                                                </React.Fragment>
+                                        }
+                                    </ul>
+                                </div>
+                                :
+                                <div>
+                                    <div className={visualStyles.worksHeader}>
+                                        <p>
+                                            <button
+                                            onClick={() => set({isOptionClicked: false})}
+                                            >
+                                                <span role="img" aria-label="go back emoji">👈🏾</span>
+                                                {` `}
+                                                Back
+                                            </button>
+                                            <span>{`${filterBy.charAt(0).toUpperCase() + filterBy.slice(1)}: ${filterValue}`}</span>
+                                        </p>
 
-                                <p>
+                                        <p>
 
-                                </p>
-                            </div>
+                                        </p>
+                                    </div>
 
-                            <Works works={works} />
-                        </div>
-                }
-            </div>
+                                    <Works works={works} />
+                                </div>
+                        }
+                    </div>
+            }
         </Layout>
     )
 }

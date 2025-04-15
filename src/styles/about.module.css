@@ -83,6 +83,16 @@ span.exhibition-description a {
 
 @media screen and (max-device-width: 500px){
     .about-text p {
-        width: 85%
+        width: 90%
+    }
+
+    .left-adjust, .left-adjust-section p, .about-text button {
+        margin: 1em
+    }
+
+    .about-text h2 {
+        width: 100%;
+        margin: 1rem;
+        padding: 0 1rem;
     }
 }

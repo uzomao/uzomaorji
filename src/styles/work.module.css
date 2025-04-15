@@ -32,6 +32,7 @@
 
     .works a li {
         height: unset;
+        width: unset;
     }
 
     .work-title {
@@ -39,7 +40,12 @@
     }
 
     .works {
-        height: 175px;
-        margin-top: -2.5%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .works a {
+        margin: 5%;
+        overflow-y: scroll;
     }
 }

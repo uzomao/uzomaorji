@@ -69,11 +69,15 @@ export default class Navigation extends React.Component {
 
         const navigationMenu = <ul>
             <li>
+                <Link to='/' activeClassName={navigationStyles.active}>
+                    Home
+                </Link>
+            </li>
+            <li>
                 <Link to='/about' activeClassName={navigationStyles.active}>
                     About
                 </Link>
             </li>
-
             <li id={navigationStyles.portfolio}>
                 <Link to='/portfolio' 
                     activeClassName={navigationStyles.active}
@@ -107,6 +111,7 @@ export default class Navigation extends React.Component {
 
             <li onClick={() => {this.setState({ isMailingList: true})}}
                 className={navigationStyles.mailingList}
+                id={navigationStyles.subscribeLink}
             >
                 Subscribe
             </li>

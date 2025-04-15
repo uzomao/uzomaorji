@@ -127,7 +127,7 @@ const Projects = (props) => {
                 </div>
 
                 <div>
-                    <Link to={`/tech/${currentProject.slug}`} state={{
+                    <Link to={`/portfolio/tech/${currentProject.slug}`} state={{
                         currentProjectIndex: currentProjectIndex
                     }}>
                         <button className='button' style={{width: '100%'}}>See Project</button>

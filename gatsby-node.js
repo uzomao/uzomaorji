@@ -21,7 +21,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     visuals.data.allContentfulVisual.nodes.forEach(( {slug} ) => {
         createPage({
             component: visualTemplate,
-            path: `/visuals/${slug}`,
+            path: `/portfolio/visuals/${slug}`,
             context: {
                 slug
             }
@@ -41,7 +41,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     techProjs.data.allContentfulTech.nodes.forEach(( {slug} ) => {
         createPage({
             component: techTemplate,
-            path: `/tech/${slug}`,
+            path: `/portfolio/tech/${slug}`,
             context: {
                 slug
             }
