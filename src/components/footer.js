@@ -9,9 +9,7 @@ const Footer = () => {
             <section>
                 <p>
                     <span>
-                        &copy; Chidumaga Uzoma Orji {new Date().getFullYear()} 
-                        <span role="img" aria-label="uzoma artist emoji">👨🏾‍🎨</span>
-                        <span role="img" aria-label="uzoma artist emoji">👨🏾‍💻</span>
+                        stay in the energy of your dreams <span role="img" aria-label="cyclone emoji">🌀</span>
                     </span>
                     
                     {/* TODO ONE DAY MAYBE:

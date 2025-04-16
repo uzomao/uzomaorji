@@ -7,7 +7,6 @@
     clear: both;
     position: relative;
     min-height: 50px;
-    background-color: #88c1e9;
     margin-top: 1rem;
 }
 
@@ -17,8 +16,7 @@
 }
 
 .footer p {
-    font-size: 24px;
-    color: #f7f1e3;
+    font-size: 16px;
 }
 
 .footer span {
@@ -54,11 +52,10 @@
 
 @media screen and (max-device-width: 700px){
 	.footer p {
-        font-size: 18px;
+        font-size: 14px;
     }
     
     .footer {
         margin: .5% 0;
-        height: 30px;
     }
 }
