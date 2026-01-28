@@ -35,8 +35,9 @@
 .left-adjust-section p {
     text-align: justify;
     width: 60%;
-    font-size: 18px;
+    font-size: 20px;
     margin: 0.55rem;
+    margin-left: 20%;
 }
 
 .see-more-toggle {
