@@ -32,6 +32,13 @@
     margin-left: 20%;
 }
 
+.left-adjust-section p {
+    text-align: justify;
+    width: 60%;
+    font-size: 18px;
+    margin: 0.55rem;
+}
+
 .see-more-toggle {
     cursor: pointer;
     text-decoration: underline;
