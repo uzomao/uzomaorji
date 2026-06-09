@@ -7,9 +7,9 @@
 module.exports = {
   siteMetadata: {
     title: `Chidumaga Uzoma Orji`,
-    titleTemplate: "%s | Visual Artist & Creative Technologist",
+    titleTemplate: "%s | Digital Artist & Creative Technologist",
     siteUrl: `https://uzomaorji.com`,
-    description: `Portfolio website of visual artist and creative technologist Chidumaga Uzoma Orji`,
+    description: `Portfolio website of digital artist and creative technologist Chidumaga Uzoma Orji`,
     image: '/seo.jpg'
   },
   flags: { PRESERVE_WEBPACK_CACHE: true },
@@ -58,6 +58,10 @@ module.exports = {
       options: {
         site: "HLBXGCIL",
       },
+    },
+    {
+      resolve: 'gatsby-plugin-compile-es6-packages',
+      options: { modules: ['@contentful/rich-text-react-renderer', '@contentful/rich-text-types'] }
     },
   ]
 }
