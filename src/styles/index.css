@@ -144,3 +144,35 @@ a {
     font-size: 18px;
   }
 }
+
+/* Embedded assets (images/videos) responsive two-column layout */
+.embedded-item {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0.6rem 0;
+}
+
+.embedded-item img,
+.embedded-item video {
+  width: 70%;
+  margin: 3rem 15%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 769px) {
+  .visual .text .embedded-item {
+    float: left;
+    vertical-align: top;
+    width: calc(50% - 1rem);
+    margin: 0.5rem 0.5rem;
+  }
+
+  /* Clear floats inside the text container so following content flows correctly */
+  .visual .text::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

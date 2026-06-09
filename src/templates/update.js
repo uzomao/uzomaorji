@@ -10,7 +10,7 @@ import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import RichTextRenderer from '../utils/rich-text-renderer'
 
-export const data = graphql`
+export const query = graphql`
     query ($slug: String) {
         contentfulUpdate (slug: {
             eq: $slug
@@ -19,6 +19,28 @@ export const data = graphql`
             date(formatString:"MMMM YYYY")
             body {
                 raw
+                references {
+                    ... on ContentfulAsset {
+                        contentful_id
+                        __typename
+                        title
+                        description
+                        fixed(width: 800) {
+                            width
+                            height
+                            src
+                            srcSet
+                        }
+                        file {
+                            url
+                            contentType
+                            fileName
+                            details {
+                                size
+                            }
+                        }
+                    }
+                }
             }
             tag
             coverImage {
