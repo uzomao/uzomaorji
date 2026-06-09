@@ -68,3 +68,19 @@ module.exports.createPages = async ({ graphql, actions }) => {
         })
     })
 }
+
+module.exports.onCreateWebpackConfig = ({ actions }) => {
+    const { setWebpackConfig } = actions
+    setWebpackConfig({
+        module: {
+            rules: [
+                {
+                    test: /\.mjs$/,
+                    include: /node_modules/,
+                    type: 'javascript/auto',
+                },
+            ],
+        }
+    })
+}
+
