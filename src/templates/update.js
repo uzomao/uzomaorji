@@ -9,6 +9,7 @@ import Img from 'gatsby-image'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 
 import RichTextRenderer from '../utils/rich-text-renderer'
+import SEO from '../components/seo'
 
 export const query = graphql`
     query ($slug: String) {
@@ -71,6 +72,12 @@ const UpdateTemplate = (props) => {
     return (
         <Layout noHeader={true} noFooter={true}>
             <div className={`${visualStyles.visual} ${visualStyles.visualTech}`}>
+                <SEO
+                    title={title}
+                    image={coverImage && coverImage.fixed && coverImage.fixed.src}
+                    pathname={props.location && props.location.pathname}
+                    article={true}
+                />
                 <header>
                     {backBtn}
                     <h2 style={{fontSize: '1.75rem'}}>{title}</h2>

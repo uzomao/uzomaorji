@@ -15,11 +15,22 @@ const SEO = ({ title, description, image, pathname, article }) => (
           }
         }
       }) => {
+        // Compute final image URL: allow absolute URLs from CMS (starting with http(s) or //),
+        // otherwise resolve relative paths against siteUrl.
+        const resolvedImage = (() => {
+          if (!image && !defaultImage) return null
+          const candidate = image || defaultImage
+          if (candidate.startsWith('http://') || candidate.startsWith('https://')) return candidate
+          if (candidate.startsWith('//')) return `https:${candidate}`
+          // otherwise assume a site-relative path
+          return `${siteUrl}${candidate}`
+        })()
+
         const seo = {
           title: title || defaultTitle,
           description: description || defaultDescription,
           url: `${siteUrl}${pathname || '/'}`,
-          image: `${siteUrl}${image || defaultImage}`
+          image: resolvedImage,
         }
         return (
             <>
