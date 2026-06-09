@@ -13,7 +13,7 @@ const Header = ({ isLightTheme }) => {
 			<h2>
 				<Link to='/'
 					id={headerStyles.header}
-					onMouseOver={() => {document.getElementById(headerStyles.header).innerHTML = 'creative technologist/visual artist'}}
+					onMouseOver={() => {document.getElementById(headerStyles.header).innerHTML = 'digital artist/creative technologist'}}
 					onFocus={ () => void 0 }
 					onMouseOut={() => {document.getElementById(headerStyles.header).innerHTML = 'chidumaga uzoma orji'}}
 					onBlur={ () => void 0 } 
